@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import productImage from "@/assets/product-sentinel.png";
+import productImage from "@/assets/product-sentinel-minimal.png";
 
 const products = [
   {
-    name: "Sentinel 1",
+    name: "Sentinel One",
     tagline: "Everyday intelligence, refined.",
     desc: "Designed for private homes and modern living. Discreet. Elegant. Reliable.",
     link: "/products/f7",

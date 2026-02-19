@@ -4,7 +4,7 @@ import { ArrowLeft, Fingerprint, KeyRound, CreditCard, Smartphone } from "lucide
 import { f7 } from "@/data/products";
 import ProductSpecTable from "@/components/ProductSpecTable";
 import CertificationBadges from "@/components/CertificationBadges";
-import productImage from "@/assets/product-sentinel.png";
+import productImage from "@/assets/product-sentinel-minimal.png";
 
 const unlockIcons = [Fingerprint, KeyRound, CreditCard, Smartphone];
 
