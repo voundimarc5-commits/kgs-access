@@ -1,12 +1,11 @@
 import { motion } from "framer-motion";
-import { Building2, Landmark, Store, Factory, Zap } from "lucide-react";
+import { Home, BedDouble, Building2, Store } from "lucide-react";
 
 const useCases = [
-  { icon: Building2, title: "Residential Buildings", desc: "Secure entry for residents and visitors across multi-unit properties." },
-  { icon: Landmark, title: "Offices & Corporate Spaces", desc: "Role-based access for employees, contractors, and guests." },
-  { icon: Store, title: "Commercial Properties", desc: "Manage tenant access across retail and mixed-use facilities." },
-  { icon: Factory, title: "Managed Facilities", desc: "Unified control for property managers overseeing multiple sites." },
-  { icon: Zap, title: "Smart Infrastructure", desc: "Integrated access for IoT-enabled and connected building projects." },
+  { icon: Home, title: "Apartments & Houses", desc: "Keyless entry for homeowners looking for modern, secure access." },
+  { icon: BedDouble, title: "Airbnb & Short-Term Rentals", desc: "Remote guest access with temporary passcodes — no key handover needed." },
+  { icon: Building2, title: "Property Managers", desc: "Manage tenant access across multiple properties from a single app." },
+  { icon: Store, title: "Small Businesses", desc: "Cost-effective smart access for offices, studios, and retail spaces." },
 ];
 
 const UseCasesSection = () => {
@@ -21,14 +20,14 @@ const UseCasesSection = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-3xl md:text-5xl font-heading font-bold text-foreground mb-4">
-            Use Cases
+            Who It's For
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            KGS Access adapts to diverse environments and operational requirements.
+            KGS Access products serve residential, rental, and commercial markets.
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {useCases.map((uc, i) => (
             <motion.div
               key={uc.title}
