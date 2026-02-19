@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Fingerprint, KeyRound, CreditCard, Smartphone } from "lucide-react";
+import { ArrowLeft, ArrowRight, Fingerprint, KeyRound, CreditCard, Smartphone } from "lucide-react";
 import { f18 } from "@/data/products";
 import ProductSpecTable from "@/components/ProductSpecTable";
 import CertificationBadges from "@/components/CertificationBadges";
@@ -114,9 +114,10 @@ const ProductF18 = () => {
           <div className="mt-24 text-center">
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-gradient-accent text-primary-foreground font-semibold shadow-glow hover:brightness-110 transition-all"
+              className="group inline-flex items-center gap-3 text-[13px] font-medium tracking-[0.2em] uppercase text-silver-accent border border-silver-accent/30 px-10 py-4 hover:border-silver-accent/60 hover:bg-white/[0.03] transition-all duration-500"
             >
-              Enquire About the Sentinel Pro
+              Request a Consultation
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-300" />
             </Link>
           </div>
         </div>
