@@ -4,7 +4,13 @@ import { ArrowRight } from "lucide-react";
 import { allProducts } from "@/data/products";
 import ComparisonTable from "@/components/ComparisonTable";
 import CertificationBadges from "@/components/CertificationBadges";
-import productImage from "@/assets/product-sentinel-minimal.png";
+import sentinelOneImg from "@/assets/product-sentinel-minimal.png";
+import sentinelProImg from "@/assets/product-sentinel-duo.png";
+
+const productImages: Record<string, string> = {
+  f7: sentinelOneImg,
+  f18: sentinelProImg,
+};
 
 const Products = () => {
   return (
@@ -54,7 +60,7 @@ const Products = () => {
               >
                 <div className="flex justify-center mb-8">
                   <img
-                    src={productImage}
+                    src={productImages[product.id]}
                     alt={product.name}
                     className="h-36 w-auto opacity-90"
                   />

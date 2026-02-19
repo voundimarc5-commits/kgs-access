@@ -62,6 +62,11 @@ export default {
         },
         "silver-accent": "hsl(var(--silver-accent))",
         "silver-glow": "hsl(var(--silver-glow))",
+        hero: {
+          DEFAULT: "hsl(var(--hero))",
+          foreground: "hsl(var(--hero-foreground))",
+        },
+        "cyan-glow": "hsl(var(--cyan-glow))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
