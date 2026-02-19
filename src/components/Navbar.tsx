@@ -69,7 +69,7 @@ const Navbar = () => {
                   to="/products/f7"
                   className="block px-5 py-2.5 text-sm text-chrome-light hover:text-ivory hover:bg-silver-accent/5 transition-all duration-200"
                 >
-                  Sentinel 1
+                  Sentinel One
                 </Link>
                 <Link
                   to="/products/f18"
@@ -115,7 +115,7 @@ const Navbar = () => {
             Collection
           </Link>
           <Link to="/products/f7" className="text-chrome/70 hover:text-ivory transition-colors pl-4 text-sm">
-            Sentinel 1
+            Sentinel One
           </Link>
           <Link to="/products/f18" className="text-chrome/70 hover:text-ivory transition-colors pl-4 text-sm">
             Sentinel Pro

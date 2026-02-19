@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { allProducts } from "@/data/products";
-import productImage from "@/assets/product-sentinel.png";
+import productImage from "@/assets/product-sentinel-minimal.png";
 
 const FeaturesSection = () => {
   return (

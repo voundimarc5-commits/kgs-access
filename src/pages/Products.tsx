@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { allProducts } from "@/data/products";
 import ComparisonTable from "@/components/ComparisonTable";
 import CertificationBadges from "@/components/CertificationBadges";
-import productImage from "@/assets/product-sentinel.png";
+import productImage from "@/assets/product-sentinel-minimal.png";
 
 const Products = () => {
   return (
