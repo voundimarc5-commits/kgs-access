@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const ExperienceSection = () => {
   return (
-    <section className="py-32 md:py-40 bg-background">
+    <section className="py-32 md:py-40 bg-mineral">
       <div className="container mx-auto px-6">
         <div className="max-w-3xl mx-auto text-center">
           <motion.div
@@ -14,7 +14,7 @@ const ExperienceSection = () => {
           />
 
           <motion.h2
-            className="text-3xl md:text-5xl font-heading font-medium text-foreground mb-10 leading-tight"
+            className="text-3xl md:text-5xl font-heading font-medium text-ivory mb-10 leading-tight"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -24,7 +24,7 @@ const ExperienceSection = () => {
           </motion.h2>
 
           <motion.div
-            className="space-y-6 text-lg text-muted-foreground leading-relaxed font-light"
+            className="space-y-6 text-lg text-chrome-light leading-relaxed font-light"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -34,7 +34,7 @@ const ExperienceSection = () => {
             <p>
               It is the first interface between space, people and security.
             </p>
-            <p className="text-foreground/80">
+            <p className="text-ivory/80">
               KGS Access designs locks that disappear into architecture,
               <br className="hidden md:block" />
               while quietly doing their job.
