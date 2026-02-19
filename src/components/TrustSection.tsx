@@ -1,8 +1,33 @@
 import { motion } from "framer-motion";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+
+const certifications = [
+  {
+    label: "CE",
+    svg: (
+      <svg viewBox="0 0 80 50" className="h-8 w-auto" fill="currentColor">
+        <text x="0" y="40" fontSize="42" fontFamily="Arial, sans-serif" fontWeight="bold" letterSpacing="-2">CE</text>
+      </svg>
+    ),
+  },
+  {
+    label: "RoHS",
+    svg: (
+      <svg viewBox="0 0 100 50" className="h-8 w-auto" fill="currentColor">
+        <text x="0" y="40" fontSize="36" fontFamily="Arial, sans-serif" fontWeight="bold">RoHS</text>
+      </svg>
+    ),
+  },
+];
 
 const TrustSection = () => {
   return (
-    <section className="py-32 bg-background">
+    <section className="py-32 bg-charcoal">
       <div className="container mx-auto px-6">
         <div className="max-w-3xl mx-auto text-center">
           <motion.div
@@ -14,7 +39,7 @@ const TrustSection = () => {
           />
 
           <motion.h2
-            className="text-3xl md:text-4xl font-heading font-medium text-foreground mb-6"
+            className="text-3xl md:text-4xl font-heading font-medium text-ivory mb-6"
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -24,7 +49,7 @@ const TrustSection = () => {
           </motion.h2>
 
           <motion.p
-            className="text-lg text-muted-foreground font-light leading-relaxed max-w-2xl mx-auto"
+            className="text-lg text-chrome-light font-light leading-relaxed max-w-2xl mx-auto mb-16"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -34,22 +59,47 @@ const TrustSection = () => {
             — a technology group focused on security, infrastructure and intelligent systems.
           </motion.p>
 
+          {/* Certification row */}
           <motion.div
-            className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8"
+            className="flex items-center justify-center gap-10 mb-12"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <TooltipProvider delayDuration={200}>
+              {certifications.map((cert) => (
+                <Tooltip key={cert.label}>
+                  <TooltipTrigger asChild>
+                    <div className="text-chrome/50 hover:text-chrome-light transition-colors duration-300 cursor-default">
+                      {cert.svg}
+                    </div>
+                  </TooltipTrigger>
+                  <TooltipContent
+                    className="max-w-[260px] text-center bg-deep border-chrome/20 text-chrome-light text-xs leading-relaxed px-4 py-3"
+                  >
+                    Product compliant with applicable {cert.label} standards. Certification issued by the manufacturer.
+                  </TooltipContent>
+                </Tooltip>
+              ))}
+            </TooltipProvider>
+          </motion.div>
+
+          {/* Region badges */}
+          <motion.div
+            className="grid grid-cols-2 gap-8 max-w-xs mx-auto"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.2 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
           >
             {[
-              { label: "CE Certified", sub: "European conformity" },
-              { label: "RoHS", sub: "Environmental safety" },
               { label: "Europe & Africa", sub: "Operating regions" },
               { label: "US-Based", sub: "Kora Global Systems" },
             ].map((item) => (
               <div key={item.label} className="text-center">
-                <p className="text-sm font-medium text-foreground mb-1">{item.label}</p>
-                <p className="text-xs text-muted-foreground">{item.sub}</p>
+                <p className="text-sm font-medium text-ivory/80 mb-1">{item.label}</p>
+                <p className="text-xs text-chrome/60">{item.sub}</p>
               </div>
             ))}
           </motion.div>

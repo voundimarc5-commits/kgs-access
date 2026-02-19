@@ -44,6 +44,9 @@
     --chrome-light: 220 5% 75%;
     --silver-accent: 250 12% 68%;
     --silver-glow: 250 20% 78%;
+    --charcoal: 220 12% 12%;
+    --mineral: 220 8% 18%;
+    --blue-grey: 218 10% 22%;
 
     --gradient-deep: linear-gradient(170deg, hsl(225 15% 4%), hsl(230 12% 8%), hsl(225 12% 6%));
     --gradient-accent: linear-gradient(135deg, hsl(250 15% 60%), hsl(220 15% 70%));
@@ -162,6 +165,18 @@
 
   .bg-warm-gold\/10 {
     background-color: hsl(var(--silver-accent) / 0.1);
+  }
+
+  .bg-charcoal {
+    background-color: hsl(var(--charcoal));
+  }
+
+  .bg-mineral {
+    background-color: hsl(var(--mineral));
+  }
+
+  .bg-blue-grey {
+    background-color: hsl(var(--blue-grey));
   }
 
   .text-warm-gold {
