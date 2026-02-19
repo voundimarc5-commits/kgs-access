@@ -4,12 +4,12 @@ import { ArrowRight } from "lucide-react";
 import { allProducts } from "@/data/products";
 import ComparisonTable from "@/components/ComparisonTable";
 import CertificationBadges from "@/components/CertificationBadges";
-import sentinelOneImg from "@/assets/product-sentinel-minimal.png";
-import sentinelProImg from "@/assets/product-sentinel-duo.png";
+import sentinelOneWide from "@/assets/product-sentinel-one-wide.jpg";
+import sentinelProWide from "@/assets/product-sentinel-pro-wide.jpg";
 
 const productImages: Record<string, string> = {
-  f7: sentinelOneImg,
-  f18: sentinelProImg,
+  f7: sentinelOneWide,
+  f18: sentinelProWide,
 };
 
 const Products = () => {
@@ -52,19 +52,20 @@ const Products = () => {
             {allProducts.map((product, i) => (
               <motion.div
                 key={product.id}
-                className="rounded-2xl border border-border bg-card p-10 shadow-card hover:shadow-glow hover:border-accent/20 transition-all duration-500 flex flex-col"
+                className="rounded-2xl border border-border bg-card overflow-hidden shadow-card hover:shadow-glow hover:border-accent/20 transition-all duration-500 flex flex-col"
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.15 }}
               >
-                <div className="flex justify-center mb-8">
+                <div className="w-full">
                   <img
                     src={productImages[product.id]}
                     alt={product.name}
-                    className="h-36 w-auto opacity-90"
+                    className="w-full h-48 md:h-56 object-cover"
                   />
                 </div>
+                <div className="p-10 flex flex-col flex-1">
                 <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent mb-3">
                   {product.subtitle}
                 </span>
@@ -87,6 +88,7 @@ const Products = () => {
                   Full specifications
                   <ArrowRight className="w-4 h-4" />
                 </Link>
+                </div>
               </motion.div>
             ))}
           </div>
