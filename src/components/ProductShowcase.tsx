@@ -21,8 +21,8 @@ const products = [
 const ProductShowcase = () => {
   return (
     <section className="py-32 bg-deep relative overflow-hidden">
-      {/* Warm ambient glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-warm-gold/5 blur-[150px]" />
+      {/* Cool ambient glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-silver-accent/5 blur-[150px]" />
 
       <div className="relative z-10 container mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-16 max-w-5xl mx-auto">
@@ -37,7 +37,7 @@ const ProductShowcase = () => {
             >
               {/* Product image */}
               <div className="relative mb-10 flex justify-center">
-                <div className="absolute inset-0 bg-warm-gold/5 rounded-3xl blur-2xl group-hover:bg-warm-gold/10 transition-all duration-700" />
+                <div className="absolute inset-0 bg-silver-accent/5 rounded-3xl blur-2xl group-hover:bg-silver-accent/10 transition-all duration-700" />
                 <img
                   src={productImage}
                   alt={product.name}
@@ -46,7 +46,7 @@ const ProductShowcase = () => {
               </div>
 
               {/* Copy */}
-              <p className="text-[11px] font-medium tracking-[0.25em] uppercase text-warm-gold mb-3">
+              <p className="text-[11px] font-medium tracking-[0.25em] uppercase text-silver-accent mb-3">
                 {product.tagline}
               </p>
               <h3 className="text-3xl font-heading font-medium text-deep-foreground mb-4">
@@ -57,7 +57,7 @@ const ProductShowcase = () => {
               </p>
               <Link
                 to={product.link}
-                className="group/link inline-flex items-center gap-2 text-[13px] font-medium tracking-[0.15em] uppercase text-warm-gold border-b border-warm-gold/30 pb-1.5 hover:border-warm-gold/60 transition-all duration-500"
+                className="group/link inline-flex items-center gap-2 text-[13px] font-medium tracking-[0.15em] uppercase text-silver-accent border-b border-silver-accent/30 pb-1.5 hover:border-silver-accent/60 transition-all duration-500"
               >
                 Discover {product.name}
                 <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform duration-300" />

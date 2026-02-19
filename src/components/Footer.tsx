@@ -4,7 +4,7 @@ import logo from "@/assets/kgs-access-logo.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-deep py-20 border-t border-warm-gold/5">
+    <footer className="bg-deep py-20 border-t border-silver-accent/5">
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-3 gap-16 mb-16">
           {/* Brand */}
@@ -53,7 +53,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-warm-gold/5 pt-10 text-center">
+        <div className="border-t border-silver-accent/5 pt-10 text-center">
           <p className="text-xs text-chrome/40 font-light">
             © {new Date().getFullYear()} Kora Global Systems. All rights reserved.
           </p>

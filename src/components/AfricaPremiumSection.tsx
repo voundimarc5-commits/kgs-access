@@ -20,7 +20,7 @@ const AfricaPremiumSection = () => {
         <div className="relative z-10 container mx-auto px-6 py-32">
           <div className="max-w-2xl">
             <motion.div
-              className="w-16 h-[1px] bg-warm-gold/60 mb-10"
+              className="w-16 h-[1px] bg-silver-accent/60 mb-10"
               initial={{ scaleX: 0, originX: 0 }}
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
@@ -36,7 +36,7 @@ const AfricaPremiumSection = () => {
             >
               Designed for environments
               <br />
-              that demand <span className="italic text-warm-gold">more.</span>
+              that demand <span className="italic text-silver-accent">more.</span>
             </motion.h2>
 
             <motion.div

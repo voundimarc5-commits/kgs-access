@@ -60,8 +60,8 @@ export default {
           DEFAULT: "hsl(var(--chrome))",
           light: "hsl(var(--chrome-light))",
         },
-        "warm-gold": "hsl(var(--warm-gold))",
-        "warm-glow": "hsl(var(--warm-glow))",
+        "silver-accent": "hsl(var(--silver-accent))",
+        "silver-glow": "hsl(var(--silver-glow))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",

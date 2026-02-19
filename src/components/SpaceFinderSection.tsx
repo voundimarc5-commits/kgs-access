@@ -54,7 +54,7 @@ const SpaceFinderSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <div className="w-12 h-[1px] bg-warm-gold/50 mx-auto mb-10" />
+          <div className="w-12 h-[1px] bg-silver-accent/50 mx-auto mb-10" />
           <h2 className="text-3xl md:text-4xl font-heading font-medium text-foreground mb-4">
             Find the lock that fits your space.
           </h2>
@@ -82,7 +82,7 @@ const SpaceFinderSection = () => {
                   <button
                     key={option}
                     onClick={() => handleSelect(option)}
-                    className="text-left px-6 py-4 rounded-xl border border-border bg-card hover:border-warm-gold/40 hover:bg-warm-gold/5 transition-all duration-300 text-foreground font-light"
+                    className="text-left px-6 py-4 rounded-xl border border-border bg-card hover:border-silver-accent/40 hover:bg-silver-accent/5 transition-all duration-300 text-foreground font-light"
                   >
                     {option}
                   </button>
@@ -96,7 +96,7 @@ const SpaceFinderSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <p className="text-xs text-warm-gold tracking-[0.2em] uppercase mb-4">
+              <p className="text-xs text-silver-accent tracking-[0.2em] uppercase mb-4">
                 Our recommendation
               </p>
               <h3 className="text-3xl font-heading font-medium text-foreground mb-4">
@@ -115,7 +115,7 @@ const SpaceFinderSection = () => {
                 </Link>
                 <button
                   onClick={reset}
-                  className="px-8 py-3.5 rounded-full border border-border text-sm font-light text-muted-foreground hover:border-warm-gold/30 transition-all duration-300"
+                  className="px-8 py-3.5 rounded-full border border-border text-sm font-light text-muted-foreground hover:border-silver-accent/30 transition-all duration-300"
                 >
                   Start over
                 </button>
