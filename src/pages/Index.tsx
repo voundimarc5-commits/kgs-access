@@ -1,19 +1,19 @@
 import HeroSection from "@/components/HeroSection";
-import WhatIsSection from "@/components/WhatIsSection";
-import FeaturesSection from "@/components/FeaturesSection";
-import UseCasesSection from "@/components/UseCasesSection";
-import WhySection from "@/components/WhySection";
-import CTASection from "@/components/CTASection";
+import ExperienceSection from "@/components/ExperienceSection";
+import ProductShowcase from "@/components/ProductShowcase";
+import SpaceFinderSection from "@/components/SpaceFinderSection";
+import AfricaPremiumSection from "@/components/AfricaPremiumSection";
+import TrustSection from "@/components/TrustSection";
 
 const Index = () => {
   return (
     <>
       <HeroSection />
-      <WhatIsSection />
-      <FeaturesSection />
-      <UseCasesSection />
-      <WhySection />
-      <CTASection />
+      <ExperienceSection />
+      <ProductShowcase />
+      <SpaceFinderSection />
+      <AfricaPremiumSection />
+      <TrustSection />
     </>
   );
 };
