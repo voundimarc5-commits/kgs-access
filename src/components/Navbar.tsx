@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Shield, Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
+import logo from "@/assets/kgs-access-logo.png";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -35,10 +36,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-6 flex items-center justify-between h-16">
         <Link to="/" className="flex items-center gap-2">
-          <Shield className="w-6 h-6 text-cyan-glow" />
-          <span className="font-heading font-bold text-lg text-hero-foreground">
-            KGS Access
-          </span>
+          <img src={logo} alt="KGS Access" className="h-9 w-auto" />
         </Link>
 
         {/* Desktop */}
