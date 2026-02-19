@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
-import { Fingerprint, Lock, Network, Eye } from "lucide-react";
+import { Fingerprint, Lock, Smartphone, ShieldCheck } from "lucide-react";
 
 const WhatIsSection = () => {
   const points = [
-    { icon: Fingerprint, label: "Identity" },
-    { icon: Lock, label: "Authentication" },
-    { icon: Network, label: "Access Management" },
-    { icon: Eye, label: "Security" },
+    { icon: Fingerprint, label: "Fingerprint Access" },
+    { icon: Lock, label: "Smart Locks" },
+    { icon: Smartphone, label: "App Control" },
+    { icon: ShieldCheck, label: "Certified Hardware" },
   ];
 
   return (
@@ -23,9 +23,7 @@ const WhatIsSection = () => {
             What is <span className="text-gradient-accent">KGS Access</span>?
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            KGS Access is a secure access control solution designed for smart buildings,
-            businesses, and controlled environments. It provides a unified platform to manage
-            who enters your spaces, how they authenticate, and how your infrastructure stays connected and secure.
+            KGS Access designs and delivers smart access control solutions for residential properties, short-term rentals, and small commercial spaces. Our certified smart locks combine fingerprint, passcode, RFID, and mobile app access — making keyless entry simple, secure, and reliable.
           </p>
         </motion.div>
 
@@ -42,7 +40,9 @@ const WhatIsSection = () => {
               <div className="w-14 h-14 rounded-xl bg-gradient-accent flex items-center justify-center">
                 <point.icon className="w-7 h-7 text-primary-foreground" />
               </div>
-              <span className="font-heading font-semibold text-foreground">{point.label}</span>
+              <span className="font-heading font-semibold text-foreground text-center">
+                {point.label}
+              </span>
             </motion.div>
           ))}
         </div>

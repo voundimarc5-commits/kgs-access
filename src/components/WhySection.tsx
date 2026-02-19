@@ -1,21 +1,21 @@
 import { motion } from "framer-motion";
-import { ShieldCheck, TrendingUp, Puzzle } from "lucide-react";
+import { ShieldCheck, TrendingUp, Globe } from "lucide-react";
 
 const reasons = [
   {
     icon: ShieldCheck,
-    title: "Built for Security",
-    desc: "Developed by KORA Global Systems with security at its core — from architecture to deployment.",
+    title: "Certified Hardware",
+    desc: "Every product carries CE and RoHS certification — meeting EU and UK regulatory standards.",
+  },
+  {
+    icon: Globe,
+    title: "US-Based, International Reach",
+    desc: "Kora Global Systems is a US-registered company operating across the UK and Europe with professional logistics.",
   },
   {
     icon: TrendingUp,
-    title: "Designed to Scale",
-    desc: "From a single building to a multi-site portfolio, KGS Access grows with your operations.",
-  },
-  {
-    icon: Puzzle,
-    title: "Part of a Broader Ecosystem",
-    desc: "KGS Access integrates with the wider KORA ecosystem — including Automations and Flow — for a unified infrastructure platform.",
+    title: "Built to Scale",
+    desc: "Starting with proven smart lock products, expanding into a broader access and security ecosystem over time.",
   },
 ];
 
@@ -37,7 +37,7 @@ const WhySection = () => {
             Why <span className="text-gradient-accent">KGS Access</span>?
           </h2>
           <p className="text-lg text-chrome-light max-w-2xl mx-auto">
-            Trusted infrastructure for modern access control.
+            A serious security company — not a side project.
           </p>
         </motion.div>
 

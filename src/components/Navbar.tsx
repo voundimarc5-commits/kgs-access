@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
-import { Shield, Menu, X } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
+import { Shield, Menu, X, ChevronDown } from "lucide-react";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [productsOpen, setProductsOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 50);
@@ -11,11 +14,15 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
-  const links = [
-    { label: "Product", href: "#what-is" },
-    { label: "Features", href: "#features" },
-    { label: "Use Cases", href: "#use-cases" },
-    { label: "Contact", href: "#contact" },
+  useEffect(() => {
+    setMenuOpen(false);
+    setProductsOpen(false);
+  }, [location]);
+
+  const navLinks = [
+    { label: "Solutions", href: "/solutions" },
+    { label: "Compliance", href: "/compliance" },
+    { label: "About", href: "/about" },
   ];
 
   return (
@@ -27,30 +34,68 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between h-16">
-        <a href="#" className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-2">
           <Shield className="w-6 h-6 text-cyan-glow" />
           <span className="font-heading font-bold text-lg text-hero-foreground">
             KGS Access
           </span>
-        </a>
+        </Link>
 
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-8">
-          {links.map((l) => (
-            <a
+          {/* Products dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={() => setProductsOpen(true)}
+            onMouseLeave={() => setProductsOpen(false)}
+          >
+            <Link
+              to="/products"
+              className="flex items-center gap-1 text-sm text-chrome-light hover:text-cyan-glow transition-colors font-medium"
+            >
+              Products
+              <ChevronDown className="w-3.5 h-3.5" />
+            </Link>
+            {productsOpen && (
+              <div className="absolute top-full left-0 mt-1 w-48 rounded-lg border border-chrome/20 bg-hero-bg/95 backdrop-blur-md shadow-lg py-2">
+                <Link
+                  to="/products"
+                  className="block px-4 py-2 text-sm text-chrome-light hover:text-cyan-glow hover:bg-chrome/10 transition-colors"
+                >
+                  All Products
+                </Link>
+                <Link
+                  to="/products/f7"
+                  className="block px-4 py-2 text-sm text-chrome-light hover:text-cyan-glow hover:bg-chrome/10 transition-colors"
+                >
+                  F7 Smart Lock
+                </Link>
+                <Link
+                  to="/products/f18"
+                  className="block px-4 py-2 text-sm text-chrome-light hover:text-cyan-glow hover:bg-chrome/10 transition-colors"
+                >
+                  F18 Smart Lock
+                </Link>
+              </div>
+            )}
+          </div>
+
+          {navLinks.map((l) => (
+            <Link
               key={l.label}
-              href={l.href}
+              to={l.href}
               className="text-sm text-chrome-light hover:text-cyan-glow transition-colors font-medium"
             >
               {l.label}
-            </a>
+            </Link>
           ))}
-          <a
-            href="#contact"
+
+          <Link
+            to="/contact"
             className="px-5 py-2 rounded-lg bg-gradient-accent text-primary-foreground text-sm font-semibold hover:brightness-110 transition-all"
           >
-            Request Demo
-          </a>
+            Contact Us
+          </Link>
         </div>
 
         {/* Mobile toggle */}
@@ -65,23 +110,39 @@ const Navbar = () => {
       {/* Mobile menu */}
       {menuOpen && (
         <div className="md:hidden bg-hero-bg/95 backdrop-blur-md border-t border-chrome/20 px-6 py-6 flex flex-col gap-4">
-          {links.map((l) => (
-            <a
+          <Link
+            to="/products"
+            className="text-chrome-light hover:text-cyan-glow transition-colors font-medium"
+          >
+            Products
+          </Link>
+          <Link
+            to="/products/f7"
+            className="text-chrome-light hover:text-cyan-glow transition-colors font-medium pl-4 text-sm"
+          >
+            F7 Smart Lock
+          </Link>
+          <Link
+            to="/products/f18"
+            className="text-chrome-light hover:text-cyan-glow transition-colors font-medium pl-4 text-sm"
+          >
+            F18 Smart Lock
+          </Link>
+          {navLinks.map((l) => (
+            <Link
               key={l.label}
-              href={l.href}
+              to={l.href}
               className="text-chrome-light hover:text-cyan-glow transition-colors font-medium"
-              onClick={() => setMenuOpen(false)}
             >
               {l.label}
-            </a>
+            </Link>
           ))}
-          <a
-            href="#contact"
+          <Link
+            to="/contact"
             className="px-5 py-3 rounded-lg bg-gradient-accent text-primary-foreground text-sm font-semibold text-center"
-            onClick={() => setMenuOpen(false)}
           >
-            Request Demo
-          </a>
+            Contact Us
+          </Link>
         </div>
       )}
     </nav>

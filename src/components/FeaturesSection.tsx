@@ -1,38 +1,7 @@
 import { motion } from "framer-motion";
-import { Shield, Settings, Key, Globe, Cpu } from "lucide-react";
-
-const features = [
-  {
-    icon: Shield,
-    title: "Secure Identity-Based Access",
-    description:
-      "Grant or restrict access based on verified identities. Ensure only authorised personnel enter sensitive areas.",
-  },
-  {
-    icon: Settings,
-    title: "Centralised Access Management",
-    description:
-      "Manage all access points from a single dashboard. Configure permissions, schedules, and zones across your organisation.",
-  },
-  {
-    icon: Key,
-    title: "Smart Authentication",
-    description:
-      "Support for multiple authentication mechanisms — from credentials to biometric-ready integrations.",
-  },
-  {
-    icon: Globe,
-    title: "Multi-Site Scalability",
-    description:
-      "Deploy across multiple locations with consistent policies. Scale from a single building to a global portfolio.",
-  },
-  {
-    icon: Cpu,
-    title: "IoT-Ready Architecture",
-    description:
-      "Designed for connected environments. Integrate with sensors, controllers, and building management systems.",
-  },
-];
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
+import { allProducts } from "@/data/products";
 
 const FeaturesSection = () => {
   return (
@@ -46,30 +15,47 @@ const FeaturesSection = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-3xl md:text-5xl font-heading font-bold text-foreground mb-4">
-            Key Features
+            Our Products
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Enterprise-grade capabilities designed for modern access control.
+            Two certified smart locks designed for different door types and security requirements.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {features.map((feature, i) => (
+        <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+          {allProducts.map((product, i) => (
             <motion.div
-              key={feature.title}
-              className="group p-8 rounded-2xl bg-card border border-border shadow-card hover:shadow-glow hover:border-accent/30 transition-all duration-500"
+              key={product.id}
+              className="group p-10 rounded-2xl bg-card border border-border shadow-card hover:shadow-glow hover:border-accent/30 transition-all duration-500 flex flex-col"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
             >
-              <div className="w-12 h-12 rounded-lg bg-gradient-accent flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
-                <feature.icon className="w-6 h-6 text-primary-foreground" />
-              </div>
-              <h3 className="text-xl font-heading font-semibold text-foreground mb-3">
-                {feature.title}
+              <span className="text-xs font-semibold uppercase tracking-wider text-accent mb-3">
+                {product.subtitle}
+              </span>
+              <h3 className="text-2xl font-heading font-bold text-foreground mb-3">
+                {product.name}
               </h3>
-              <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
+              <p className="text-muted-foreground mb-6 flex-1">
+                {product.positioning}
+              </p>
+              <ul className="space-y-2 mb-6">
+                {product.highlights.slice(0, 3).map((h) => (
+                  <li key={h} className="flex items-start gap-2 text-sm text-muted-foreground">
+                    <span className="w-1.5 h-1.5 mt-1.5 rounded-full bg-accent shrink-0" />
+                    {h}
+                  </li>
+                ))}
+              </ul>
+              <Link
+                to={`/products/${product.id}`}
+                className="inline-flex items-center gap-2 font-semibold text-primary hover:gap-3 transition-all"
+              >
+                Learn more
+                <ArrowRight className="w-4 h-4" />
+              </Link>
             </motion.div>
           ))}
         </div>
