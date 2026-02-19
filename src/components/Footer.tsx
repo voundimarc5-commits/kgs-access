@@ -48,11 +48,11 @@ const Footer = () => {
               Contact
             </h4>
             <a
-              href="mailto:contact@google.cm.com"
+              href="mailto:contact@koraglobalsystems.com"
               className="inline-flex items-center gap-2 text-sm text-chrome-light hover:text-cyan-glow transition-colors"
             >
               <Mail className="w-4 h-4" />
-              contact@google.cm.com
+              contact@koraglobalsystems.com
             </a>
           </div>
 
@@ -63,7 +63,7 @@ const Footer = () => {
             </h4>
             <div className="flex items-center gap-2 text-sm text-chrome-light">
               <Globe className="w-4 h-4" />
-              <span>United Kingdom · Europe</span>
+              <span>Europe · Africa</span>
             </div>
           </div>
         </div>
