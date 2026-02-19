@@ -1,66 +1,74 @@
 import { motion } from "framer-motion";
 import { ShieldCheck, TrendingUp, Globe } from "lucide-react";
+import CertificationBadges from "./CertificationBadges";
 
 const reasons = [
   {
     icon: ShieldCheck,
-    title: "Certified Hardware",
-    desc: "Every product carries CE and RoHS certification — meeting EU and UK regulatory standards.",
+    title: "Certified Hardware Only",
+    desc: "Every unit carries CE and RoHS certification. No exceptions. No expired models.",
   },
   {
     icon: Globe,
-    title: "US-Based, International Reach",
-    desc: "Kora Global Systems is a US-registered company operating across the UK and Europe with professional logistics.",
+    title: "US-Based, International Operations",
+    desc: "Kora Global Systems is registered in the United States. We operate across Europe and Africa with professional logistics.",
   },
   {
     icon: TrendingUp,
-    title: "Built to Scale",
-    desc: "Starting with proven smart lock products, expanding into a broader access and security ecosystem over time.",
+    title: "Long-Term Infrastructure",
+    desc: "We are building a security platform, not selling a product. Every decision is made for scalability and trust.",
   },
 ];
 
 const WhySection = () => {
   return (
-    <section className="py-24 bg-hero relative overflow-hidden">
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-accent/20 blur-[120px]" />
-      </div>
-      <div className="relative z-10 container mx-auto px-6">
+    <section className="py-28 bg-section-alt">
+      <div className="container mx-auto px-6">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-20"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.7 }}
         >
-          <h2 className="text-3xl md:text-5xl font-heading font-bold text-hero-foreground mb-4">
-            Why <span className="text-gradient-accent">KGS Access</span>?
-          </h2>
-          <p className="text-lg text-chrome-light max-w-2xl mx-auto">
-            A serious security company — not a side project.
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent mb-4">
+            Trust
           </p>
+          <h2 className="text-3xl md:text-5xl font-heading font-bold text-foreground mb-4">
+            Why KGS Access
+          </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-16">
           {reasons.map((r, i) => (
             <motion.div
               key={r.title}
-              className="text-center p-8 rounded-2xl border border-chrome/20 bg-hero-bg/50 backdrop-blur-sm"
+              className="text-center p-10 rounded-2xl border border-border bg-card shadow-card hover:shadow-glow hover:border-accent/20 transition-all duration-500"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
             >
-              <div className="w-14 h-14 mx-auto mb-5 rounded-xl bg-gradient-accent flex items-center justify-center">
-                <r.icon className="w-7 h-7 text-primary-foreground" />
+              <div className="w-14 h-14 mx-auto mb-6 rounded-xl bg-hero flex items-center justify-center">
+                <r.icon className="w-7 h-7 text-cyan-glow" />
               </div>
-              <h3 className="text-xl font-heading font-semibold text-hero-foreground mb-3">
+              <h3 className="text-lg font-heading font-semibold text-foreground mb-3">
                 {r.title}
               </h3>
-              <p className="text-chrome-light text-sm leading-relaxed">{r.desc}</p>
+              <p className="text-muted-foreground text-sm leading-relaxed">{r.desc}</p>
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          className="flex justify-center"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
+          <CertificationBadges className="justify-center" />
+        </motion.div>
       </div>
     </section>
   );

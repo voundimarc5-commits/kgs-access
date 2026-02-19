@@ -7,34 +7,41 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // In a real deployment this would POST to an API
     setSubmitted(true);
   };
 
   return (
     <>
-      <section className="bg-hero pt-32 pb-20">
+      <section className="bg-hero pt-36 pb-24">
         <div className="container mx-auto px-6 text-center">
+          <motion.p
+            className="text-xs font-semibold uppercase tracking-[0.25em] text-cyan-glow mb-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            Contact
+          </motion.p>
           <motion.h1
             className="text-4xl md:text-6xl font-heading font-bold text-hero-foreground mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
           >
-            Get in Touch
+            Begin the Conversation
           </motion.h1>
           <motion.p
             className="text-lg text-chrome-light max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.15 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Whether you're interested in our products, need compatibility guidance, or want to discuss a project — we're here to help.
+            Product enquiries, compatibility verification, or partnership discussions.
           </motion.p>
         </div>
       </section>
 
-      <section className="py-24 bg-background">
+      <section className="py-28 bg-background">
         <div className="container mx-auto px-6 max-w-2xl">
           {submitted ? (
             <motion.div
@@ -43,14 +50,14 @@ const Contact = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4 }}
             >
-              <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-accent flex items-center justify-center">
-                <Send className="w-7 h-7 text-primary-foreground" />
+              <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-hero flex items-center justify-center">
+                <Send className="w-7 h-7 text-cyan-glow" />
               </div>
               <h2 className="text-2xl font-heading font-bold text-foreground mb-3">
-                Thank you for your enquiry
+                Enquiry Received
               </h2>
               <p className="text-muted-foreground">
-                We will review your message and get back to you shortly.
+                We will review your message and respond within two business days.
               </p>
             </motion.div>
           ) : (
@@ -74,7 +81,7 @@ const Contact = () => {
                     name="name"
                     required
                     maxLength={100}
-                    className="w-full px-4 py-3 rounded-lg border border-border bg-card text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                    className="w-full px-4 py-3 rounded-lg border border-border bg-card text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-all"
                     placeholder="John Smith"
                   />
                 </div>
@@ -91,7 +98,7 @@ const Contact = () => {
                     type="email"
                     required
                     maxLength={255}
-                    className="w-full px-4 py-3 rounded-lg border border-border bg-card text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                    className="w-full px-4 py-3 rounded-lg border border-border bg-card text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-all"
                     placeholder="john@company.com"
                   />
                 </div>
@@ -107,7 +114,7 @@ const Contact = () => {
                   id="company"
                   name="company"
                   maxLength={150}
-                  className="w-full px-4 py-3 rounded-lg border border-border bg-card text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                  className="w-full px-4 py-3 rounded-lg border border-border bg-card text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-all"
                   placeholder="Acme Properties Ltd"
                 />
               </div>
@@ -124,24 +131,24 @@ const Contact = () => {
                   required
                   maxLength={2000}
                   rows={5}
-                  className="w-full px-4 py-3 rounded-lg border border-border bg-card text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring resize-none"
-                  placeholder="Tell us about your project or enquiry..."
+                  className="w-full px-4 py-3 rounded-lg border border-border bg-card text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring resize-none transition-all"
+                  placeholder="Describe your project, requirements, or questions..."
                 />
               </div>
               <button
                 type="submit"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-gradient-accent text-primary-foreground font-semibold text-lg shadow-glow hover:brightness-110 transition-all w-full justify-center"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-gradient-accent text-primary-foreground font-semibold shadow-glow hover:brightness-110 transition-all w-full justify-center"
               >
-                Send Enquiry
+                Submit Enquiry
                 <Send className="w-5 h-5" />
               </button>
               <p className="text-xs text-muted-foreground text-center">
-                Or email us directly at{" "}
+                Or contact us directly at{" "}
                 <a
-                  href="mailto:contact@google.cm.com"
+                  href="mailto:contact@koraglobalsystems.com"
                   className="text-primary hover:underline"
                 >
-                  contact@google.cm.com
+                  contact@koraglobalsystems.com
                 </a>
               </p>
             </motion.form>

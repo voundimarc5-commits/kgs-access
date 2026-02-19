@@ -1,4 +1,3 @@
-import { f7, f18 } from "@/data/products";
 import { Check, Minus } from "lucide-react";
 
 const rows = [
@@ -27,23 +26,23 @@ const Cell = ({ value }: { value: boolean | string }) => {
       <Minus className="w-4 h-4 text-muted-foreground" />
     );
   }
-  return <span className="text-muted-foreground">{value}</span>;
+  return <span className="text-muted-foreground text-sm">{value}</span>;
 };
 
 const ComparisonTable = () => {
   return (
-    <div className="rounded-xl border border-border overflow-hidden">
+    <div className="rounded-2xl border border-border overflow-hidden shadow-card">
       <table className="w-full text-sm">
         <thead>
-          <tr className="bg-muted">
-            <th className="text-left px-6 py-4 font-heading font-semibold text-foreground">
+          <tr className="bg-hero">
+            <th className="text-left px-6 py-4 font-heading font-semibold text-hero-foreground tracking-wide">
               Feature
             </th>
-            <th className="text-center px-6 py-4 font-heading font-semibold text-foreground">
-              F7
+            <th className="text-center px-6 py-4 font-heading font-semibold text-cyan-glow tracking-wide">
+              Sentinel One
             </th>
-            <th className="text-center px-6 py-4 font-heading font-semibold text-foreground">
-              F18
+            <th className="text-center px-6 py-4 font-heading font-semibold text-cyan-glow tracking-wide">
+              Sentinel Pro
             </th>
           </tr>
         </thead>

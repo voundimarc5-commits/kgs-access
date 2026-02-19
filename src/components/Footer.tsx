@@ -1,29 +1,28 @@
 import { Link } from "react-router-dom";
 import { Mail, Globe } from "lucide-react";
+import logo from "@/assets/kgs-access-logo.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-hero py-16 border-t border-chrome/20">
+    <footer className="bg-hero py-20 border-t border-chrome/10">
       <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-4 gap-12 mb-12">
+        <div className="grid md:grid-cols-4 gap-12 mb-16">
           {/* Brand */}
           <div>
-            <h3 className="font-heading font-bold text-xl text-hero-foreground mb-3">
-              KGS Access
-            </h3>
-            <p className="text-sm text-chrome-light">
+            <img src={logo} alt="KGS Access" className="h-10 w-auto mb-4" />
+            <p className="text-sm text-chrome-light/70 leading-relaxed">
               A division of Kora Global Systems.
               <br />
-              Secure access. Simplified.
+              Certified access control infrastructure.
             </p>
           </div>
 
           {/* Navigation */}
           <div>
-            <h4 className="font-heading font-semibold text-hero-foreground mb-3">
+            <h4 className="font-heading font-semibold text-hero-foreground mb-4 text-sm uppercase tracking-wider">
               Navigation
             </h4>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-3">
               {[
                 { label: "Products", to: "/products" },
                 { label: "Solutions", to: "/solutions" },
@@ -34,7 +33,7 @@ const Footer = () => {
                 <Link
                   key={link.label}
                   to={link.to}
-                  className="text-sm text-chrome-light hover:text-cyan-glow transition-colors"
+                  className="text-sm text-chrome-light/60 hover:text-chrome-light transition-colors duration-300"
                 >
                   {link.label}
                 </Link>
@@ -44,12 +43,12 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h4 className="font-heading font-semibold text-hero-foreground mb-3">
+            <h4 className="font-heading font-semibold text-hero-foreground mb-4 text-sm uppercase tracking-wider">
               Contact
             </h4>
             <a
               href="mailto:contact@koraglobalsystems.com"
-              className="inline-flex items-center gap-2 text-sm text-chrome-light hover:text-cyan-glow transition-colors"
+              className="inline-flex items-center gap-2 text-sm text-chrome-light/60 hover:text-chrome-light transition-colors duration-300"
             >
               <Mail className="w-4 h-4" />
               contact@koraglobalsystems.com
@@ -58,18 +57,18 @@ const Footer = () => {
 
           {/* Regions */}
           <div>
-            <h4 className="font-heading font-semibold text-hero-foreground mb-3">
+            <h4 className="font-heading font-semibold text-hero-foreground mb-4 text-sm uppercase tracking-wider">
               Operating Regions
             </h4>
-            <div className="flex items-center gap-2 text-sm text-chrome-light">
+            <div className="flex items-center gap-2 text-sm text-chrome-light/60">
               <Globe className="w-4 h-4" />
               <span>Europe · Africa</span>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-chrome/20 pt-8 text-center">
-          <p className="text-xs text-chrome-light">
+        <div className="border-t border-chrome/10 pt-10 text-center">
+          <p className="text-xs text-chrome-light/40">
             © {new Date().getFullYear()} Kora Global Systems. All rights reserved.
             <br />
             KGS Access is a division of Kora Global Systems, a US-registered company.

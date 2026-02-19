@@ -28,19 +28,23 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-hero-bg/90 backdrop-blur-md border-b border-chrome/20 shadow-lg"
+          ? "bg-hero-bg/95 backdrop-blur-xl border-b border-chrome/10 shadow-lg"
           : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-6 flex items-center justify-between h-16">
-        <Link to="/" className="flex items-center gap-2">
-          <img src={logo} alt="KGS Access" className="h-9 w-auto" />
+      <div className="container mx-auto px-6 flex items-center justify-between h-20">
+        <Link to="/" className="flex items-center gap-3 group">
+          <img
+            src={logo}
+            alt="KGS Access"
+            className="h-12 w-auto animate-heartbeat drop-shadow-lg"
+          />
         </Link>
 
         {/* Desktop */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-10">
           {/* Products dropdown */}
           <div
             className="relative"
@@ -49,30 +53,30 @@ const Navbar = () => {
           >
             <Link
               to="/products"
-              className="flex items-center gap-1 text-sm text-chrome-light hover:text-cyan-glow transition-colors font-medium"
+              className="flex items-center gap-1.5 text-sm text-chrome-light hover:text-hero-foreground transition-colors duration-300 font-medium tracking-wide uppercase"
             >
               Products
               <ChevronDown className="w-3.5 h-3.5" />
             </Link>
             {productsOpen && (
-              <div className="absolute top-full left-0 mt-1 w-48 rounded-lg border border-chrome/20 bg-hero-bg/95 backdrop-blur-md shadow-lg py-2">
+              <div className="absolute top-full left-0 mt-2 w-56 rounded-xl border border-chrome/10 bg-hero-bg/98 backdrop-blur-xl shadow-2xl py-3">
                 <Link
                   to="/products"
-                  className="block px-4 py-2 text-sm text-chrome-light hover:text-cyan-glow hover:bg-chrome/10 transition-colors"
+                  className="block px-5 py-2.5 text-sm text-chrome-light hover:text-hero-foreground hover:bg-chrome/5 transition-all duration-200"
                 >
                   All Products
                 </Link>
                 <Link
                   to="/products/f7"
-                  className="block px-4 py-2 text-sm text-chrome-light hover:text-cyan-glow hover:bg-chrome/10 transition-colors"
+                  className="block px-5 py-2.5 text-sm text-chrome-light hover:text-hero-foreground hover:bg-chrome/5 transition-all duration-200"
                 >
-                  F7 Smart Lock
+                  Sentinel One
                 </Link>
                 <Link
                   to="/products/f18"
-                  className="block px-4 py-2 text-sm text-chrome-light hover:text-cyan-glow hover:bg-chrome/10 transition-colors"
+                  className="block px-5 py-2.5 text-sm text-chrome-light hover:text-hero-foreground hover:bg-chrome/5 transition-all duration-200"
                 >
-                  F18 Smart Lock
+                  Sentinel Pro
                 </Link>
               </div>
             )}
@@ -82,7 +86,7 @@ const Navbar = () => {
             <Link
               key={l.label}
               to={l.href}
-              className="text-sm text-chrome-light hover:text-cyan-glow transition-colors font-medium"
+              className="text-sm text-chrome-light hover:text-hero-foreground transition-colors duration-300 font-medium tracking-wide uppercase"
             >
               {l.label}
             </Link>
@@ -90,9 +94,9 @@ const Navbar = () => {
 
           <Link
             to="/contact"
-            className="px-5 py-2 rounded-lg bg-gradient-accent text-primary-foreground text-sm font-semibold hover:brightness-110 transition-all"
+            className="px-6 py-2.5 rounded-lg border border-chrome/20 text-hero-foreground text-sm font-semibold tracking-wide hover:bg-chrome/10 hover:border-chrome/40 transition-all duration-300"
           >
-            Contact Us
+            Enquire
           </Link>
         </div>
 
@@ -107,39 +111,39 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-hero-bg/95 backdrop-blur-md border-t border-chrome/20 px-6 py-6 flex flex-col gap-4">
+        <div className="md:hidden bg-hero-bg/98 backdrop-blur-xl border-t border-chrome/10 px-6 py-8 flex flex-col gap-5">
           <Link
             to="/products"
-            className="text-chrome-light hover:text-cyan-glow transition-colors font-medium"
+            className="text-chrome-light hover:text-hero-foreground transition-colors font-medium tracking-wide uppercase text-sm"
           >
             Products
           </Link>
           <Link
             to="/products/f7"
-            className="text-chrome-light hover:text-cyan-glow transition-colors font-medium pl-4 text-sm"
+            className="text-chrome-light/70 hover:text-hero-foreground transition-colors pl-4 text-sm"
           >
-            F7 Smart Lock
+            Sentinel One
           </Link>
           <Link
             to="/products/f18"
-            className="text-chrome-light hover:text-cyan-glow transition-colors font-medium pl-4 text-sm"
+            className="text-chrome-light/70 hover:text-hero-foreground transition-colors pl-4 text-sm"
           >
-            F18 Smart Lock
+            Sentinel Pro
           </Link>
           {navLinks.map((l) => (
             <Link
               key={l.label}
               to={l.href}
-              className="text-chrome-light hover:text-cyan-glow transition-colors font-medium"
+              className="text-chrome-light hover:text-hero-foreground transition-colors font-medium tracking-wide uppercase text-sm"
             >
               {l.label}
             </Link>
           ))}
           <Link
             to="/contact"
-            className="px-5 py-3 rounded-lg bg-gradient-accent text-primary-foreground text-sm font-semibold text-center"
+            className="px-6 py-3 rounded-lg border border-chrome/20 text-hero-foreground text-sm font-semibold text-center tracking-wide"
           >
-            Contact Us
+            Enquire
           </Link>
         </div>
       )}
