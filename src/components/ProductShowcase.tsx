@@ -3,7 +3,6 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import sentinelOneImg from "@/assets/product-sentinel-minimal.png";
 import sentinelProImg from "@/assets/product-sentinel-duo.png";
-import showcaseBg from "@/assets/product-showcase-wide.jpg";
 
 const products = [
   {
@@ -24,53 +23,31 @@ const products = [
 
 const ProductShowcase = () => {
   return (
-    <section className="relative overflow-hidden">
-      {/* Wide panoramic background */}
-      <div className="relative">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `url(${showcaseBg})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
-        <div className="absolute inset-0 bg-deep/40" />
-
-        {/* Product images row */}
-        <div className="relative z-10 container mx-auto px-6 pt-24 pb-8">
-          <div className="grid grid-cols-2 gap-0 max-w-6xl mx-auto items-end">
-            {products.map((product, i) => (
-              <motion.div
-                key={product.name}
-                className="group flex justify-center relative"
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: i * 0.25 }}
-              >
-                {/* Gradient mask to blend edges into background */}
-                <div className="absolute inset-0 pointer-events-none z-10"
-                  style={{
-                    background: i === 0
-                      ? 'linear-gradient(to right, transparent 0%, transparent 70%, hsl(225 15% 6% / 0.6) 100%)'
-                      : 'linear-gradient(to left, transparent 0%, transparent 70%, hsl(225 15% 6% / 0.6) 100%)',
-                  }}
-                />
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="h-56 md:h-80 lg:h-[420px] w-auto drop-shadow-[0_0_60px_hsl(250_20%_60%/0.15)] group-hover:scale-[1.02] transition-transform duration-700"
-                />
-              </motion.div>
-            ))}
-          </div>
+    <section className="relative overflow-hidden" style={{ background: '#000' }}>
+      {/* Product images — full black, large */}
+      <div className="container mx-auto px-6 pt-28 pb-8">
+        <div className="grid grid-cols-2 gap-0 max-w-6xl mx-auto items-center">
+          {products.map((product, i) => (
+            <motion.div
+              key={product.name}
+              className="group flex justify-center"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: i * 0.25 }}
+            >
+              <img
+                src={product.image}
+                alt={product.name}
+                className="h-72 md:h-[420px] lg:h-[500px] w-auto group-hover:scale-[1.02] transition-transform duration-700"
+              />
+            </motion.div>
+          ))}
         </div>
       </div>
 
       {/* Product info below */}
-      <div className="relative z-10 bg-deep pb-24 pt-16">
+      <div className="relative z-10 pb-28 pt-12" style={{ background: '#000' }}>
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 max-w-5xl mx-auto">
             {products.map((product, i) => (
