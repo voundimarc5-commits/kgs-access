@@ -2,47 +2,47 @@ import { motion } from "framer-motion";
 import { Home, BedDouble, Building2, Store } from "lucide-react";
 
 const useCases = [
-  { icon: Home, title: "Apartments & Houses", desc: "Keyless entry for homeowners looking for modern, secure access." },
-  { icon: BedDouble, title: "Airbnb & Short-Term Rentals", desc: "Remote guest access with temporary passcodes — no key handover needed." },
-  { icon: Building2, title: "Property Managers", desc: "Manage tenant access across multiple properties from a single app." },
-  { icon: Store, title: "Small Businesses", desc: "Cost-effective smart access for offices, studios, and retail spaces." },
+  { icon: Home, title: "Residential Properties", desc: "Secure, keyless entry for homeowners. Standard installation. No wiring required." },
+  { icon: BedDouble, title: "Short-Term Rentals", desc: "Remote guest access with temporary credentials. No key handover. Full audit trail." },
+  { icon: Building2, title: "Property Management", desc: "Centralised access control across multiple properties. Issue and revoke credentials instantly." },
+  { icon: Store, title: "Commercial Spaces", desc: "Employee-level permissions for offices, studios, and retail. Cost-effective, modern security." },
 ];
 
 const UseCasesSection = () => {
   return (
-    <section className="py-24 bg-background">
+    <section className="py-28 bg-background">
       <div className="container mx-auto px-6">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-20"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.7 }}
         >
-          <h2 className="text-3xl md:text-5xl font-heading font-bold text-foreground mb-4">
-            Who It's For
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            KGS Access products serve residential, rental, and commercial markets.
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent mb-4">
+            Applications
           </p>
+          <h2 className="text-3xl md:text-5xl font-heading font-bold text-foreground mb-4">
+            Designed for Every Environment
+          </h2>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="grid sm:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {useCases.map((uc, i) => (
             <motion.div
               key={uc.title}
-              className="flex items-start gap-4 p-6 rounded-xl border border-border bg-card shadow-card"
+              className="flex items-start gap-5 p-8 rounded-2xl border border-border bg-card shadow-card hover:shadow-glow hover:border-accent/20 transition-all duration-500"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
             >
-              <div className="w-10 h-10 shrink-0 rounded-lg bg-primary/10 flex items-center justify-center">
-                <uc.icon className="w-5 h-5 text-primary" />
+              <div className="w-11 h-11 shrink-0 rounded-lg bg-hero flex items-center justify-center">
+                <uc.icon className="w-5 h-5 text-cyan-glow" />
               </div>
               <div>
-                <h3 className="font-heading font-semibold text-foreground mb-1">{uc.title}</h3>
-                <p className="text-sm text-muted-foreground">{uc.desc}</p>
+                <h3 className="font-heading font-semibold text-foreground mb-2">{uc.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{uc.desc}</p>
               </div>
             </motion.div>
           ))}

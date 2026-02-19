@@ -6,6 +6,7 @@ export interface ProductSpec {
 export interface Product {
   id: string;
   name: string;
+  commercialName: string;
   subtitle: string;
   positioning: string;
   description: string;
@@ -18,11 +19,12 @@ export interface Product {
 
 export const f7: Product = {
   id: "f7",
-  name: "F7 Smart Lock",
-  subtitle: "Universal Smart Lock",
-  positioning: "Modern, reliable smart lock for most standard doors.",
+  name: "KGS Sentinel One",
+  commercialName: "Sentinel One",
+  subtitle: "Standard Access Control",
+  positioning: "Precision-engineered smart lock for standard residential and commercial doors.",
   description:
-    "The F7 is designed for easy retrofit installations on standard residential and commercial doors. It combines fingerprint, passcode, RFID, and mobile app control in a sleek aluminum alloy body — delivering secure, keyless access for everyday use.",
+    "Sentinel One delivers secure, keyless access through four independent authentication methods. Designed for retrofit installations on standard door frames, it combines semiconductor biometrics, encrypted passcodes, RFID credentials, and mobile app control in a single aluminum alloy unit.",
   specs: [
     { label: "Body Material", value: "Aluminum alloy" },
     { label: "Fingerprint Sensor", value: "Semiconductor (capacitive)" },
@@ -51,21 +53,22 @@ export const f7: Product = {
     "Modern residential doors",
   ],
   highlights: [
-    "Easy retrofit installation",
-    "4 unlock methods",
-    "12-month battery life",
-    "App-based remote management",
+    "Retrofit installation — no wiring",
+    "Four authentication methods",
+    "12-month battery autonomy",
+    "Remote management via app",
     "CE & RoHS certified",
   ],
 };
 
 export const f18: Product = {
   id: "f18",
-  name: "F18 Smart Lock",
-  subtitle: "Advanced Security Lock",
-  positioning: "Advanced lock for thicker, reinforced, or high-security doors.",
+  name: "KGS Sentinel Pro",
+  commercialName: "Sentinel Pro",
+  subtitle: "Advanced Security Control",
+  positioning: "Reinforced access system for high-security and thick-frame doors.",
   description:
-    "The F18 is engineered for doors that demand higher mechanical security. With a triple-bolt locking system, Bluetooth 5.0 BLE, and the same smart unlock methods as the F7, it provides premium protection for reinforced and thick-frame doors.",
+    "Sentinel Pro is engineered for environments that demand elevated mechanical resistance. Its triple-bolt locking architecture, combined with Bluetooth 5.0 BLE connectivity and four-method authentication, provides institutional-grade protection for reinforced door frames.",
   specs: [
     { label: "Body Material", value: "Aluminum alloy" },
     { label: "Locking System", value: "Triple lock (3 bolts)" },
@@ -88,13 +91,13 @@ export const f18: Product = {
     "Reinforced doors",
     "Thick-frame doors",
     "High-security properties",
-    "Properties where F7 is not compatible",
+    "Properties where Sentinel One is not compatible",
   ],
   highlights: [
-    "Triple-bolt locking system",
+    "Triple-bolt locking architecture",
     "Bluetooth 5.0 BLE",
-    "Higher mechanical security",
-    "4 unlock methods",
+    "Higher mechanical resistance",
+    "Four authentication methods",
     "CE & RoHS certified",
   ],
 };

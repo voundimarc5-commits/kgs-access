@@ -1,13 +1,14 @@
-import { ShieldCheck, Leaf } from "lucide-react";
+import badgeCE from "@/assets/badge-ce.jpg";
+import badgeRoHS from "@/assets/badge-rohs.jpg";
 
 const badges = [
   {
-    icon: ShieldCheck,
+    image: badgeCE,
     label: "CE Certified",
-    detail: "Radio Equipment Directive — EU/UK accepted",
+    detail: "Radio Equipment Directive — EU compliant",
   },
   {
-    icon: Leaf,
+    image: badgeRoHS,
     label: "RoHS Compliant",
     detail: "Restriction of Hazardous Substances",
   },
@@ -15,13 +16,17 @@ const badges = [
 
 const CertificationBadges = ({ className = "" }: { className?: string }) => {
   return (
-    <div className={`flex flex-wrap gap-4 ${className}`}>
+    <div className={`flex flex-wrap gap-6 ${className}`}>
       {badges.map((b) => (
         <div
           key={b.label}
-          className="flex items-center gap-3 px-5 py-3 rounded-lg border border-border bg-card"
+          className="flex items-center gap-4 px-6 py-4 rounded-xl border border-border bg-card shadow-card"
         >
-          <b.icon className="w-5 h-5 text-accent" />
+          <img
+            src={b.image}
+            alt={b.label}
+            className="w-12 h-12 object-contain rounded"
+          />
           <div>
             <p className="font-heading font-semibold text-sm text-foreground">
               {b.label}
