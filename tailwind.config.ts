@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ['"Space Grotesk"', '"Inter"', 'system-ui', 'sans-serif'],
+        heading: ['"Playfair Display"', 'Georgia', 'serif'],
         body: ['"Inter"', 'system-ui', 'sans-serif'],
       },
       colors: {
@@ -51,14 +51,17 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        deep: {
+          DEFAULT: "hsl(var(--deep))",
+          foreground: "hsl(var(--deep-foreground))",
+        },
+        ivory: "hsl(var(--ivory))",
         chrome: {
           DEFAULT: "hsl(var(--chrome))",
           light: "hsl(var(--chrome-light))",
         },
-        "cyan-glow": "hsl(var(--cyan-glow))",
-        "hero-bg": "hsl(var(--hero-bg))",
-        "hero-foreground": "hsl(var(--hero-foreground))",
-        "section-alt": "hsl(var(--section-alt))",
+        "warm-gold": "hsl(var(--warm-gold))",
+        "warm-glow": "hsl(var(--warm-glow))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -88,15 +91,15 @@ export default {
           from: { opacity: "0", transform: "translateY(24px)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
-        "glow-pulse": {
-          "0%, 100%": { opacity: "0.4" },
-          "50%": { opacity: "0.8" },
+        "glow-breathe": {
+          "0%, 100%": { opacity: "0.6", filter: "brightness(1)" },
+          "50%": { opacity: "1", filter: "brightness(1.15)" },
         },
         heartbeat: {
           "0%, 100%": { transform: "scale(1)" },
-          "14%": { transform: "scale(1.06)" },
+          "14%": { transform: "scale(1.04)" },
           "28%": { transform: "scale(1)" },
-          "42%": { transform: "scale(1.04)" },
+          "42%": { transform: "scale(1.02)" },
           "56%": { transform: "scale(1)" },
         },
       },
@@ -104,8 +107,8 @@ export default {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-in-up": "fade-in-up 0.6s ease-out forwards",
-        "glow-pulse": "glow-pulse 3s ease-in-out infinite",
-        heartbeat: "heartbeat 3s ease-in-out infinite",
+        "glow-breathe": "glow-breathe 4s ease-in-out infinite",
+        heartbeat: "heartbeat 4s ease-in-out infinite",
       },
     },
   },
