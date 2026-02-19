@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroImg from "@/assets/hero-architecture.jpg";
+import logo from "@/assets/kgs-access-logo.png";
 
 const HeroSection = () => {
   return (
@@ -15,14 +16,24 @@ const HeroSection = () => {
           backgroundPosition: "center",
         }}
       />
-      {/* Dark overlay with warm gradient */}
+      {/* Dark overlay with cool gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-deep/70 via-deep/50 to-deep/90" />
       <div className="absolute inset-0 bg-gradient-to-r from-deep/80 via-transparent to-transparent" />
 
       <div className="relative z-10 container mx-auto px-6 py-32">
         <div className="max-w-3xl">
+          {/* Large logo in hero */}
+          <motion.img
+            src={logo}
+            alt="KGS Access"
+            className="h-20 md:h-28 w-auto mb-12 animate-glow-breathe drop-shadow-[0_0_30px_hsl(250_20%_60%/0.3)]"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.1 }}
+          />
+
           <motion.div
-            className="w-16 h-[1px] bg-warm-gold/60 mb-10"
+            className="w-16 h-[1px] bg-silver-accent/60 mb-10"
             initial={{ scaleX: 0, originX: 0 }}
             animate={{ scaleX: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
@@ -35,7 +46,7 @@ const HeroSection = () => {
             transition={{ duration: 0.9, delay: 0.3 }}
           >
             Security,{" "}
-            <span className="italic text-warm-gold">designed</span>
+            <span className="italic text-silver-accent">designed</span>
             <br />
             to belong.
           </motion.h1>
@@ -56,7 +67,7 @@ const HeroSection = () => {
           >
             <Link
               to="/products"
-              className="group inline-flex items-center gap-3 text-[13px] font-medium tracking-[0.2em] uppercase text-ivory border-b border-warm-gold/40 pb-2 hover:border-warm-gold transition-all duration-500"
+              className="group inline-flex items-center gap-3 text-[13px] font-medium tracking-[0.2em] uppercase text-ivory border-b border-silver-accent/40 pb-2 hover:border-silver-accent transition-all duration-500"
             >
               Explore the collection
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />

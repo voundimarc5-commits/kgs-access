@@ -30,7 +30,7 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
         scrolled
-          ? "bg-deep/95 backdrop-blur-2xl border-b border-warm-gold/10 shadow-lg"
+          ? "bg-deep/95 backdrop-blur-2xl border-b border-silver-accent/10 shadow-lg"
           : "bg-transparent"
       }`}
     >
@@ -39,7 +39,7 @@ const Navbar = () => {
           <img
             src={logo}
             alt="KGS Access"
-            className="h-12 w-auto animate-glow-breathe drop-shadow-lg"
+            className="h-14 w-auto animate-glow-breathe drop-shadow-[0_0_20px_hsl(250_20%_60%/0.2)]"
           />
         </Link>
 
@@ -58,22 +58,22 @@ const Navbar = () => {
               <ChevronDown className="w-3.5 h-3.5" />
             </Link>
             {productsOpen && (
-              <div className="absolute top-full left-0 mt-2 w-56 rounded-xl border border-warm-gold/10 bg-deep/98 backdrop-blur-2xl shadow-2xl py-3">
+              <div className="absolute top-full left-0 mt-2 w-56 rounded-xl border border-silver-accent/10 bg-deep/98 backdrop-blur-2xl shadow-2xl py-3">
                 <Link
                   to="/products"
-                  className="block px-5 py-2.5 text-sm text-chrome-light hover:text-ivory hover:bg-warm-gold/5 transition-all duration-200"
+                  className="block px-5 py-2.5 text-sm text-chrome-light hover:text-ivory hover:bg-silver-accent/5 transition-all duration-200"
                 >
                   All Products
                 </Link>
                 <Link
                   to="/products/f7"
-                  className="block px-5 py-2.5 text-sm text-chrome-light hover:text-ivory hover:bg-warm-gold/5 transition-all duration-200"
+                  className="block px-5 py-2.5 text-sm text-chrome-light hover:text-ivory hover:bg-silver-accent/5 transition-all duration-200"
                 >
                   Sentinel 1
                 </Link>
                 <Link
                   to="/products/f18"
-                  className="block px-5 py-2.5 text-sm text-chrome-light hover:text-ivory hover:bg-warm-gold/5 transition-all duration-200"
+                  className="block px-5 py-2.5 text-sm text-chrome-light hover:text-ivory hover:bg-silver-accent/5 transition-all duration-200"
                 >
                   Sentinel Pro
                 </Link>
@@ -93,7 +93,7 @@ const Navbar = () => {
 
           <Link
             to="/contact"
-            className="px-7 py-2.5 rounded-full border border-warm-gold/30 text-ivory text-[13px] font-medium tracking-[0.1em] hover:bg-warm-gold/10 hover:border-warm-gold/50 transition-all duration-500"
+            className="px-7 py-2.5 rounded-full border border-silver-accent/30 text-ivory text-[13px] font-medium tracking-[0.1em] hover:bg-silver-accent/10 hover:border-silver-accent/50 transition-all duration-500"
           >
             Contact
           </Link>
@@ -110,7 +110,7 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-deep/98 backdrop-blur-2xl border-t border-warm-gold/10 px-6 py-8 flex flex-col gap-5">
+        <div className="md:hidden bg-deep/98 backdrop-blur-2xl border-t border-silver-accent/10 px-6 py-8 flex flex-col gap-5">
           <Link to="/products" className="text-chrome-light hover:text-ivory transition-colors font-medium tracking-[0.15em] uppercase text-[13px]">
             Collection
           </Link>
@@ -125,7 +125,7 @@ const Navbar = () => {
               {l.label}
             </Link>
           ))}
-          <Link to="/contact" className="px-6 py-3 rounded-full border border-warm-gold/30 text-ivory text-[13px] font-medium text-center tracking-[0.1em]">
+          <Link to="/contact" className="px-6 py-3 rounded-full border border-silver-accent/30 text-ivory text-[13px] font-medium text-center tracking-[0.1em]">
             Contact
           </Link>
         </div>

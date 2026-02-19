@@ -6,7 +6,7 @@ const TrustSection = () => {
       <div className="container mx-auto px-6">
         <div className="max-w-3xl mx-auto text-center">
           <motion.div
-            className="w-12 h-[1px] bg-warm-gold/50 mx-auto mb-10"
+            className="w-12 h-[1px] bg-silver-accent/50 mx-auto mb-10"
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
