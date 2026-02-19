@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import productImage from "@/assets/product-sentinel-minimal.png";
+import sentinelOneImg from "@/assets/product-sentinel-minimal.png";
+import sentinelProImg from "@/assets/product-sentinel-duo.png";
 
 const products = [
   {
@@ -9,12 +10,14 @@ const products = [
     tagline: "Everyday intelligence, refined.",
     desc: "Designed for private homes and modern living. Discreet. Elegant. Reliable.",
     link: "/products/f7",
+    image: sentinelOneImg,
   },
   {
     name: "Sentinel Pro",
     tagline: "Advanced security, architectural precision.",
     desc: "Built for premium projects, hospitality and demanding environments.",
     link: "/products/f18",
+    image: sentinelProImg,
   },
 ];
 
@@ -39,7 +42,7 @@ const ProductShowcase = () => {
               <div className="relative mb-10 flex justify-center">
                 <div className="absolute inset-0 bg-silver-accent/5 rounded-3xl blur-2xl group-hover:bg-silver-accent/10 transition-all duration-700" />
                 <img
-                  src={productImage}
+                  src={product.image}
                   alt={product.name}
                   className="relative h-56 w-auto opacity-90 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-700"
                 />

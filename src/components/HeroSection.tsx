@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroImg from "@/assets/hero-architecture.jpg";
+import heroImg from "@/assets/hero-bg.jpg";
 import logo from "@/assets/kgs-access-logo.png";
 
 const HeroSection = () => {
