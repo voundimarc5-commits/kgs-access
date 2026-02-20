@@ -97,6 +97,78 @@ const Compliance = () => {
             </p>
             <CertificationBadges />
           </motion.div>
+
+          {/* Compliance Statement */}
+          <motion.div
+            className="mt-20 pt-16 border-t border-border"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-xl font-heading font-bold text-foreground mb-4">
+              Compliance Statement
+            </h2>
+            <div className="space-y-4">
+              <p className="text-muted-foreground leading-relaxed text-sm">
+                KGS Access products are compliant with applicable CE and RoHS standards, as certified by the manufacturer.
+              </p>
+              <p className="text-muted-foreground leading-relaxed text-sm">
+                Kora Global Systems does not act as a certifying authority and does not issue compliance certificates.
+              </p>
+              <p className="text-muted-foreground leading-relaxed text-sm">
+                Certification documentation may be provided upon request, subject to availability.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Product Use Disclaimer */}
+          <motion.div
+            className="mt-16"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-xl font-heading font-bold text-foreground mb-4">
+              Product Use Disclaimer
+            </h2>
+            <div className="space-y-4">
+              <p className="text-muted-foreground leading-relaxed text-sm">
+                KGS Access products are designed to support controlled access management.
+              </p>
+              <p className="text-muted-foreground leading-relaxed text-sm">
+                They do not replace physical security measures, surveillance systems, human supervision, or emergency protocols.
+              </p>
+              <p className="text-muted-foreground leading-relaxed text-sm">
+                Users remain fully responsible for assessing the suitability of the product for their specific environment and security needs.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Connected Device Disclaimer */}
+          <motion.div
+            className="mt-16"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-xl font-heading font-bold text-foreground mb-4">
+              Connected Device Disclaimer
+            </h2>
+            <div className="space-y-4">
+              <p className="text-muted-foreground leading-relaxed text-sm">
+                Certain KGS Access products may include electronic or connected features.
+              </p>
+              <p className="text-muted-foreground leading-relaxed text-sm">
+                Kora Global Systems does not collect, store, or process sensitive personal data through these devices unless explicitly stated.
+              </p>
+              <p className="text-muted-foreground leading-relaxed text-sm">
+                Network configuration, cybersecurity, and data protection remain the responsibility of the user or system integrator.
+              </p>
+            </div>
+          </motion.div>
         </div>
       </section>
     </>
