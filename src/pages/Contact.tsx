@@ -257,7 +257,7 @@ const Contact = () => {
                         Submit Enquiry
                         <Send className="w-5 h-5" />
                       </button>
-                      <p className="text-xs text-chrome/40 text-center">
+                       <p className="text-xs text-chrome/40 text-center">
                         Or contact us directly at{" "}
                         <a
                           href="mailto:contact@koraglobalsystems.com"
@@ -265,6 +265,9 @@ const Contact = () => {
                         >
                           contact@koraglobalsystems.com
                         </a>
+                      </p>
+                      <p className="text-[10px] text-chrome/30 text-center mt-3">
+                        Hardware product — no absolute security guarantee. Information provided for guidance only.
                       </p>
                     </form>
                   </motion.div>

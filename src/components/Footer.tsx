@@ -53,8 +53,24 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-silver-accent/5 pt-10 text-center">
-          <p className="text-xs text-chrome/40 font-light">
+        <div className="border-t border-silver-accent/5 pt-10">
+          <div className="flex flex-wrap justify-center gap-6 mb-6">
+            {[
+              { label: "Legal Notice", to: "/legal" },
+              { label: "Terms & Conditions", to: "/terms" },
+              { label: "Compliance", to: "/compliance" },
+              { label: "Privacy & Data", to: "/privacy" },
+            ].map((link) => (
+              <Link
+                key={link.label}
+                to={link.to}
+                className="text-[11px] text-chrome/40 hover:text-chrome/70 transition-colors duration-300 font-light"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+          <p className="text-xs text-chrome/40 font-light text-center">
             © {new Date().getFullYear()} Kora Global Systems. All rights reserved.
           </p>
         </div>

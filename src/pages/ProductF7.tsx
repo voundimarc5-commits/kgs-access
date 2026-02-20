@@ -91,6 +91,9 @@ const ProductF7 = () => {
               Request a Consultation
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-300" />
             </Link>
+            <p className="text-[10px] text-muted-foreground/50 mt-6 max-w-md mx-auto leading-relaxed">
+              Hardware product — no absolute security guarantee. Information provided for guidance only.
+            </p>
           </div>
         </div>
       </section>
