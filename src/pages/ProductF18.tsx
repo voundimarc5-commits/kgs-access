@@ -4,7 +4,7 @@ import { ArrowLeft, ArrowRight, Fingerprint, KeyRound, CreditCard, Smartphone } 
 import { f18 } from "@/data/products";
 import ProductSpecTable from "@/components/ProductSpecTable";
 import CertificationBadges from "@/components/CertificationBadges";
-import productImage from "@/assets/product-sentinel-duo.png";
+import productImage from "@/assets/product-f18-hero.jpg";
 
 const unlockIcons = [Fingerprint, KeyRound, CreditCard, Smartphone];
 
@@ -43,7 +43,7 @@ const ProductF18 = () => {
               <img
                 src={productImage}
                 alt={f18.name}
-                className="max-h-[400px] w-auto drop-shadow-2xl"
+                className="w-full max-w-lg rounded-xl shadow-2xl"
               />
             </motion.div>
           </div>
