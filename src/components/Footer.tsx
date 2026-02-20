@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <img src={logo} alt="KGS Access" className="h-10 w-auto mb-5 opacity-80" />
+            <img src={logo} alt="KGS Access" className="h-20 w-auto mb-5 opacity-80" />
             <p className="text-sm text-chrome font-light leading-relaxed max-w-[220px]">
               Intelligent access systems.
               <br />
