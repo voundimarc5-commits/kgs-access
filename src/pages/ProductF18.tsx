@@ -11,8 +11,13 @@ const unlockIcons = [Fingerprint, KeyRound, CreditCard, Smartphone];
 const ProductF18 = () => {
   return (
     <>
-      <section className="bg-hero pt-36 pb-24">
-        <div className="container mx-auto px-6">
+      <section className="relative pt-36 pb-24 min-h-[70vh] flex items-center overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${productImage})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent" />
+        <div className="container mx-auto px-6 relative z-10">
           <Link
             to="/products"
             className="inline-flex items-center gap-2 text-chrome-light/60 hover:text-chrome-light transition-colors mb-10 text-sm"
@@ -20,33 +25,20 @@ const ProductF18 = () => {
             <ArrowLeft className="w-4 h-4" />
             All Products
           </Link>
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <span className="text-xs font-semibold uppercase tracking-[0.25em] text-cyan-glow mb-4 block">
-                {f18.subtitle}
-              </span>
-              <h1 className="text-4xl md:text-5xl font-heading font-bold text-hero-foreground mb-6">
-                {f18.name}
-              </h1>
-              <p className="text-lg text-chrome-light max-w-lg leading-relaxed">{f18.description}</p>
-            </motion.div>
-            <motion.div
-              className="flex justify-center"
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-            >
-              <img
-                src={productImage}
-                alt={f18.name}
-                className="w-full max-w-lg rounded-xl shadow-2xl"
-              />
-            </motion.div>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-xl"
+          >
+            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-cyan-glow mb-4 block">
+              {f18.subtitle}
+            </span>
+            <h1 className="text-4xl md:text-5xl font-heading font-bold text-white mb-6">
+              {f18.name}
+            </h1>
+            <p className="text-lg text-chrome-light max-w-lg leading-relaxed">{f18.description}</p>
+          </motion.div>
         </div>
       </section>
 
