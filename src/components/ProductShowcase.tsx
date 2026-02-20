@@ -47,7 +47,7 @@ const ProductShowcase = () => {
   };
 
   return (
-    <section className="relative overflow-hidden bg-black py-20 md:py-28">
+    <div className="relative overflow-hidden py-20 md:py-28">
       <div className="container mx-auto px-6">
         {/* Desktop: side by side */}
         {!isMobile ? (
@@ -154,7 +154,7 @@ const ProductShowcase = () => {
           </div>
         )}
       </div>
-    </section>
+    </div>
   );
 };
 

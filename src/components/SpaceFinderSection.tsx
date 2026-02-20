@@ -46,17 +46,7 @@ const SpaceFinderSection = () => {
     : { name: "Sentinel One", link: "/products/f7" };
 
   return (
-    <section className="relative py-32 overflow-hidden">
-      {/* Background image */}
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage: `url(${spacefinderBg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      />
-      <div className="absolute inset-0 bg-deep/60" />
+    <div className="relative py-32">
 
       <div className="relative z-10 container mx-auto px-6">
         <motion.div
@@ -145,7 +135,7 @@ const SpaceFinderSection = () => {
           </motion.div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
