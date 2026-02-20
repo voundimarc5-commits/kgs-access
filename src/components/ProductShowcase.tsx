@@ -55,7 +55,7 @@ const ProductShowcase = () => {
             {products.map((product, i) => (
               <motion.div
                 key={product.name}
-                className="group relative rounded-2xl overflow-hidden border border-white/[0.06] bg-white/[0.02]"
+                className="group relative rounded-2xl overflow-hidden border border-white/[0.06] bg-black"
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -104,7 +104,7 @@ const ProductShowcase = () => {
               {products.map((product, i) => (
                 <motion.div
                   key={product.name}
-                  className="group flex-shrink-0 w-[85vw] snap-center rounded-2xl overflow-hidden border border-white/[0.06] bg-white/[0.02]"
+                  className="group flex-shrink-0 w-[85vw] snap-center rounded-2xl overflow-hidden border border-white/[0.06] bg-black"
                   initial={{ opacity: 0, x: 30 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
