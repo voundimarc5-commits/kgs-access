@@ -35,7 +35,7 @@ const ProductF7 = () => {
               <p className="text-lg text-chrome-light max-w-lg leading-relaxed">{f7.description}</p>
             </motion.div>
             <motion.div
-              className="hidden lg:flex justify-center"
+              className="flex justify-center"
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
