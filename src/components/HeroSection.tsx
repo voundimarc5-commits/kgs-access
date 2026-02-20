@@ -20,16 +20,8 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-deep/70 via-deep/50 to-deep/90" />
       <div className="absolute inset-0 bg-gradient-to-r from-deep/80 via-transparent to-transparent" />
 
-      {/* Giant watermark logo */}
-      <motion.img
-        src={logo}
-        alt=""
-        aria-hidden="true"
-        className="absolute right-[-5%] top-1/2 -translate-y-1/2 h-[80vh] w-auto opacity-[0.07] animate-glow-breathe pointer-events-none select-none"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.07 }}
-        transition={{ duration: 2 }}
-      />
+
+
 
       <div className="relative z-10 container mx-auto px-6 py-32">
         <div className="max-w-3xl">
@@ -37,7 +29,7 @@ const HeroSection = () => {
           <motion.img
             src={logo}
             alt="KGS Access"
-            className="h-24 md:h-36 w-auto mb-12 animate-glow-breathe drop-shadow-[0_0_30px_hsl(250_20%_60%/0.3)]"
+            className="h-40 md:h-56 w-auto mb-12 opacity-50 animate-glow-breathe drop-shadow-[0_0_30px_hsl(250_20%_60%/0.3)]"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.1 }}
