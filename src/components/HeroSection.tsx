@@ -20,6 +20,17 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-deep/70 via-deep/50 to-deep/90" />
       <div className="absolute inset-0 bg-gradient-to-r from-deep/80 via-transparent to-transparent" />
 
+      {/* Giant watermark logo */}
+      <motion.img
+        src={logo}
+        alt=""
+        aria-hidden="true"
+        className="absolute right-[-5%] top-1/2 -translate-y-1/2 h-[80vh] w-auto opacity-[0.07] animate-glow-breathe pointer-events-none select-none"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.07 }}
+        transition={{ duration: 2 }}
+      />
+
       <div className="relative z-10 container mx-auto px-6 py-32">
         <div className="max-w-3xl">
           {/* Large logo in hero */}
