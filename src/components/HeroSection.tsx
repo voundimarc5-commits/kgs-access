@@ -26,7 +26,7 @@ const HeroSection = () => {
           <motion.img
             src={logo}
             alt="KGS Access"
-            className="h-20 md:h-28 w-auto mb-12 animate-glow-breathe drop-shadow-[0_0_30px_hsl(250_20%_60%/0.3)]"
+            className="h-24 md:h-36 w-auto mb-12 animate-glow-breathe drop-shadow-[0_0_30px_hsl(250_20%_60%/0.3)]"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.1 }}

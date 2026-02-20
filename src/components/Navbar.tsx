@@ -39,7 +39,7 @@ const Navbar = () => {
           <img
             src={logo}
             alt="KGS Access"
-            className="h-14 w-auto animate-glow-breathe drop-shadow-[0_0_20px_hsl(250_20%_60%/0.2)]"
+            className="h-16 w-auto drop-shadow-[0_0_20px_hsl(250_20%_60%/0.2)]"
           />
         </Link>
 
