@@ -9,15 +9,15 @@ import { useIsMobile } from "@/hooks/use-mobile";
 const products = [
   {
     name: "Sentinel One",
-    tagline: "Everyday intelligence, refined.",
-    desc: "Designed for private homes and modern living. Discreet. Elegant. Reliable.",
+    tagline: "For autonomous property owners.",
+    desc: "Secure keypad + digital access. Remote user management. Access logs. Clean architectural design. Best for apartments, villas and private rentals.",
     link: "/products/f7",
     image: sentinelOneImg,
   },
   {
     name: "Sentinel Pro",
-    tagline: "Advanced security, architectural precision.",
-    desc: "Built for premium projects, hospitality and demanding environments.",
+    tagline: "For active rental & multi-user environments.",
+    desc: "Advanced access scenarios. Temporary and rotating permissions. Enhanced visibility. Ideal for hospitality and shared spaces.",
     link: "/products/f18",
     image: sentinelProImg,
   },

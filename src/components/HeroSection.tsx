@@ -48,10 +48,8 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.3 }}
           >
-            Security,{" "}
-            <span className="italic text-silver-accent">designed</span>
-            <br />
-            to belong.
+            Control your property.{" "}
+            <span className="italic text-silver-accent">From anywhere.</span>
           </motion.h1>
 
           <motion.p
@@ -60,7 +58,16 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            Intelligent access systems crafted for real environments, modern architecture and everyday elegance.
+            Intelligent remote access systems for international property owners managing assets across Africa and other growth markets.
+          </motion.p>
+
+          <motion.p
+            className="text-base text-chrome-light/70 max-w-xl mb-12 leading-relaxed font-light"
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.6 }}
+          >
+            No physical presence required. No key handovers. No operational blind spots.
           </motion.p>
 
           <motion.div
@@ -69,10 +76,10 @@ const HeroSection = () => {
             transition={{ duration: 0.7, delay: 0.7 }}
           >
             <Link
-              to="/products"
+              to="/contact"
               className="group inline-flex items-center gap-3 text-[13px] font-medium tracking-[0.2em] uppercase text-ivory border-b border-silver-accent/40 pb-2 hover:border-silver-accent transition-all duration-500"
             >
-              Explore the collection
+              Request a Remote Assessment
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
             </Link>
           </motion.div>

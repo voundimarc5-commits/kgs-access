@@ -34,9 +34,9 @@ const AfricaPremiumSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              Designed for environments
+              Designed for owners abroad.
               <br />
-              that demand <span className="italic text-silver-accent">more.</span>
+              Built for properties in <span className="italic text-silver-accent">Africa and beyond.</span>
             </motion.h2>
 
             <motion.div
@@ -47,14 +47,15 @@ const AfricaPremiumSection = () => {
               transition={{ duration: 0.8, delay: 0.15 }}
             >
               <p>
-                From coastal humidity to urban density, security must adapt.
-                KGS Access is engineered for places where climate, infrastructure
-                and usage require resilience, not theory.
+                Owning property across borders requires visibility, control and structured access.
+              </p>
+              <p>
+                KGS Access supports international property owners managing rentals, villas and structured spaces across Africa — and anywhere remote access is essential.
               </p>
               <p className="text-ivory/90 font-normal">
-                Africa is not a future market.
-                <br />
-                It is a present ground for innovation, architecture and ambition.
+                Whether you are in London, Paris, Dubai or Toronto,
+                <br className="hidden md:block" />
+                your property remains under your control.
               </p>
             </motion.div>
           </div>
