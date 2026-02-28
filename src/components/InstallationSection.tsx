@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const InstallationSection = () => {
   return (
-    <section className="py-28 bg-background">
+    <section className="py-16 md:py-20 bg-background">
       <div className="container mx-auto px-6">
         <div className="max-w-3xl mx-auto">
           <motion.div

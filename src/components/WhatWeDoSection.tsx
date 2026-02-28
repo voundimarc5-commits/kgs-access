@@ -18,7 +18,7 @@ const doesNot = [
 
 const WhatWeDoSection = () => {
   return (
-    <section className="py-28 bg-background">
+    <section className="py-16 md:py-20 bg-background">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
           <motion.div
