@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Globe } from "lucide-react";
 import logo from "@/assets/kgs-access-logo.png";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
   const location = useLocation();
+  const { language, toggleLanguage } = useLanguage();
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 50);
@@ -91,6 +93,14 @@ const Navbar = () => {
             </Link>
           ))}
 
+          <button
+            onClick={toggleLanguage}
+            className="flex items-center gap-1.5 text-[13px] text-chrome-light hover:text-ivory transition-colors duration-300 font-medium tracking-[0.1em] uppercase"
+          >
+            <Globe className="w-3.5 h-3.5" />
+            {language === "en" ? "FR" : "EN"}
+          </button>
+
           <Link
             to="/contact"
             className="px-7 py-2.5 rounded-full border border-silver-accent/30 text-ivory text-[13px] font-medium tracking-[0.1em] hover:bg-silver-accent/10 hover:border-silver-accent/50 transition-all duration-500"
@@ -125,6 +135,13 @@ const Navbar = () => {
               {l.label}
             </Link>
           ))}
+          <button
+            onClick={toggleLanguage}
+            className="flex items-center gap-2 text-chrome-light hover:text-ivory transition-colors font-medium tracking-[0.15em] uppercase text-[13px]"
+          >
+            <Globe className="w-4 h-4" />
+            {language === "en" ? "Français" : "English"}
+          </button>
           <Link to="/contact" className="px-6 py-3 rounded-full border border-silver-accent/30 text-ivory text-[13px] font-medium text-center tracking-[0.1em]">
             Contact
           </Link>
