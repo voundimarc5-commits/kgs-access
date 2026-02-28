@@ -20,7 +20,8 @@ const ExperienceSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            Access should feel <span className="italic text-silver-accent">natural.</span>
+            Built for owners who are{" "}
+            <span className="italic text-silver-accent">not on-site.</span>
           </motion.h2>
 
           <motion.div
@@ -30,14 +31,14 @@ const ExperienceSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.15 }}
           >
-            <p>A door is not just an entry point.</p>
+            <p>Managing property across borders should not mean losing control.</p>
             <p>
-              It is the first interface between space, people and security.
+              KGS Access provides structured remote access systems designed for rental properties, villas, shared spaces and small hospitality environments.
             </p>
             <p className="text-ivory/80">
-              KGS Access designs locks that disappear into architecture,
+              This is not just hardware.
               <br className="hidden md:block" />
-              while quietly doing their job.
+              It is a controllable access system built for cross-border ownership.
             </p>
           </motion.div>
         </div>
