@@ -23,9 +23,7 @@ const Navbar = () => {
   }, [location]);
 
   const navLinks = [
-    { label: "Solutions", href: "/solutions" },
     { label: "Compliance", href: "/compliance" },
-    { label: "About", href: "/about" },
   ];
 
   return (
