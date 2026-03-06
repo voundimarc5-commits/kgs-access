@@ -41,6 +41,10 @@ const Navbar = () => {
             alt="KGS Access"
             className="h-16 w-auto drop-shadow-[0_0_20px_hsl(250_20%_60%/0.2)]"
           />
+          <div className="flex flex-col leading-tight">
+            <span className="text-xl font-bold text-ivory tracking-wide">Access</span>
+            <span className="text-[11px] font-normal text-chrome-light tracking-[0.12em]">Kora Global Systems</span>
+          </div>
         </Link>
 
         {/* Desktop */}
