@@ -3,11 +3,13 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroImg from "@/assets/hero-bg.jpg";
 import logo from "@/assets/kgs-access-logo.png";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const HeroSection = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background image */}
       <div
         className="absolute inset-0"
         style={{
@@ -16,16 +18,11 @@ const HeroSection = () => {
           backgroundPosition: "center",
         }}
       />
-      {/* Dark overlay with cool gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-deep/70 via-deep/50 to-deep/90" />
       <div className="absolute inset-0 bg-gradient-to-r from-deep/80 via-transparent to-transparent" />
 
-
-
-
       <div className="relative z-10 container mx-auto px-6 py-32">
         <div className="max-w-3xl">
-          {/* Large logo in hero */}
           <motion.img
             src={logo}
             alt="KGS Access"
@@ -48,8 +45,8 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.3 }}
           >
-            Control your property.{" "}
-            <span className="italic text-silver-accent">From anywhere.</span>
+            {t("Control your property.", "Contrôlez votre bien.")}{" "}
+            <span className="italic text-silver-accent">{t("From anywhere.", "Depuis n'importe où.")}</span>
           </motion.h1>
 
           <motion.p
@@ -58,7 +55,10 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            Intelligent remote access systems for international property owners managing assets across Africa and other growth markets.
+            {t(
+              "Intelligent remote access systems for international property owners managing assets across Africa and other growth markets.",
+              "Systèmes d'accès intelligents pour les propriétaires internationaux gérant des biens en Afrique et dans d'autres marchés en croissance."
+            )}
           </motion.p>
 
           <motion.p
@@ -67,7 +67,10 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.6 }}
           >
-            No physical presence required. No key handovers. No operational blind spots.
+            {t(
+              "No physical presence required. No key handovers. No operational blind spots.",
+              "Aucune présence physique requise. Aucune remise de clés. Aucun angle mort opérationnel."
+            )}
           </motion.p>
 
           <motion.div
@@ -79,7 +82,7 @@ const HeroSection = () => {
               to="/contact"
               className="group inline-flex items-center gap-3 text-[13px] font-medium tracking-[0.2em] uppercase text-ivory border-b border-silver-accent/40 pb-2 hover:border-silver-accent transition-all duration-500"
             >
-              Request a Remote Assessment
+              {t("Request a Remote Assessment", "Demander une évaluation à distance")}
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
             </Link>
           </motion.div>

@@ -1,14 +1,17 @@
 import { motion } from "framer-motion";
 import { Users, CalendarClock, ShieldCheck, Layers } from "lucide-react";
-
-const features = [
-  { icon: Users, label: "Controlled user permissions" },
-  { icon: CalendarClock, label: "Defined access schedules" },
-  { icon: ShieldCheck, label: "Clear responsibility allocation" },
-  { icon: Layers, label: "Scalable deployment across multiple units" },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const DevelopersOperatorsSection = () => {
+  const { t } = useLanguage();
+
+  const features = [
+    { icon: Users, label: t("Controlled user permissions", "Permissions utilisateur contrôlées") },
+    { icon: CalendarClock, label: t("Defined access schedules", "Horaires d'accès définis") },
+    { icon: ShieldCheck, label: t("Clear responsibility allocation", "Répartition claire des responsabilités") },
+    { icon: Layers, label: t("Scalable deployment across multiple units", "Déploiement extensible sur plusieurs unités") },
+  ];
+
   return (
     <section className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-6">
@@ -28,8 +31,8 @@ const DevelopersOperatorsSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            Structured Access for{" "}
-            <span className="italic text-silver-accent">Developers & Operators</span>
+            {t("Structured Access for", "Accès structuré pour")}{" "}
+            <span className="italic text-silver-accent">{t("Developers & Operators", "Promoteurs & Opérateurs")}</span>
           </motion.h2>
 
           <motion.p
@@ -39,7 +42,10 @@ const DevelopersOperatorsSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
-            KGS Access is also designed for small-scale developers, boutique hospitality operators and structured commercial environments requiring controlled access from day one.
+            {t(
+              "KGS Access is also designed for small-scale developers, boutique hospitality operators and structured commercial environments requiring controlled access from day one.",
+              "KGS Access est également conçu pour les petits promoteurs, les opérateurs hôteliers boutique et les environnements commerciaux structurés nécessitant un contrôle d'accès dès le premier jour."
+            )}
           </motion.p>
 
           <motion.div
@@ -64,7 +70,10 @@ const DevelopersOperatorsSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            Access control should be defined before operations begin — not after problems arise.
+            {t(
+              "Access control should be defined before operations begin — not after problems arise.",
+              "Le contrôle d'accès doit être défini avant le début des opérations — pas après l'apparition des problèmes."
+            )}
           </motion.p>
         </div>
       </div>

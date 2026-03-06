@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
 import africaImg from "@/assets/africa-premium.jpg";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const AfricaPremiumSection = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="relative py-0 overflow-hidden">
-      {/* Full-bleed image with overlay */}
       <div className="relative min-h-[80vh] flex items-center">
         <div
           className="absolute inset-0"
@@ -34,9 +36,10 @@ const AfricaPremiumSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              Designed for owners abroad.
+              {t("Designed for owners abroad.", "Conçu pour les propriétaires à l'étranger.")}
               <br />
-              Built for properties in <span className="italic text-silver-accent">Africa and beyond.</span>
+              {t("Built for properties in ", "Conçu pour les biens en ")}
+              <span className="italic text-silver-accent">{t("Africa and beyond.", "Afrique et au-delà.")}</span>
             </motion.h2>
 
             <motion.div
@@ -46,16 +49,19 @@ const AfricaPremiumSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.15 }}
             >
-              <p>
-                Owning property across borders requires visibility, control and structured access.
-              </p>
-              <p>
-                KGS Access supports international property owners managing rentals, villas and structured spaces across Africa — and anywhere remote access is essential.
-              </p>
+              <p>{t(
+                "Owning property across borders requires visibility, control and structured access.",
+                "Posséder un bien à l'étranger exige visibilité, contrôle et accès structuré."
+              )}</p>
+              <p>{t(
+                "KGS Access supports international property owners managing rentals, villas and structured spaces across Africa — and anywhere remote access is essential.",
+                "KGS Access accompagne les propriétaires internationaux qui gèrent des locations, villas et espaces structurés en Afrique — et partout où l'accès à distance est essentiel."
+              )}</p>
               <p className="text-ivory/90 font-normal">
-                Whether you are in London, Paris, Dubai or Toronto,
-                <br className="hidden md:block" />
-                your property remains under your control.
+                {t(
+                  "Whether you are in London, Paris, Dubai or Toronto, your property remains under your control.",
+                  "Que vous soyez à Londres, Paris, Dubaï ou Toronto, votre bien reste sous votre contrôle."
+                )}
               </p>
             </motion.div>
           </div>

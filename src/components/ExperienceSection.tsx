@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const ExperienceSection = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-6">
@@ -20,8 +23,8 @@ const ExperienceSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            Built for owners who are{" "}
-            <span className="italic text-silver-accent">not on-site.</span>
+            {t("Built for owners who are", "Conçu pour les propriétaires qui sont")}{" "}
+            <span className="italic text-silver-accent">{t("not on-site.", "à distance.")}</span>
           </motion.h2>
 
           <motion.div
@@ -31,14 +34,21 @@ const ExperienceSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.15 }}
           >
-            <p>Managing property across borders should not mean losing control.</p>
-            <p>
-              KGS Access provides structured remote access systems designed for rental properties, villas, shared spaces and small hospitality environments.
-            </p>
+            <p>{t(
+              "Managing property across borders should not mean losing control.",
+              "Gérer un bien à distance ne devrait pas signifier perdre le contrôle."
+            )}</p>
+            <p>{t(
+              "KGS Access provides structured remote access systems designed for rental properties, villas, shared spaces and small hospitality environments.",
+              "KGS Access fournit des systèmes d'accès à distance structurés, conçus pour les biens locatifs, villas, espaces partagés et petits environnements hôteliers."
+            )}</p>
             <p className="text-ivory/80">
-              This is not just hardware.
+              {t("This is not just hardware.", "Ce n'est pas juste du matériel.")}
               <br className="hidden md:block" />
-              It is a controllable access system built for cross-border ownership.
+              {t(
+                "It is a controllable access system built for cross-border ownership.",
+                "C'est un système d'accès contrôlable, conçu pour la gestion transfrontalière."
+              )}
             </p>
           </motion.div>
         </div>

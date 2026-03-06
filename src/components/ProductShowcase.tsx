@@ -1,32 +1,40 @@
 import { motion } from "framer-motion";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useRef, useState } from "react";
 import sentinelOneImg from "@/assets/product-sentinel-minimal.png";
 import sentinelProImg from "@/assets/product-sentinel-duo.png";
 import { useIsMobile } from "@/hooks/use-mobile";
-
-const products = [
-  {
-    name: "Sentinel One",
-    tagline: "For autonomous property owners.",
-    desc: "Secure keypad + digital access. Remote user management. Access logs. Clean architectural design. Best for apartments, villas and private rentals.",
-    link: "/products/f7",
-    image: sentinelOneImg,
-  },
-  {
-    name: "Sentinel Pro",
-    tagline: "For active rental & multi-user environments.",
-    desc: "Advanced access scenarios. Temporary and rotating permissions. Enhanced visibility. Ideal for hospitality and shared spaces.",
-    link: "/products/f18",
-    image: sentinelProImg,
-  },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const ProductShowcase = () => {
   const isMobile = useIsMobile();
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const { t } = useLanguage();
+
+  const products = [
+    {
+      name: "Sentinel One",
+      tagline: t("For autonomous property owners.", "Pour les propriétaires autonomes."),
+      desc: t(
+        "Secure keypad + digital access. Remote user management. Access logs. Clean architectural design. Best for apartments, villas and private rentals.",
+        "Clavier sécurisé + accès digital. Gestion des utilisateurs à distance. Journaux d'accès. Design architectural épuré. Idéal pour appartements, villas et locations privées."
+      ),
+      link: "/products/f7",
+      image: sentinelOneImg,
+    },
+    {
+      name: "Sentinel Pro",
+      tagline: t("For active rental & multi-user environments.", "Pour les locations actives et environnements multi-utilisateurs."),
+      desc: t(
+        "Advanced access scenarios. Temporary and rotating permissions. Enhanced visibility. Ideal for hospitality and shared spaces.",
+        "Scénarios d'accès avancés. Permissions temporaires et rotatives. Visibilité renforcée. Idéal pour l'hôtellerie et les espaces partagés."
+      ),
+      link: "/products/f18",
+      image: sentinelProImg,
+    },
+  ];
 
   const scrollTo = (index: number) => {
     if (scrollRef.current) {
@@ -49,7 +57,6 @@ const ProductShowcase = () => {
   return (
     <div className="relative overflow-hidden py-20 md:py-28">
       <div className="container mx-auto px-6">
-        {/* Desktop: side by side */}
         {!isMobile ? (
           <div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
             {products.map((product, i) => (
@@ -61,7 +68,6 @@ const ProductShowcase = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: i * 0.2 }}
               >
-                {/* Image */}
                 <div className="flex justify-center items-center pt-12 pb-6 px-8">
                   <img
                     src={product.image}
@@ -69,8 +75,6 @@ const ProductShowcase = () => {
                     className="h-[380px] lg:h-[440px] w-auto object-contain group-hover:scale-[1.03] transition-transform duration-700"
                   />
                 </div>
-
-                {/* Info */}
                 <div className="px-8 pb-10">
                   <p className="text-[11px] font-medium tracking-[0.25em] uppercase text-silver-accent mb-2">
                     {product.tagline}
@@ -85,7 +89,7 @@ const ProductShowcase = () => {
                     to={product.link}
                     className="group/link inline-flex items-center gap-2 text-[13px] font-medium tracking-[0.15em] uppercase text-silver-accent border-b border-silver-accent/30 pb-1.5 hover:border-silver-accent/60 transition-all duration-500"
                   >
-                    Discover {product.name}
+                    {t("Discover", "Découvrir")} {product.name}
                     <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform duration-300" />
                   </Link>
                 </div>
@@ -93,7 +97,6 @@ const ProductShowcase = () => {
             ))}
           </div>
         ) : (
-          /* Mobile: horizontal scroll carousel */
           <div className="relative">
             <div
               ref={scrollRef}
@@ -131,7 +134,7 @@ const ProductShowcase = () => {
                       to={product.link}
                       className="inline-flex items-center gap-2 text-[12px] font-medium tracking-[0.15em] uppercase text-silver-accent border-b border-silver-accent/30 pb-1"
                     >
-                      Discover
+                      {t("Discover", "Découvrir")}
                       <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
                   </div>
@@ -139,7 +142,6 @@ const ProductShowcase = () => {
               ))}
             </div>
 
-            {/* Dots indicator */}
             <div className="flex justify-center gap-2 mt-4">
               {products.map((_, i) => (
                 <button

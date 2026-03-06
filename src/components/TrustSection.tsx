@@ -5,6 +5,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const certifications = [
   {
@@ -26,6 +27,8 @@ const certifications = [
 ];
 
 const TrustSection = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-6">
@@ -45,7 +48,7 @@ const TrustSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            Part of a global systems vision.
+            {t("Part of a global systems vision.", "Une vision globale des systèmes.")}
           </motion.h2>
 
           <motion.p
@@ -55,11 +58,12 @@ const TrustSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.1 }}
           >
-            KGS Access is a product line within the Kora Global Systems ecosystem
-            — a technology group focused on security, infrastructure and intelligent systems.
+            {t(
+              "KGS Access is a product line within the Kora Global Systems ecosystem — a technology group focused on security, infrastructure and intelligent systems.",
+              "KGS Access est une gamme de produits au sein de l'écosystème Kora Global Systems — un groupe technologique axé sur la sécurité, l'infrastructure et les systèmes intelligents."
+            )}
           </motion.p>
 
-          {/* Certification row */}
           <motion.div
             className="flex items-center justify-center gap-10 mb-12"
             initial={{ opacity: 0, y: 16 }}
@@ -78,14 +82,16 @@ const TrustSection = () => {
                   <TooltipContent
                     className="max-w-[260px] text-center bg-deep border-chrome/20 text-chrome-light text-xs leading-relaxed px-4 py-3"
                   >
-                    Product compliant with applicable {cert.label} standards. Certification issued by the manufacturer.
+                    {t(
+                      `Product compliant with applicable ${cert.label} standards. Certification issued by the manufacturer.`,
+                      `Produit conforme aux normes ${cert.label} applicables. Certification émise par le fabricant.`
+                    )}
                   </TooltipContent>
                 </Tooltip>
               ))}
             </TooltipProvider>
           </motion.div>
 
-          {/* Region badges */}
           <motion.div
             className="grid grid-cols-2 gap-8 max-w-xs mx-auto"
             initial={{ opacity: 0, y: 20 }}
@@ -94,8 +100,8 @@ const TrustSection = () => {
             transition={{ duration: 0.7, delay: 0.3 }}
           >
             {[
-              { label: "Europe & Africa", sub: "Operating regions" },
-              { label: "US-Based", sub: "Kora Global Systems" },
+              { label: t("Europe & Africa", "Europe & Afrique"), sub: t("Operating regions", "Régions d'opération") },
+              { label: t("US-Based", "Basé aux USA"), sub: "Kora Global Systems" },
             ].map((item) => (
               <div key={item.label} className="text-center">
                 <p className="text-sm font-medium text-ivory/80 mb-1">{item.label}</p>
