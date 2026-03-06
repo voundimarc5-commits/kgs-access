@@ -19,7 +19,7 @@ const AfricaPremiumSection = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-deep/90 via-deep/70 to-deep/40" />
         <div className="absolute inset-0 bg-gradient-to-t from-deep/60 to-transparent" />
 
-        <div className="relative z-10 container mx-auto px-6 py-16 md:py-24">
+        <div className="relative z-10 container mx-auto px-6 py-10 md:py-16">
           <div className="max-w-2xl">
             <motion.div
               className="w-16 h-[1px] bg-silver-accent/60 mb-10"

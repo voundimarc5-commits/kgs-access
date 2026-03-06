@@ -55,7 +55,7 @@ const ProductShowcase = () => {
   };
 
   return (
-    <div className="relative overflow-hidden py-20 md:py-28">
+    <div className="relative overflow-hidden py-12 md:py-16">
       <div className="container mx-auto px-6">
         {!isMobile ? (
           <div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">

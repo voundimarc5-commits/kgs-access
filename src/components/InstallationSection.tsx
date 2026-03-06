@@ -5,7 +5,7 @@ const InstallationSection = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="py-16 md:py-20 bg-background">
+    <section className="py-10 md:py-14 bg-background">
       <div className="container mx-auto px-6">
         <div className="max-w-3xl mx-auto">
           <motion.div

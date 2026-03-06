@@ -55,7 +55,7 @@ const PackagesSection = () => {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-background">
+    <section className="py-10 md:py-14 bg-background">
       <div className="container mx-auto px-6">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <motion.div
