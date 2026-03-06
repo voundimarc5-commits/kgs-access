@@ -35,15 +35,15 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between h-20">
-        <Link to="/" className="flex items-center gap-3 group">
+        <Link to="/" className="flex items-center gap-1.5 group">
           <img
             src={logo}
             alt="KGS Access"
             className="h-16 w-auto drop-shadow-[0_0_20px_hsl(250_20%_60%/0.2)]"
           />
-          <div className="flex flex-col leading-tight">
-            <span className="text-2xl font-bold italic tracking-wide bg-gradient-to-r from-[hsl(250,60%,70%)] to-[hsl(220,70%,65%)] bg-clip-text text-transparent drop-shadow-[0_0_12px_hsl(250_40%_60%/0.4)]" style={{ fontFamily: "'Playfair Display', serif" }}>Access</span>
-            <span className="text-[10px] font-normal text-chrome-light tracking-[0.14em]">Kora Global Systems</span>
+          <div className="flex flex-col leading-none">
+            <span className="text-sm font-bold text-silver-accent tracking-wide">Access</span>
+            <span className="text-[8px] font-normal text-chrome-light tracking-[0.1em]">Kora Global Systems</span>
           </div>
         </Link>
 
