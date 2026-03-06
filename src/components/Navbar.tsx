@@ -42,8 +42,8 @@ const Navbar = () => {
             className="h-16 w-auto drop-shadow-[0_0_20px_hsl(250_20%_60%/0.2)]"
           />
           <div className="flex flex-col leading-tight">
-            <span className="text-xl font-bold text-ivory tracking-wide">Access</span>
-            <span className="text-[11px] font-normal text-chrome-light tracking-[0.12em]">Kora Global Systems</span>
+            <span className="text-2xl font-bold italic tracking-wide bg-gradient-to-r from-[hsl(250,60%,70%)] to-[hsl(220,70%,65%)] bg-clip-text text-transparent drop-shadow-[0_0_12px_hsl(250_40%_60%/0.4)]" style={{ fontFamily: "'Playfair Display', serif" }}>Access</span>
+            <span className="text-[10px] font-normal text-chrome-light tracking-[0.14em]">Kora Global Systems</span>
           </div>
         </Link>
 
@@ -111,13 +111,22 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Mobile toggle */}
-        <button
-          className="md:hidden text-ivory"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
+        {/* Mobile: translate + toggle */}
+        <div className="flex md:hidden items-center gap-3">
+          <button
+            onClick={toggleLanguage}
+            className="flex items-center gap-1 text-[12px] text-chrome-light hover:text-ivory transition-colors font-medium tracking-[0.1em] uppercase"
+          >
+            <Globe className="w-4 h-4" />
+            {language === "en" ? "FR" : "EN"}
+          </button>
+          <button
+            className="text-ivory"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}
