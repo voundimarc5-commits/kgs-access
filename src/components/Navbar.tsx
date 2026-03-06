@@ -111,13 +111,22 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Mobile toggle */}
-        <button
-          className="md:hidden text-ivory"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
+        {/* Mobile: translate + toggle */}
+        <div className="flex md:hidden items-center gap-3">
+          <button
+            onClick={toggleLanguage}
+            className="flex items-center gap-1 text-[12px] text-chrome-light hover:text-ivory transition-colors font-medium tracking-[0.1em] uppercase"
+          >
+            <Globe className="w-4 h-4" />
+            {language === "en" ? "FR" : "EN"}
+          </button>
+          <button
+            className="text-ivory"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}
