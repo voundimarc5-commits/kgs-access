@@ -1,8 +1,17 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const ContinuitySection = () => {
+  const { t } = useLanguage();
+
+  const cards = [
+    { number: "+1", label: t("Add new doors at any time", "Ajoutez de nouvelles portes à tout moment") },
+    { number: "∞", label: t("Access rules adapt as you grow", "Les règles d'accès évoluent avec vous") },
+    { number: "→", label: t("Scale across properties and regions", "Étendez à plusieurs biens et régions") },
+  ];
+
   return (
     <section className="py-16 md:py-20 bg-background">
       <div className="container mx-auto px-6">
@@ -22,9 +31,9 @@ const ContinuitySection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            This is not a one-time purchase.
+            {t("This is not a one-time purchase.", "Ce n'est pas un achat ponctuel.")}
             <br />
-            <span className="italic text-silver-accent">It's an evolving system.</span>
+            <span className="italic text-silver-accent">{t("It's an evolving system.", "C'est un système évolutif.")}</span>
           </motion.h2>
 
           <motion.p
@@ -34,7 +43,10 @@ const ContinuitySection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.1 }}
           >
-            Your access infrastructure grows with your portfolio. KGS Access is designed to scale — from a single door to an entire property network.
+            {t(
+              "Your access infrastructure grows with your portfolio. KGS Access is designed to scale — from a single door to an entire property network.",
+              "Votre infrastructure d'accès évolue avec votre portefeuille. KGS Access est conçu pour s'adapter — d'une seule porte à un réseau complet de biens."
+            )}
           </motion.p>
 
           <motion.div
@@ -44,11 +56,7 @@ const ContinuitySection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            {[
-              { number: "+1", label: "Add new doors at any time" },
-              { number: "∞", label: "Access rules adapt as you grow" },
-              { number: "→", label: "Scale across properties and regions" },
-            ].map((item, i) => (
+            {cards.map((item, i) => (
               <div
                 key={i}
                 className="text-center p-6 rounded-2xl border border-border bg-card"
@@ -74,7 +82,7 @@ const ContinuitySection = () => {
               to="/contact"
               className="group inline-flex items-center gap-3 text-[12px] font-medium tracking-[0.2em] uppercase text-silver-accent border-b border-silver-accent/30 pb-2 hover:border-silver-accent/60 transition-all duration-500"
             >
-              Plan your expansion
+              {t("Plan your expansion", "Planifiez votre expansion")}
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-300" />
             </Link>
           </motion.div>

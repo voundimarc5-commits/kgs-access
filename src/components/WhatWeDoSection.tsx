@@ -1,22 +1,25 @@
 import { motion } from "framer-motion";
 import { Check, X } from "lucide-react";
-
-const provides = [
-  "Intelligent access systems",
-  "Remote configuration",
-  "User and permission structuring",
-  "Access traceability",
-  "Structured client support",
-];
-
-const doesNot = [
-  "Physical security guarantees",
-  "Continuous property management",
-  "Banking or financial services",
-  "Heavy construction services",
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const WhatWeDoSection = () => {
+  const { t } = useLanguage();
+
+  const provides = [
+    t("Intelligent access systems", "Systèmes d'accès intelligents"),
+    t("Remote configuration", "Configuration à distance"),
+    t("User and permission structuring", "Structuration des utilisateurs et permissions"),
+    t("Access traceability", "Traçabilité des accès"),
+    t("Structured client support", "Support client structuré"),
+  ];
+
+  const doesNot = [
+    t("Physical security guarantees", "Garanties de sécurité physique"),
+    t("Continuous property management", "Gestion continue de biens"),
+    t("Banking or financial services", "Services bancaires ou financiers"),
+    t("Heavy construction services", "Services de construction lourde"),
+  ];
+
   return (
     <section className="py-16 md:py-20 bg-background">
       <div className="container mx-auto px-6">
@@ -37,7 +40,7 @@ const WhatWeDoSection = () => {
               transition={{ duration: 0.7 }}
             >
               <h3 className="text-2xl font-heading font-medium text-ivory mb-6">
-                What we provide
+                {t("What we provide", "Ce que nous fournissons")}
               </h3>
               <ul className="space-y-4">
                 {provides.map((item) => (
@@ -56,7 +59,7 @@ const WhatWeDoSection = () => {
               transition={{ duration: 0.7, delay: 0.15 }}
             >
               <h3 className="text-2xl font-heading font-medium text-ivory mb-6">
-                What we do not provide
+                {t("What we do not provide", "Ce que nous ne fournissons pas")}
               </h3>
               <ul className="space-y-4">
                 {doesNot.map((item) => (

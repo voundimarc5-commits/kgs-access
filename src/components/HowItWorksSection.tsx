@@ -1,25 +1,37 @@
 import { motion } from "framer-motion";
 import { Wrench, Settings, Eye } from "lucide-react";
-
-const steps = [
-  {
-    icon: Wrench,
-    title: "Install",
-    desc: "Self-deploy using guided documentation and remote configuration support.",
-  },
-  {
-    icon: Settings,
-    title: "Configure",
-    desc: "Create permanent or temporary access for guests, staff or service providers.",
-  },
-  {
-    icon: Eye,
-    title: "Monitor",
-    desc: "Track access logs and manage permissions remotely from anywhere in the world.",
-  },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const HowItWorksSection = () => {
+  const { t } = useLanguage();
+
+  const steps = [
+    {
+      icon: Wrench,
+      title: t("Install", "Installer"),
+      desc: t(
+        "Self-deploy using guided documentation and remote configuration support.",
+        "Déployez vous-même grâce à la documentation guidée et au support de configuration à distance."
+      ),
+    },
+    {
+      icon: Settings,
+      title: t("Configure", "Configurer"),
+      desc: t(
+        "Create permanent or temporary access for guests, staff or service providers.",
+        "Créez des accès permanents ou temporaires pour vos invités, employés ou prestataires."
+      ),
+    },
+    {
+      icon: Eye,
+      title: t("Monitor", "Surveiller"),
+      desc: t(
+        "Track access logs and manage permissions remotely from anywhere in the world.",
+        "Suivez les journaux d'accès et gérez les permissions à distance, depuis n'importe où dans le monde."
+      ),
+    },
+  ];
+
   return (
     <section className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-6">
@@ -38,8 +50,8 @@ const HowItWorksSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            A Remote Access System.{" "}
-            <span className="italic text-silver-accent">Not Just a Lock.</span>
+            {t("A Remote Access System.", "Un système d'accès à distance.")}{" "}
+            <span className="italic text-silver-accent">{t("Not Just a Lock.", "Pas juste une serrure.")}</span>
           </motion.h2>
         </div>
 

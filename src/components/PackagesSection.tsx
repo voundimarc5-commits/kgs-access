@@ -1,53 +1,59 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-
-const packages = [
-  {
-    name: "Essential",
-    subtitle: "Self Deploy",
-    target: "For autonomous owners.",
-    features: [
-      "1 Sentinel system (One or Pro)",
-      "Guided installation documentation",
-      "Initial configuration",
-      "User creation and access structuring",
-      "7 days remote support",
-    ],
-    price: "From €229",
-  },
-  {
-    name: "Control",
-    subtitle: "Dual Access Pack",
-    target: "For active rental and shared properties.",
-    features: [
-      "2 Sentinel systems",
-      "Advanced configuration",
-      "Access rotation procedures",
-      "Detailed access logs",
-      "30 days priority support",
-    ],
-    price: "From €389",
-    highlighted: true,
-  },
-  {
-    name: "Pro Control",
-    subtitle: "Managed Access System",
-    target: "For structured environments and serious projects.",
-    features: [
-      "Light project audit",
-      "Material selection (One or Pro)",
-      "Custom configuration",
-      "Multi-user structuring",
-      "Coordinated deployment support",
-      "Advanced onboarding",
-    ],
-    price: "Starting from €700",
-    note: "Designed for multi-entry, structured or institutional environments.",
-  },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const PackagesSection = () => {
+  const { t } = useLanguage();
+
+  const packages = [
+    {
+      name: "Essential",
+      subtitle: t("Self Deploy", "Auto-déploiement"),
+      target: t("For autonomous owners.", "Pour les propriétaires autonomes."),
+      features: [
+        t("1 Sentinel system (One or Pro)", "1 système Sentinel (One ou Pro)"),
+        t("Guided installation documentation", "Documentation d'installation guidée"),
+        t("Initial configuration", "Configuration initiale"),
+        t("User creation and access structuring", "Création d'utilisateurs et structuration des accès"),
+        t("7 days remote support", "7 jours de support à distance"),
+      ],
+      price: t("From €229", "À partir de 229 €"),
+    },
+    {
+      name: "Control",
+      subtitle: t("Dual Access Pack", "Pack Double Accès"),
+      target: t("For active rental and shared properties.", "Pour les biens locatifs actifs et partagés."),
+      features: [
+        t("2 Sentinel systems", "2 systèmes Sentinel"),
+        t("Advanced configuration", "Configuration avancée"),
+        t("Access rotation procedures", "Procédures de rotation d'accès"),
+        t("Detailed access logs", "Journaux d'accès détaillés"),
+        t("30 days priority support", "30 jours de support prioritaire"),
+      ],
+      price: t("From €389", "À partir de 389 €"),
+      highlighted: true,
+    },
+    {
+      name: "Pro Control",
+      subtitle: t("Managed Access System", "Système d'accès géré"),
+      target: t("For structured environments and serious projects.", "Pour les environnements structurés et projets sérieux."),
+      features: [
+        t("Light project audit", "Audit de projet léger"),
+        t("Material selection (One or Pro)", "Sélection du matériel (One ou Pro)"),
+        t("Custom configuration", "Configuration sur mesure"),
+        t("Multi-user structuring", "Structuration multi-utilisateurs"),
+        t("Coordinated deployment support", "Support de déploiement coordonné"),
+        t("Advanced onboarding", "Onboarding avancé"),
+      ],
+      price: t("Starting from €700", "À partir de 700 €"),
+      note: t(
+        "Designed for multi-entry, structured or institutional environments.",
+        "Conçu pour les environnements multi-entrées, structurés ou institutionnels."
+      ),
+    },
+  ];
+
   return (
     <section className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-6">
@@ -66,7 +72,8 @@ const PackagesSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            Choose your <span className="italic text-silver-accent">setup.</span>
+            {t("Choose your", "Choisissez votre")}{" "}
+            <span className="italic text-silver-accent">{t("setup.", "configuration.")}</span>
           </motion.h2>
         </div>
 
@@ -117,7 +124,7 @@ const PackagesSection = () => {
                 to="/contact"
                 className="inline-flex items-center justify-center gap-2 text-[12px] font-medium tracking-[0.15em] uppercase text-silver-accent border border-silver-accent/20 rounded-full py-3 hover:border-silver-accent/40 transition-all duration-300"
               >
-                Get started
+                {t("Get started", "Commencer")}
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </motion.div>
