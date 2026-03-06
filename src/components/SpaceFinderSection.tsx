@@ -67,7 +67,7 @@ const SpaceFinderSection = () => {
     : { name: "Sentinel One", link: "/products/f7" };
 
   return (
-    <div className="relative py-32">
+    <div className="relative py-16 md:py-20">
       <div className="relative z-10 container mx-auto px-6">
         <motion.div
           className="max-w-2xl mx-auto text-center mb-12"
