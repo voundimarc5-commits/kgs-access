@@ -1,12 +1,15 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import heroBg from "@/assets/hero-bg.jpg";
 
 const CTASection = () => {
   return (
-    <section className="py-28 bg-hero relative overflow-hidden">
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-accent/30 blur-[120px]" />
+    <section className="py-28 relative overflow-hidden">
+      <div className="absolute inset-0">
+        <img src={heroBg} alt="" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-deep/85" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-accent/20 blur-[120px]" />
       </div>
       <div className="relative z-10 container mx-auto px-6">
         <motion.div

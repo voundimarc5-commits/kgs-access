@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Send, ArrowRight, ArrowLeft, CheckCircle2 } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
-
+import heroBg from "@/assets/hero-bg.jpg";
 const spaceTypes = [
   "Private residence",
   "Rental property",
@@ -42,8 +42,12 @@ const Contact = () => {
 
   return (
     <>
-      <section className="bg-deep pt-36 pb-24">
-        <div className="container mx-auto px-6 text-center">
+      <section className="relative pt-36 pb-24 overflow-hidden">
+        <div className="absolute inset-0">
+          <img src={heroBg} alt="" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-deep/80" />
+        </div>
+        <div className="relative z-10 container mx-auto px-6 text-center">
           <motion.p
             className="text-xs font-semibold uppercase tracking-[0.25em] text-silver-accent mb-4"
             initial={{ opacity: 0 }}
