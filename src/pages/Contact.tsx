@@ -1,7 +1,9 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { Send, ArrowRight, ArrowLeft, CheckCircle2 } from "lucide-react";
+import { Send, ArrowRight, ArrowLeft, CheckCircle2, Loader2 } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
+import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 import heroBg from "@/assets/hero-bg.jpg";
 const spaceTypes = [
   "Private residence",
@@ -21,15 +23,45 @@ const projectContexts = [
 const Contact = () => {
   const [step, setStep] = useState(0);
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
   const [spaceType, setSpaceType] = useState("");
   const [projectContext, setProjectContext] = useState("");
+  const { toast } = useToast();
 
   const totalSteps = 3;
   const progress = ((step + 1) / totalSteps) * 100;
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSending(true);
+
+    const formData = new FormData(e.currentTarget);
+    const payload = {
+      name: formData.get('name') as string,
+      email: formData.get('email') as string,
+      company: formData.get('company') as string,
+      message: formData.get('message') as string,
+      spaceType,
+      projectContext,
+    };
+
+    try {
+      const { error } = await supabase.functions.invoke('send-contact-email', {
+        body: payload,
+      });
+
+      if (error) throw error;
+      setSubmitted(true);
+    } catch (err) {
+      console.error('Email send error:', err);
+      toast({
+        title: "Error",
+        description: "Failed to send your enquiry. Please try again or email us directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setSending(false);
+    }
   };
 
   const canAdvance = () => {
@@ -256,10 +288,20 @@ const Contact = () => {
                       </div>
                       <button
                         type="submit"
-                        className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-gradient-accent text-ivory font-semibold hover:brightness-110 transition-all w-full justify-center"
+                        disabled={sending}
+                        className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-gradient-accent text-ivory font-semibold hover:brightness-110 transition-all w-full justify-center disabled:opacity-60 disabled:cursor-not-allowed"
                       >
-                        Submit Enquiry
-                        <Send className="w-5 h-5" />
+                        {sending ? (
+                          <>
+                            Sending...
+                            <Loader2 className="w-5 h-5 animate-spin" />
+                          </>
+                        ) : (
+                          <>
+                            Submit Enquiry
+                            <Send className="w-5 h-5" />
+                          </>
+                        )}
                       </button>
                        <p className="text-xs text-chrome/40 text-center">
                         Or contact us directly at{" "}
