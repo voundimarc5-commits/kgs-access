@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Send, ArrowRight, ArrowLeft, CheckCircle2 } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
-
+import heroBg from "@/assets/hero-bg.jpg";
 const spaceTypes = [
   "Private residence",
   "Rental property",
