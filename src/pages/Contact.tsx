@@ -288,10 +288,20 @@ const Contact = () => {
                       </div>
                       <button
                         type="submit"
-                        className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-gradient-accent text-ivory font-semibold hover:brightness-110 transition-all w-full justify-center"
+                        disabled={sending}
+                        className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-gradient-accent text-ivory font-semibold hover:brightness-110 transition-all w-full justify-center disabled:opacity-60 disabled:cursor-not-allowed"
                       >
-                        Submit Enquiry
-                        <Send className="w-5 h-5" />
+                        {sending ? (
+                          <>
+                            Sending...
+                            <Loader2 className="w-5 h-5 animate-spin" />
+                          </>
+                        ) : (
+                          <>
+                            Submit Enquiry
+                            <Send className="w-5 h-5" />
+                          </>
+                        )}
                       </button>
                        <p className="text-xs text-chrome/40 text-center">
                         Or contact us directly at{" "}
