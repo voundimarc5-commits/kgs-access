@@ -23,15 +23,45 @@ const projectContexts = [
 const Contact = () => {
   const [step, setStep] = useState(0);
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
   const [spaceType, setSpaceType] = useState("");
   const [projectContext, setProjectContext] = useState("");
+  const { toast } = useToast();
 
   const totalSteps = 3;
   const progress = ((step + 1) / totalSteps) * 100;
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSending(true);
+
+    const formData = new FormData(e.currentTarget);
+    const payload = {
+      name: formData.get('name') as string,
+      email: formData.get('email') as string,
+      company: formData.get('company') as string,
+      message: formData.get('message') as string,
+      spaceType,
+      projectContext,
+    };
+
+    try {
+      const { error } = await supabase.functions.invoke('send-contact-email', {
+        body: payload,
+      });
+
+      if (error) throw error;
+      setSubmitted(true);
+    } catch (err) {
+      console.error('Email send error:', err);
+      toast({
+        title: "Error",
+        description: "Failed to send your enquiry. Please try again or email us directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setSending(false);
+    }
   };
 
   const canAdvance = () => {
