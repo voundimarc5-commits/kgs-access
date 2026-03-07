@@ -65,7 +65,7 @@ serve(async (req) => {
         </table>
         
         <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #333; font-size: 12px; color: #666;">
-          Sent from kgs-access.lovable.app contact form
+          Sent from access.koraglobalsystems.com contact form
         </div>
       </div>
     `;
