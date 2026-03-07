@@ -77,7 +77,7 @@ serve(async (req) => {
         'Authorization': `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: 'KGS Access <onboarding@resend.dev>',
+        from: 'KGS Access <contact@koraglobalsystems.com>',
         to: ['contact@koraglobalsystems.com'],
         subject: `New Enquiry from ${name} — ${spaceType || 'Contact Form'}`,
         html: emailHtml,
