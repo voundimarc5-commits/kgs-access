@@ -59,7 +59,7 @@ const OfferOSPage = () => {
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.7, ease }}
             className="max-w-2xl"
           >
             <h1 className="text-5xl md:text-7xl font-heading font-bold text-white mb-6 leading-[1.05] tracking-tight">
