@@ -22,6 +22,8 @@ const Navbar = () => {
     setProductsOpen(false);
   }, [location]);
 
+  const [offersOpen, setOffersOpen] = useState(false);
+
   const navLinks = [
     { label: "Compliance", href: "/compliance" },
   ];
