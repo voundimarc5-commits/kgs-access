@@ -14,12 +14,12 @@ const Index = () => {
   return (
     <>
       <HeroSection />
+      <FeaturesSection />
       <ExperienceSection />
       <HowItWorksSection />
       <CombinedShowcaseSection />
       <AfricaPremiumSection />
       <DevelopersOperatorsSection />
-      <FeaturesSection />
       <InstallationSection />
       <WhatWeDoSection />
       <ContinuitySection />
