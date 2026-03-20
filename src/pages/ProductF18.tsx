@@ -83,7 +83,27 @@ const ProductF18 = () => {
           </h2>
           <CertificationBadges />
 
-          <div className="mt-24 text-center">
+          {/* Available with KGS plans */}
+          <div className="mt-20 mb-20 rounded-2xl border border-border bg-muted/50 p-10">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent mb-3">
+              Available Plans
+            </p>
+            <h2 className="text-2xl font-heading font-bold text-foreground mb-4">
+              Available with KGS plans
+            </h2>
+            <p className="text-sm text-muted-foreground mb-8 max-w-xl">
+              The Sentinel Pro is available as an upgrade in all KGS offers. Choose the plan that fits your needs, then select this product during configuration.
+            </p>
+            <Link
+              to="/offers/entry"
+              className="group inline-flex items-center gap-3 text-[13px] font-medium tracking-[0.2em] uppercase text-accent border border-accent/30 px-8 py-3.5 hover:border-accent/60 hover:bg-accent/5 active:scale-[0.97] transition-all duration-500"
+            >
+              View available plans
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-300" />
+            </Link>
+          </div>
+
+          <div className="text-center">
             <Link
               to="/contact"
               className="group inline-flex items-center gap-3 text-[13px] font-medium tracking-[0.2em] uppercase text-silver-accent border border-silver-accent/30 px-10 py-4 hover:border-silver-accent/60 hover:bg-white/[0.03] transition-all duration-500"

@@ -232,6 +232,14 @@ const OfferRemote = () => {
               "{offer.valueProposition[lang]}"
             </p>
             <Link
+              to="/configure?plan=remote"
+              className="group inline-flex items-center gap-3 text-[13px] font-medium tracking-[0.2em] uppercase bg-accent text-white px-10 py-4 hover:bg-accent/90 active:scale-[0.97] transition-all duration-500 mb-4"
+            >
+              {lang === "fr" ? "Sélectionner cette offre" : "Select this plan"}
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-300" />
+            </Link>
+            <br />
+            <Link
               to="/contact"
               className="group inline-flex items-center gap-3 text-[13px] font-medium tracking-[0.2em] uppercase text-silver-accent border border-silver-accent/30 px-10 py-4 hover:border-silver-accent/60 hover:bg-white/[0.03] active:scale-[0.97] transition-all duration-500"
             >
