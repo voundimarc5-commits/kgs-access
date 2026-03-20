@@ -73,6 +73,16 @@ export const offerEntry: Offer = {
     { en: "Small Airbnb units", fr: "Petits logements Airbnb" },
     { en: "Personal properties", fr: "Biens personnels" },
   ],
+  addon: {
+    name: "KGS Support+",
+    price: { en: "9.99 €/month", fr: "9,99 €/mois" },
+    features: [
+      { en: "Technical support", fr: "Support technique" },
+      { en: "Help with setup & usage", fr: "Aide à la configuration et à l'utilisation" },
+      { en: "Guidance on access management", fr: "Accompagnement en gestion d'accès" },
+      { en: "Troubleshooting assistance", fr: "Assistance au dépannage" },
+    ],
+  },
   notIncluded: [
     { en: "Remote access via internet", fr: "Accès à distance via internet" },
     { en: "Centralized dashboard", fr: "Tableau de bord centralisé" },
