@@ -131,7 +131,7 @@ const OfferOSPage = () => {
                 initial={{ opacity: 0, x: -16, filter: "blur(4px)" }}
                 whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
                 viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.5, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 0.5, delay: i * 0.08, ease }}
               >
                 <Check className="w-5 h-5 text-cyan-glow shrink-0" />
                 <span className="text-base text-hero-foreground font-medium">{item[lang]}</span>
