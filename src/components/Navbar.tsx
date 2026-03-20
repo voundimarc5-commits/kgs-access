@@ -87,6 +87,24 @@ const Navbar = () => {
             )}
           </div>
 
+          <div
+            className="relative"
+            onMouseEnter={() => setOffersOpen(true)}
+            onMouseLeave={() => setOffersOpen(false)}
+          >
+            <span className="flex items-center gap-1.5 text-[13px] text-chrome-light hover:text-ivory transition-colors duration-300 font-medium tracking-[0.15em] uppercase cursor-pointer">
+              {language === "en" ? "Offers" : "Offres"}
+              <ChevronDown className="w-3.5 h-3.5" />
+            </span>
+            {offersOpen && (
+              <div className="absolute top-full left-0 mt-2 w-56 rounded-xl border border-silver-accent/10 bg-deep/98 backdrop-blur-2xl shadow-2xl py-3">
+                <Link to="/offers/entry" className="block px-5 py-2.5 text-sm text-chrome-light hover:text-ivory hover:bg-silver-accent/5 transition-all duration-200">KGS Entry</Link>
+                <Link to="/offers/remote" className="block px-5 py-2.5 text-sm text-chrome-light hover:text-ivory hover:bg-silver-accent/5 transition-all duration-200">KGS Remote</Link>
+                <Link to="/offers/os" className="block px-5 py-2.5 text-sm text-chrome-light hover:text-ivory hover:bg-silver-accent/5 transition-all duration-200">KGS OS</Link>
+              </div>
+            )}
+          </div>
+
           {navLinks.map((l) => (
             <Link
               key={l.label}
