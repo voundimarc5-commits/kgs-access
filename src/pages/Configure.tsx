@@ -1,22 +1,97 @@
 import { useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, Check, Gift } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Gift, Plus, Minus } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { allOffers } from "@/data/offers";
-import { productVariants } from "@/data/pricing";
+import {
+  productVariants,
+  OS_INCLUDED_UNITS,
+  OS_BASE_PRICE,
+  ADDITIONAL_UNIT_PRICE_SENTINEL_ONE,
+  ADDITIONAL_UNIT_PRICE_SENTINEL_PRO,
+} from "@/data/pricing";
+
+interface ProductLine {
+  productId: string;
+  quantity: number;
+}
 
 const Configure = () => {
   const { language } = useLanguage();
   const lang = language as "en" | "fr";
   const [searchParams] = useSearchParams();
   const planId = searchParams.get("plan") || "entry";
+  const isOS = planId === "os";
 
   const offer = allOffers.find((o) => o.id === planId) || allOffers[0];
+
+  // For Entry / Remote: single product selection
   const [selectedProduct, setSelectedProduct] = useState(productVariants[0].productId);
 
+  // For OS: multi-product with quantities (min total = 2)
+  const [osLines, setOsLines] = useState<ProductLine[]>([
+    { productId: "f7", quantity: 2 },
+  ]);
+
+  const osTotalUnits = osLines.reduce((sum, l) => sum + l.quantity, 0);
+
+  const updateOsQuantity = (productId: string, delta: number) => {
+    setOsLines((prev) => {
+      const existing = prev.find((l) => l.productId === productId);
+      if (existing) {
+        const newQty = existing.quantity + delta;
+        if (newQty <= 0) {
+          const filtered = prev.filter((l) => l.productId !== productId);
+          // Ensure at least 2 total
+          const totalAfter = filtered.reduce((s, l) => s + l.quantity, 0);
+          if (totalAfter < OS_INCLUDED_UNITS) return prev;
+          return filtered;
+        }
+        return prev.map((l) =>
+          l.productId === productId ? { ...l, quantity: newQty } : l
+        );
+      } else if (delta > 0) {
+        return [...prev, { productId, quantity: delta }];
+      }
+      return prev;
+    });
+  };
+
+  const getOsLineQuantity = (productId: string) =>
+    osLines.find((l) => l.productId === productId)?.quantity || 0;
+
+  // Calculate OS total price
+  const computeOsTotal = () => {
+    const extraUnits = Math.max(0, osTotalUnits - OS_INCLUDED_UNITS);
+    // Extra units priced by cheapest first — but we calculate per-line
+    let total = OS_BASE_PRICE;
+    // All units beyond 2 cost the additional unit price of their type
+    // We consider the first 2 as "included", extras charged per type
+    let remainingIncluded = OS_INCLUDED_UNITS;
+    for (const line of osLines) {
+      const variant = productVariants.find((v) => v.productId === line.productId);
+      if (!variant) continue;
+      const unitPrice =
+        variant.productId === "f18"
+          ? ADDITIONAL_UNIT_PRICE_SENTINEL_PRO
+          : ADDITIONAL_UNIT_PRICE_SENTINEL_ONE;
+      const includedHere = Math.min(line.quantity, remainingIncluded);
+      remainingIncluded -= includedHere;
+      const extraHere = line.quantity - includedHere;
+      total += extraHere * unitPrice;
+    }
+    return total;
+  };
+
+  const osTotal = computeOsTotal();
+
+  // For non-OS plans
   const currentVariant = productVariants.find((v) => v.productId === selectedProduct)!;
-  const totalPrice = currentVariant.totalPrice[planId as keyof typeof currentVariant.totalPrice];
+  const singleTotal = currentVariant?.totalPrice[planId as keyof typeof currentVariant.totalPrice];
+
+  const formatPrice = (amount: number) =>
+    lang === "fr" ? `${amount} €` : `€${amount}`;
 
   return (
     <>
@@ -43,9 +118,13 @@ const Configure = () => {
               <span className="text-accent">{offer.name}</span>
             </h1>
             <p className="text-base text-chrome-light max-w-xl leading-relaxed">
-              {lang === "fr"
-                ? "Sélectionnez le produit adapté à votre porte. Le prix final dépend de la combinaison offre + produit."
-                : "Select the product that fits your door. The final price depends on the offer + product combination."}
+              {isOS
+                ? lang === "fr"
+                  ? "Le prix de base inclut 2 serrures. Ajoutez des produits supplémentaires selon vos besoins. Vous pouvez mixer les modèles."
+                  : "The base price includes 2 locks. Add extra products as needed. You can mix models."
+                : lang === "fr"
+                  ? "Sélectionnez le produit adapté à votre porte. Le prix final dépend de la combinaison offre + produit."
+                  : "Select the product that fits your door. The final price depends on the offer + product combination."}
             </p>
           </motion.div>
         </div>
@@ -69,6 +148,13 @@ const Configure = () => {
                   {offer.name}
                 </h2>
                 <p className="text-sm text-chrome-light">{offer.tagline[lang]}</p>
+                {isOS && (
+                  <p className="text-xs text-chrome-light/50 mt-2">
+                    {lang === "fr"
+                      ? `${OS_INCLUDED_UNITS} produits inclus dans le prix de base`
+                      : `${OS_INCLUDED_UNITS} products included in the base price`}
+                  </p>
+                )}
               </div>
               <div className="text-right">
                 <p className="text-2xl font-heading font-bold text-hero-foreground">
@@ -100,7 +186,9 @@ const Configure = () => {
             className="mb-10"
           >
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-glow mb-3">
-              {lang === "fr" ? "Choisissez votre serrure" : "Choose your lock"}
+              {isOS
+                ? lang === "fr" ? "Composez votre parc" : "Build your fleet"
+                : lang === "fr" ? "Choisissez votre serrure" : "Choose your lock"}
             </p>
             <h2 className="text-2xl md:text-3xl font-heading font-bold text-hero-foreground">
               {lang === "fr" ? "Produits disponibles" : "Available Products"}
@@ -109,6 +197,70 @@ const Configure = () => {
 
           <div className="grid md:grid-cols-2 gap-6">
             {productVariants.map((variant, i) => {
+              if (isOS) {
+                // OS: quantity-based selection
+                const qty = getOsLineQuantity(variant.productId);
+                const unitPrice =
+                  variant.productId === "f18"
+                    ? ADDITIONAL_UNIT_PRICE_SENTINEL_PRO
+                    : ADDITIONAL_UNIT_PRICE_SENTINEL_ONE;
+
+                return (
+                  <motion.div
+                    key={variant.productId}
+                    className={`p-8 rounded-2xl border-2 transition-all duration-300 ${
+                      qty > 0
+                        ? "border-accent bg-accent/5"
+                        : "border-chrome/15 bg-hero-bg/60"
+                    }`}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: i * 0.1 }}
+                  >
+                    <h3 className="text-xl font-heading font-bold text-hero-foreground mb-2">
+                      {variant.name}
+                    </h3>
+                    <p className="text-sm text-chrome-light leading-relaxed mb-4">
+                      {variant.description[lang]}
+                    </p>
+                    <p className="text-xs text-chrome-light/50 mb-6">
+                      {lang === "fr"
+                        ? `+${unitPrice} € par unité supplémentaire`
+                        : `+€${unitPrice} per additional unit`}
+                    </p>
+
+                    {/* Quantity controls */}
+                    <div className="flex items-center gap-4">
+                      <button
+                        onClick={() => updateOsQuantity(variant.productId, -1)}
+                        disabled={qty === 0 || (osTotalUnits <= OS_INCLUDED_UNITS && qty <= 0)}
+                        className="w-10 h-10 rounded-xl border border-chrome/20 flex items-center justify-center text-chrome-light hover:border-chrome/40 disabled:opacity-30 disabled:cursor-not-allowed transition-colors active:scale-95"
+                      >
+                        <Minus className="w-4 h-4" />
+                      </button>
+                      <span className="text-2xl font-heading font-bold text-hero-foreground min-w-[2rem] text-center">
+                        {qty}
+                      </span>
+                      <button
+                        onClick={() => updateOsQuantity(variant.productId, 1)}
+                        className="w-10 h-10 rounded-xl border border-chrome/20 flex items-center justify-center text-chrome-light hover:border-chrome/40 transition-colors active:scale-95"
+                      >
+                        <Plus className="w-4 h-4" />
+                      </button>
+                    </div>
+
+                    <Link
+                      to={`/products/${variant.productId}`}
+                      className="inline-block mt-5 text-xs text-accent hover:text-accent/80 transition-colors"
+                    >
+                      {lang === "fr" ? "Voir les spécifications →" : "View specifications →"}
+                    </Link>
+                  </motion.div>
+                );
+              }
+
+              // Entry / Remote: single selection
               const isSelected = selectedProduct === variant.productId;
               const price = variant.totalPrice[planId as keyof typeof variant.totalPrice];
 
@@ -160,6 +312,15 @@ const Configure = () => {
               );
             })}
           </div>
+
+          {/* OS minimum notice */}
+          {isOS && osTotalUnits < OS_INCLUDED_UNITS && (
+            <p className="mt-6 text-sm text-red-400">
+              {lang === "fr"
+                ? `Minimum ${OS_INCLUDED_UNITS} produits requis. Actuellement : ${osTotalUnits}.`
+                : `Minimum ${OS_INCLUDED_UNITS} products required. Currently: ${osTotalUnits}.`}
+            </p>
+          )}
         </div>
       </section>
 
@@ -183,14 +344,45 @@ const Configure = () => {
                 </span>
                 <span className="text-sm font-medium text-hero-foreground">{offer.name}</span>
               </div>
-              <div className="flex justify-between items-center py-3 border-b border-chrome/10">
-                <span className="text-sm text-chrome-light">
-                  {lang === "fr" ? "Produit" : "Product"}
-                </span>
-                <span className="text-sm font-medium text-hero-foreground">
-                  {currentVariant.name}
-                </span>
-              </div>
+
+              {isOS ? (
+                <>
+                  {osLines.map((line) => {
+                    const v = productVariants.find((p) => p.productId === line.productId);
+                    if (!v) return null;
+                    return (
+                      <div key={line.productId} className="flex justify-between items-center py-3 border-b border-chrome/10">
+                        <span className="text-sm text-chrome-light">
+                          {v.name} × {line.quantity}
+                        </span>
+                        <span className="text-sm font-medium text-hero-foreground">
+                          {line.quantity <= 0 ? "—" : `${line.quantity} ${lang === "fr" ? "unité(s)" : "unit(s)"}`}
+                        </span>
+                      </div>
+                    );
+                  })}
+                  {osTotalUnits > OS_INCLUDED_UNITS && (
+                    <div className="flex justify-between items-center py-3 border-b border-chrome/10">
+                      <span className="text-sm text-chrome-light">
+                        {lang === "fr" ? "Produits supplémentaires" : "Additional products"}
+                      </span>
+                      <span className="text-sm font-medium text-hero-foreground">
+                        +{osTotalUnits - OS_INCLUDED_UNITS}
+                      </span>
+                    </div>
+                  )}
+                </>
+              ) : (
+                <div className="flex justify-between items-center py-3 border-b border-chrome/10">
+                  <span className="text-sm text-chrome-light">
+                    {lang === "fr" ? "Produit" : "Product"}
+                  </span>
+                  <span className="text-sm font-medium text-hero-foreground">
+                    {currentVariant.name}
+                  </span>
+                </div>
+              )}
+
               {offer.subscription && (
                 <div className="flex justify-between items-center py-3 border-b border-chrome/10">
                   <span className="text-sm text-chrome-light">
@@ -201,12 +393,13 @@ const Configure = () => {
                   </span>
                 </div>
               )}
+
               <div className="flex justify-between items-center py-4">
                 <span className="text-base font-bold text-hero-foreground">
                   {lang === "fr" ? "Prix total" : "Total price"}
                 </span>
                 <span className="text-2xl font-heading font-bold text-accent">
-                  {totalPrice[lang]}
+                  {isOS ? formatPrice(osTotal) : singleTotal[lang]}
                 </span>
               </div>
             </div>

@@ -6,6 +6,7 @@ export interface ProductVariant {
   name: string;
   description: { en: string; fr: string };
   priceModifier: { en: string; fr: string }; // e.g. "+0 €" or "+90 €"
+  additionalUnitPrice: number; // price per additional unit beyond included
   totalPrice: {
     entry: { en: string; fr: string };
     remote: { en: string; fr: string };
@@ -22,6 +23,7 @@ export const productVariants: ProductVariant[] = [
       fr: "Serrure intelligente standard — idéale pour les portes résidentielles et commerciales standard.",
     },
     priceModifier: { en: "Included", fr: "Inclus" },
+    additionalUnitPrice: 209,
     totalPrice: {
       entry: { en: "€209", fr: "209 €" },
       remote: { en: "€299", fr: "299 €" },
@@ -36,6 +38,7 @@ export const productVariants: ProductVariant[] = [
       fr: "Serrure intelligente renforcée — système triple verrou pour portes épaisses et haute sécurité.",
     },
     priceModifier: { en: "+€90", fr: "+90 €" },
+    additionalUnitPrice: 299,
     totalPrice: {
       entry: { en: "€299", fr: "299 €" },
       remote: { en: "€389", fr: "389 €" },
@@ -43,3 +46,9 @@ export const productVariants: ProductVariant[] = [
     },
   },
 ];
+
+// OS plan config
+export const OS_INCLUDED_UNITS = 2;
+export const OS_BASE_PRICE = 479;
+export const ADDITIONAL_UNIT_PRICE_SENTINEL_ONE = 209;
+export const ADDITIONAL_UNIT_PRICE_SENTINEL_PRO = 299;
