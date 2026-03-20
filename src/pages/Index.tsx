@@ -4,7 +4,7 @@ import HowItWorksSection from "@/components/HowItWorksSection";
 import CombinedShowcaseSection from "@/components/CombinedShowcaseSection";
 import AfricaPremiumSection from "@/components/AfricaPremiumSection";
 import DevelopersOperatorsSection from "@/components/DevelopersOperatorsSection";
-import PackagesSection from "@/components/PackagesSection";
+import FeaturesSection from "@/components/FeaturesSection";
 import InstallationSection from "@/components/InstallationSection";
 import WhatWeDoSection from "@/components/WhatWeDoSection";
 import ContinuitySection from "@/components/ContinuitySection";
@@ -19,7 +19,7 @@ const Index = () => {
       <CombinedShowcaseSection />
       <AfricaPremiumSection />
       <DevelopersOperatorsSection />
-      <PackagesSection />
+      <FeaturesSection />
       <InstallationSection />
       <WhatWeDoSection />
       <ContinuitySection />
