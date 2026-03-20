@@ -77,8 +77,13 @@ const About = () => {
           >
             <p className="text-muted-foreground leading-relaxed text-lg">
               {t(
-                <>KGS Access is the smart access and security division of{" "}<strong className="text-foreground">Kora Global Systems</strong>, a US-registered technology company operating internationally. We design and deliver certified smart lock solutions for residential, rental, and commercial properties — with a focus on the European and African markets.</>,
-                <>KGS Access est la division accès intelligent et sécurité de{" "}<strong className="text-foreground">Kora Global Systems</strong>, une entreprise technologique enregistrée aux États-Unis et opérant à l'international. Nous concevons et fournissons des solutions de serrures connectées certifiées pour les propriétés résidentielles, locatives et commerciales — avec un focus sur les marchés européen et africain.</>
+                "KGS Access is the smart access and security division of",
+                "KGS Access est la division accès intelligent et sécurité de"
+              )}{" "}
+              <strong className="text-foreground">Kora Global Systems</strong>
+              {t(
+                ", a US-registered technology company operating internationally. We design and deliver certified smart lock solutions for residential, rental, and commercial properties — with a focus on the European and African markets.",
+                ", une entreprise technologique enregistrée aux États-Unis et opérant à l'international. Nous concevons et fournissons des solutions de serrures connectées certifiées pour les propriétés résidentielles, locatives et commerciales — avec un focus sur les marchés européen et africain."
               )}
             </p>
             <p className="text-muted-foreground leading-relaxed text-lg">
