@@ -161,6 +161,9 @@ const Navbar = () => {
           <Link to="/products/f18" className="text-chrome/70 hover:text-ivory transition-colors pl-4 text-sm">
             Sentinel Pro
           </Link>
+          <span className="text-chrome-light font-medium tracking-[0.15em] uppercase text-[13px] mt-2">
+            {language === "en" ? "Offers" : "Offres"}
+          </span>
           <Link to="/offers/entry" className="text-chrome/70 hover:text-ivory transition-colors pl-4 text-sm">KGS Entry</Link>
           <Link to="/offers/remote" className="text-chrome/70 hover:text-ivory transition-colors pl-4 text-sm">KGS Remote</Link>
           <Link to="/offers/os" className="text-chrome/70 hover:text-ivory transition-colors pl-4 text-sm">KGS OS</Link>
