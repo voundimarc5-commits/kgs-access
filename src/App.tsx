@@ -9,6 +9,9 @@ import Index from "./pages/Index";
 import Products from "./pages/Products";
 import ProductF7 from "./pages/ProductF7";
 import ProductF18 from "./pages/ProductF18";
+import OfferEntry from "./pages/OfferEntry";
+import OfferRemote from "./pages/OfferRemote";
+import OfferOS from "./pages/OfferOS";
 import Solutions from "./pages/Solutions";
 import Compliance from "./pages/Compliance";
 import About from "./pages/About";
@@ -33,6 +36,9 @@ const App = () => (
               <Route path="/products" element={<Products />} />
               <Route path="/products/f7" element={<ProductF7 />} />
               <Route path="/products/f18" element={<ProductF18 />} />
+              <Route path="/offers/entry" element={<OfferEntry />} />
+              <Route path="/offers/remote" element={<OfferRemote />} />
+              <Route path="/offers/os" element={<OfferOS />} />
               <Route path="/solutions" element={<Solutions />} />
               <Route path="/compliance" element={<Compliance />} />
               <Route path="/about" element={<About />} />
