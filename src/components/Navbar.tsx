@@ -37,16 +37,12 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between h-20">
-        <Link to="/" className="flex items-center gap-1.5 group">
+        <Link to="/" className="flex items-center group">
           <img
             src={logo}
             alt="KGS Access"
             className="h-16 w-auto drop-shadow-[0_0_20px_hsl(250_20%_60%/0.2)]"
           />
-          <div className="flex flex-col leading-none">
-            <span className="text-sm font-bold text-silver-accent tracking-wide">Access</span>
-            <span className="text-[8px] font-normal text-chrome-light tracking-[0.1em]">Kora Global Systems</span>
-          </div>
         </Link>
 
         {/* Desktop */}
