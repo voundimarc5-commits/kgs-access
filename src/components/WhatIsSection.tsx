@@ -1,12 +1,15 @@
 import { motion } from "framer-motion";
 import { Fingerprint, Lock, Smartphone, ShieldCheck } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const WhatIsSection = () => {
+  const { t } = useLanguage();
+
   const points = [
-    { icon: Fingerprint, label: "Biometric Authentication" },
-    { icon: Lock, label: "Multi-Bolt Security" },
-    { icon: Smartphone, label: "Remote Management" },
-    { icon: ShieldCheck, label: "Certified Compliance" },
+    { icon: Fingerprint, label: t("Biometric Authentication", "Authentification biométrique") },
+    { icon: Lock, label: t("Multi-Bolt Security", "Sécurité multi-pênes") },
+    { icon: Smartphone, label: t("Remote Management", "Gestion à distance") },
+    { icon: ShieldCheck, label: t("Certified Compliance", "Conformité certifiée") },
   ];
 
   return (
@@ -20,13 +23,16 @@ const WhatIsSection = () => {
           transition={{ duration: 0.7 }}
         >
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent mb-4">
-            The Platform
+            {t("The Platform", "La plateforme")}
           </p>
           <h2 className="text-3xl md:text-5xl font-heading font-bold text-foreground mb-6">
-            Access Control, Redefined
+            {t("Access Control, Redefined", "Le contrôle d'accès, réinventé")}
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            KGS Access provides certified smart lock systems that combine biometric, digital, and physical credentials into a single, manageable platform. Every unit meets European regulatory standards.
+            {t(
+              "KGS Access provides certified smart lock systems that combine biometric, digital, and physical credentials into a single, manageable platform. Every unit meets European regulatory standards.",
+              "KGS Access fournit des systèmes de serrures connectées certifiées combinant identifiants biométriques, numériques et physiques en une seule plateforme gérable. Chaque unité respecte les normes réglementaires européennes."
+            )}
           </p>
         </motion.div>
 

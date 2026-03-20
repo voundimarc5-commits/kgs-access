@@ -5,28 +5,31 @@ import { Progress } from "@/components/ui/progress";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import heroBg from "@/assets/hero-bg.jpg";
-const spaceTypes = [
-  "Private residence",
-  "Rental property",
-  "Hotel / Hospitality",
-  "Office / Commercial",
-  "Other",
-];
-
-const projectContexts = [
-  "New construction",
-  "Renovation / Upgrade",
-  "Replacement of existing locks",
-  "Exploring options",
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Contact = () => {
+  const { t } = useLanguage();
   const [step, setStep] = useState(0);
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
   const [spaceType, setSpaceType] = useState("");
   const [projectContext, setProjectContext] = useState("");
   const { toast } = useToast();
+
+  const spaceTypes = [
+    t("Private residence", "Résidence privée"),
+    t("Rental property", "Bien locatif"),
+    t("Hotel / Hospitality", "Hôtel / Hébergement"),
+    t("Office / Commercial", "Bureau / Commercial"),
+    t("Other", "Autre"),
+  ];
+
+  const projectContexts = [
+    t("New construction", "Construction neuve"),
+    t("Renovation / Upgrade", "Rénovation / Mise à niveau"),
+    t("Replacement of existing locks", "Remplacement de serrures existantes"),
+    t("Exploring options", "Exploration des options"),
+  ];
 
   const totalSteps = 3;
   const progress = ((step + 1) / totalSteps) * 100;
@@ -55,8 +58,11 @@ const Contact = () => {
     } catch (err) {
       console.error('Email send error:', err);
       toast({
-        title: "Error",
-        description: "Failed to send your enquiry. Please try again or email us directly.",
+        title: t("Error", "Erreur"),
+        description: t(
+          "Failed to send your enquiry. Please try again or email us directly.",
+          "Échec de l'envoi de votre demande. Veuillez réessayer ou nous contacter directement par email."
+        ),
         variant: "destructive",
       });
     } finally {
@@ -70,7 +76,11 @@ const Contact = () => {
     return true;
   };
 
-  const stepLabels = ["Type of space", "Project context", "Contact details"];
+  const stepLabels = [
+    t("Type of space", "Type d'espace"),
+    t("Project context", "Contexte du projet"),
+    t("Contact details", "Coordonnées"),
+  ];
 
   return (
     <>
@@ -94,7 +104,7 @@ const Contact = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            Begin the Conversation
+            {t("Begin the Conversation", "Commencez la conversation")}
           </motion.h1>
           <motion.p
             className="text-lg text-chrome-light max-w-2xl mx-auto"
@@ -102,7 +112,10 @@ const Contact = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            This helps us recommend the right solution for your environment.
+            {t(
+              "This helps us recommend the right solution for your environment.",
+              "Cela nous aide à recommander la solution adaptée à votre environnement."
+            )}
           </motion.p>
         </div>
       </section>
@@ -120,10 +133,13 @@ const Contact = () => {
                 <CheckCircle2 className="w-7 h-7 text-silver-accent" />
               </div>
               <h2 className="text-2xl font-heading font-bold text-ivory mb-3">
-                Enquiry Received
+                {t("Enquiry Received", "Demande reçue")}
               </h2>
               <p className="text-chrome-light">
-                We will review your message and respond within two business days.
+                {t(
+                  "We will review your message and respond within two business days.",
+                  "Nous examinerons votre message et répondrons sous deux jours ouvrables."
+                )}
               </p>
             </motion.div>
           ) : (
@@ -147,7 +163,7 @@ const Contact = () => {
                   className="h-[2px] bg-chrome/10 [&>div]:bg-gradient-to-r [&>div]:from-silver-accent [&>div]:to-silver-glow"
                 />
                 <p className="text-[11px] text-chrome/40 mt-3 text-center">
-                  No obligation — guidance only.
+                  {t("No obligation — guidance only.", "Sans engagement — à titre indicatif.")}
                 </p>
               </div>
 
@@ -161,10 +177,10 @@ const Contact = () => {
                     transition={{ duration: 0.35 }}
                   >
                     <h3 className="text-xl font-heading font-medium text-ivory mb-2">
-                      What type of space is this for?
+                      {t("What type of space is this for?", "Quel type d'espace est concerné ?")}
                     </h3>
                     <p className="text-sm text-chrome/50 mb-8">
-                      This helps us recommend the right solution.
+                      {t("This helps us recommend the right solution.", "Cela nous aide à recommander la bonne solution.")}
                     </p>
                     <div className="grid gap-3">
                       {spaceTypes.map((opt) => (
@@ -193,10 +209,13 @@ const Contact = () => {
                     transition={{ duration: 0.35 }}
                   >
                     <h3 className="text-xl font-heading font-medium text-ivory mb-2">
-                      Tell us about the project.
+                      {t("Tell us about the project.", "Parlez-nous du projet.")}
                     </h3>
                     <p className="text-sm text-chrome/50 mb-8">
-                      Understanding your context helps us provide better guidance.
+                      {t(
+                        "Understanding your context helps us provide better guidance.",
+                        "Comprendre votre contexte nous aide à mieux vous guider."
+                      )}
                     </p>
                     <div className="grid gap-3">
                       {projectContexts.map((opt) => (
@@ -225,16 +244,19 @@ const Contact = () => {
                     transition={{ duration: 0.35 }}
                   >
                     <h3 className="text-xl font-heading font-medium text-ivory mb-2">
-                      How can we reach you?
+                      {t("How can we reach you?", "Comment pouvons-nous vous contacter ?")}
                     </h3>
                     <p className="text-sm text-chrome/50 mb-8">
-                      We typically respond within two business days.
+                      {t(
+                        "We typically respond within two business days.",
+                        "Nous répondons généralement sous deux jours ouvrables."
+                      )}
                     </p>
                     <form onSubmit={handleSubmit} className="space-y-5">
                       <div className="grid md:grid-cols-2 gap-5">
                         <div>
                           <label htmlFor="name" className="block text-sm font-medium text-ivory/80 mb-2">
-                            Full Name *
+                            {t("Full Name *", "Nom complet *")}
                           </label>
                           <input
                             id="name"
@@ -262,7 +284,7 @@ const Contact = () => {
                       </div>
                       <div>
                         <label htmlFor="company" className="block text-sm font-medium text-ivory/80 mb-2">
-                          Company / Organisation
+                          {t("Company / Organisation", "Entreprise / Organisation")}
                         </label>
                         <input
                           id="company"
@@ -283,7 +305,10 @@ const Contact = () => {
                           maxLength={2000}
                           rows={4}
                           className="w-full px-4 py-3 rounded-lg border border-chrome/15 bg-deep/50 text-ivory placeholder:text-chrome/30 focus:outline-none focus:ring-1 focus:ring-silver-accent/40 focus:border-silver-accent/40 resize-none transition-all duration-300"
-                          placeholder="Describe your project, requirements, or questions..."
+                          placeholder={t(
+                            "Describe your project, requirements, or questions...",
+                            "Décrivez votre projet, vos besoins ou vos questions..."
+                          )}
                         />
                       </div>
                       <button
@@ -293,18 +318,18 @@ const Contact = () => {
                       >
                         {sending ? (
                           <>
-                            Sending...
+                            {t("Sending...", "Envoi en cours...")}
                             <Loader2 className="w-5 h-5 animate-spin" />
                           </>
                         ) : (
                           <>
-                            Submit Enquiry
+                            {t("Submit Enquiry", "Envoyer la demande")}
                             <Send className="w-5 h-5" />
                           </>
                         )}
                       </button>
                        <p className="text-xs text-chrome/40 text-center">
-                        Or contact us directly at{" "}
+                        {t("Or contact us directly at", "Ou contactez-nous directement à")}{" "}
                         <a
                           href="mailto:contact@koraglobalsystems.com"
                           className="text-silver-accent hover:underline"
@@ -313,7 +338,10 @@ const Contact = () => {
                         </a>
                       </p>
                       <p className="text-[10px] text-chrome/30 text-center mt-3">
-                        Hardware product — no absolute security guarantee. Information provided for guidance only.
+                        {t(
+                          "Hardware product — no absolute security guarantee. Information provided for guidance only.",
+                          "Produit matériel — aucune garantie de sécurité absolue. Informations fournies à titre indicatif uniquement."
+                        )}
                       </p>
                     </form>
                   </motion.div>
@@ -330,7 +358,7 @@ const Contact = () => {
                     }`}
                   >
                     <ArrowLeft className="w-4 h-4" />
-                    Back
+                    {t("Back", "Retour")}
                   </button>
                   {step < 2 && (
                     <button
@@ -338,7 +366,7 @@ const Contact = () => {
                       disabled={!canAdvance()}
                       className="inline-flex items-center gap-2 text-sm text-silver-accent hover:text-silver-glow transition-colors duration-300 disabled:opacity-30 disabled:cursor-not-allowed"
                     >
-                      Continue
+                      {t("Continue", "Continuer")}
                       <ArrowRight className="w-4 h-4" />
                     </button>
                   )}

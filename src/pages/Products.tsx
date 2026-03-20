@@ -6,6 +6,7 @@ import ComparisonTable from "@/components/ComparisonTable";
 import CertificationBadges from "@/components/CertificationBadges";
 import sentinelOneWide from "@/assets/product-sentinel-one-wide.jpg";
 import sentinelProWide from "@/assets/product-sentinel-pro-wide.jpg";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const productImages: Record<string, string> = {
   f7: sentinelOneWide,
@@ -13,6 +14,8 @@ const productImages: Record<string, string> = {
 };
 
 const Products = () => {
+  const { t } = useLanguage();
+
   return (
     <>
       {/* Hero */}
@@ -24,7 +27,7 @@ const Products = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            Product Line
+            {t("Product Line", "Gamme de produits")}
           </motion.p>
           <motion.h1
             className="text-4xl md:text-6xl font-heading font-bold text-hero-foreground mb-6"
@@ -32,7 +35,7 @@ const Products = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            The Sentinel Series
+            {t("The Sentinel Series", "La série Sentinel")}
           </motion.h1>
           <motion.p
             className="text-lg text-chrome-light max-w-2xl mx-auto"
@@ -40,7 +43,10 @@ const Products = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Two certified access systems. One uncompromising standard of security.
+            {t(
+              "Two certified access systems. One uncompromising standard of security.",
+              "Deux systèmes d'accès certifiés. Un standard de sécurité sans compromis."
+            )}
           </motion.p>
         </div>
       </section>
@@ -85,7 +91,7 @@ const Products = () => {
                   to={`/products/${product.id}`}
                   className="inline-flex items-center gap-2 font-semibold text-primary hover:gap-3 transition-all text-sm"
                 >
-                  Full specifications
+                  {t("Full specifications", "Spécifications complètes")}
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 </div>
@@ -112,7 +118,7 @@ const Products = () => {
           {/* Certifications */}
           <div className="max-w-4xl mx-auto mt-20 text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent mb-6">
-              Compliance
+              {t("Compliance", "Conformité")}
             </p>
             <CertificationBadges className="justify-center" />
           </div>
