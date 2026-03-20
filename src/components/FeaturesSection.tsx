@@ -35,7 +35,7 @@ const OfferCard = ({ offer, i }: { offer: Offer; i: number }) => {
         <div className="absolute inset-0 bg-gradient-to-t from-hero-bg via-hero-bg/40 to-transparent" />
       </div>
 
-      <div className="relative z-10 p-8 pt-4 flex flex-col flex-1">
+      <div className="relative z-10 p-8 pt-4 flex flex-col flex-1 bg-black">
         <span className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-glow mb-2">
           {offer.tagline[lang]}
         </span>
