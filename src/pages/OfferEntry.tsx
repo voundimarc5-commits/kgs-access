@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Check, X, Fingerprint, KeyRound, CreditCard, ShieldCheck } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, X, Fingerprint, KeyRound, CreditCard, ShieldCheck, Headphones } from "lucide-react";
 import { offerEntry } from "@/data/offers";
 import { useLanguage } from "@/contexts/LanguageContext";
 import offerImg from "@/assets/offer-entry.jpg";
@@ -168,6 +168,46 @@ const OfferEntry = () => {
                 ? "Ces fonctionnalités sont disponibles dans les offres KGS Remote et KGS OS."
                 : "These features are available in the KGS Remote and KGS OS offers."}
             </p>
+          </div>
+        </section>
+      )}
+
+      {/* Add-on */}
+      {offer.addon && (
+        <section className="py-20 bg-hero">
+          <div className="container mx-auto px-6 max-w-5xl">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-glow mb-4">
+                {lang === "fr" ? "Option supplémentaire" : "Optional Add-on"}
+              </p>
+              <h2 className="text-2xl md:text-3xl font-heading font-bold text-hero-foreground mb-8">
+                {offer.addon.name}
+              </h2>
+            </motion.div>
+            <div className="rounded-2xl border border-chrome/15 bg-hero-bg/60 p-10 max-w-2xl">
+              <div className="flex items-center gap-3 mb-4">
+                <Headphones className="w-6 h-6 text-cyan-glow" />
+                <span className="text-lg font-heading font-bold text-hero-foreground">{offer.addon.price[lang]}</span>
+              </div>
+              <p className="text-sm text-chrome-light mb-6 leading-relaxed">
+                {lang === "fr"
+                  ? "Un accompagnement expert pour tirer le meilleur parti de votre système KGS Entry."
+                  : "Expert assistance to get the most out of your KGS Entry system."}
+              </p>
+              <ul className="space-y-3">
+                {offer.addon.features.map((af) => (
+                  <li key={af[lang]} className="flex items-start gap-3 text-sm text-chrome-light">
+                    <Check className="w-4 h-4 text-cyan-glow mt-0.5 shrink-0" />
+                    {af[lang]}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </section>
       )}
