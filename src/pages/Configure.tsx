@@ -62,25 +62,33 @@ const Configure = () => {
     osLines.find((l) => l.productId === productId)?.quantity || 0;
 
   // Calculate OS total price
+  // Base (479€) includes 2× Sentinel One (209€ each).
+  // Upgrading an included unit to Sentinel Pro costs +90€ per unit.
+  // Extra units beyond 2: +209€ (Sentinel One) or +299€ (Sentinel Pro) each.
+  const UPGRADE_DELTA = ADDITIONAL_UNIT_PRICE_SENTINEL_PRO - ADDITIONAL_UNIT_PRICE_SENTINEL_ONE; // 90€
+
   const computeOsTotal = () => {
-    const extraUnits = Math.max(0, osTotalUnits - OS_INCLUDED_UNITS);
-    // Extra units priced by cheapest first — but we calculate per-line
     let total = OS_BASE_PRICE;
-    // All units beyond 2 cost the additional unit price of their type
-    // We consider the first 2 as "included", extras charged per type
+    const f7Qty = getOsLineQuantity("f7");
+    const f18Qty = getOsLineQuantity("f18");
+
+    // Distribute the 2 included slots: Sentinel One first, then Pro
     let remainingIncluded = OS_INCLUDED_UNITS;
-    for (const line of osLines) {
-      const variant = productVariants.find((v) => v.productId === line.productId);
-      if (!variant) continue;
-      const unitPrice =
-        variant.productId === "f18"
-          ? ADDITIONAL_UNIT_PRICE_SENTINEL_PRO
-          : ADDITIONAL_UNIT_PRICE_SENTINEL_ONE;
-      const includedHere = Math.min(line.quantity, remainingIncluded);
-      remainingIncluded -= includedHere;
-      const extraHere = line.quantity - includedHere;
-      total += extraHere * unitPrice;
-    }
+
+    // Sentinel One units consume included slots at no extra cost
+    const f7Included = Math.min(f7Qty, remainingIncluded);
+    remainingIncluded -= f7Included;
+    const f7Extra = f7Qty - f7Included;
+
+    // Sentinel Pro units in included slots cost +90€ upgrade each
+    const f18Included = Math.min(f18Qty, remainingIncluded);
+    remainingIncluded -= f18Included;
+    const f18Extra = f18Qty - f18Included;
+
+    total += f18Included * UPGRADE_DELTA;
+    total += f7Extra * ADDITIONAL_UNIT_PRICE_SENTINEL_ONE;
+    total += f18Extra * ADDITIONAL_UNIT_PRICE_SENTINEL_PRO;
+
     return total;
   };
 
