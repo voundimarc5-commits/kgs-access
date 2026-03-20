@@ -1,272 +1,225 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Check, X, Fingerprint, KeyRound, CreditCard, ShieldCheck, Headphones } from "lucide-react";
-import { offerEntry } from "@/data/offers";
+import { ArrowLeft, ArrowRight, Check, Lock, Settings } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import offerImg from "@/assets/offer-entry.jpg";
+
+const ease = [0.16, 1, 0.3, 1] as const;
+const fadeUp = {
+  initial: { opacity: 0, y: 18, filter: "blur(4px)" } as const,
+  whileInView: { opacity: 1, y: 0, filter: "blur(0px)" } as const,
+  viewport: { once: true, amount: 0.2 } as const,
+  transition: { duration: 0.6, ease } as const,
+};
 
 const OfferEntry = () => {
   const { language } = useLanguage();
   const lang = language as "en" | "fr";
-  const offer = offerEntry;
+
+  const included = [
+    { en: "Smart lock installation-ready device", fr: "Dispositif de serrure connectée prêt à installer" },
+    { en: "Access via code, card, or fingerprint", fr: "Accès par code, carte ou empreinte digitale" },
+    { en: "Clean and professional setup", fr: "Installation propre et professionnelle" },
+    { en: "Local support during installation", fr: "Support local pendant l'installation" },
+  ];
+
+  const value = [
+    { en: "No more lost keys", fr: "Plus de clés perdues" },
+    { en: "Easy access for family, guests or tenants", fr: "Accès facile pour la famille, les invités ou les locataires" },
+    { en: "Reliable and secure everyday use", fr: "Utilisation quotidienne fiable et sécurisée" },
+    { en: "Minimal setup, maximum convenience", fr: "Installation minimale, confort maximal" },
+  ];
+
+  const perfectFor = [
+    { en: "Apartments", fr: "Appartements" },
+    { en: "Small Airbnb units", fr: "Petits logements Airbnb" },
+    { en: "Personal properties", fr: "Propriétés personnelles" },
+  ];
 
   return (
     <>
-      {/* Hero */}
-      <section className="relative pt-36 pb-24 min-h-[70vh] flex items-center overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${offerImg})` }}
-        />
+      {/* HERO */}
+      <section className="relative pt-36 pb-28 min-h-[75vh] flex items-center overflow-hidden">
+        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${offerImg})` }} />
         <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/40" />
         <div className="container mx-auto px-6 relative z-10">
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 text-chrome-light/60 hover:text-chrome-light transition-colors mb-10 text-sm"
-          >
+          <Link to="/" className="inline-flex items-center gap-2 text-chrome-light/60 hover:text-chrome-light transition-colors mb-10 text-sm">
             <ArrowLeft className="w-4 h-4" />
             {lang === "fr" ? "Accueil" : "Home"}
           </Link>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-2xl"
-          >
-            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-cyan-glow mb-4 block">
-              KGS Access
-            </span>
-            <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-4 leading-[1.05]">
-              {offer.name}
+          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease }} className="max-w-2xl">
+            <h1 className="text-5xl md:text-7xl font-heading font-bold text-white mb-6 leading-[1.05] tracking-tight">
+              KGS Entry
             </h1>
-            <p className="text-xl text-silver-accent italic mb-6">{offer.tagline[lang]}</p>
-            <p className="text-base text-chrome-light max-w-xl leading-relaxed">
-              {offer.description[lang]}
+            <p className="text-xl md:text-2xl text-silver-accent font-light mb-6 leading-snug">
+              {lang === "fr" ? "Accès intelligent. Simple. Fiable." : "Smart access. Simple. Reliable."}
             </p>
-            <p className="mt-8 text-3xl font-heading font-bold text-white">
-              {offer.price[lang]}
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Unlock Methods */}
-      <section className="py-20 bg-hero">
-        <div className="container mx-auto px-6 max-w-5xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-14"
-          >
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-glow mb-4">
-              {lang === "fr" ? "Méthodes d'accès" : "Access Methods"}
-            </p>
-            <h2 className="text-2xl md:text-3xl font-heading font-bold text-hero-foreground">
-              {lang === "fr" ? "Trois façons d'entrer chez vous" : "Three ways to enter your home"}
-            </h2>
-          </motion.div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { icon: Fingerprint, label: { en: "Fingerprint", fr: "Empreinte digitale" }, desc: { en: "Biometric access — fast, personal, and impossible to duplicate.", fr: "Accès biométrique — rapide, personnel et impossible à dupliquer." } },
-              { icon: KeyRound, label: { en: "PIN Code", fr: "Code PIN" }, desc: { en: "Create unique codes for each user. Change or revoke them anytime.", fr: "Créez des codes uniques pour chaque utilisateur. Modifiez-les ou révoquez-les à tout moment." } },
-              { icon: CreditCard, label: { en: "RFID Card", fr: "Carte RFID" }, desc: { en: "Tap to unlock. Ideal for tenants, staff, and shared spaces.", fr: "Touchez pour déverrouiller. Idéal pour les locataires, le personnel et les espaces partagés." } },
-            ].map((method, i) => (
-              <motion.div
-                key={method.label[lang]}
-                className="p-8 rounded-2xl border border-chrome/15 bg-hero-bg/60"
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-              >
-                <method.icon className="w-8 h-8 text-cyan-glow mb-4" />
-                <h3 className="text-lg font-heading font-bold text-hero-foreground mb-2">{method.label[lang]}</h3>
-                <p className="text-sm text-chrome-light leading-relaxed">{method.desc[lang]}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Detailed features */}
-      <section className="py-20 bg-hero">
-        <div className="container mx-auto px-6 max-w-5xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-glow mb-4">
-              {lang === "fr" ? "Ce qui est inclus" : "What you get"}
-            </p>
-            <h2 className="text-2xl md:text-3xl font-heading font-bold text-hero-foreground mb-12">
-              {lang === "fr" ? "Détails de l'offre" : "Offer Details"}
-            </h2>
-          </motion.div>
-
-          <div className="space-y-8">
-            {offer.featureDetails?.map((fd, i) => (
-              <motion.div
-                key={fd.title[lang]}
-                className="p-8 rounded-2xl border border-chrome/15 bg-hero-bg/60"
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-              >
-                <div className="flex items-start gap-4">
-                  <Check className="w-5 h-5 text-cyan-glow mt-1 shrink-0" />
-                  <div>
-                    <h3 className="text-lg font-heading font-bold text-hero-foreground mb-2">
-                      {fd.title[lang]}
-                    </h3>
-                    <p className="text-sm text-chrome-light leading-relaxed">
-                      {fd.desc[lang]}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Not included */}
-      {offer.notIncluded && (
-        <section className="py-20 bg-hero">
-          <div className="container mx-auto px-6 max-w-5xl">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-chrome-light/50 mb-4">
-                {lang === "fr" ? "Non inclus dans cette offre" : "Not included in this offer"}
-              </p>
-            </motion.div>
-            <div className="grid md:grid-cols-3 gap-4">
-              {offer.notIncluded.map((item, i) => (
-                <motion.div
-                  key={item[lang]}
-                  className="flex items-start gap-3 p-5 rounded-xl border border-chrome/10 bg-hero-bg/40"
-                  initial={{ opacity: 0, y: 12 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.08 }}
-                >
-                  <X className="w-4 h-4 text-chrome-light/40 mt-0.5 shrink-0" />
-                  <span className="text-sm text-chrome-light/60">{item[lang]}</span>
-                </motion.div>
-              ))}
-            </div>
-            <p className="text-xs text-chrome-light/40 mt-4">
+            <p className="text-base text-chrome-light max-w-xl leading-relaxed mb-10">
               {lang === "fr"
-                ? "Ces fonctionnalités sont disponibles dans les offres KGS Remote et KGS OS."
-                : "These features are available in the KGS Remote and KGS OS offers."}
+                ? "Équipez votre bien avec un accès sécurisé sans clé — sans complexité, sans abonnement."
+                : "Upgrade your property with secure, keyless access — no complexity, no subscriptions."}
             </p>
-          </div>
-        </section>
-      )}
-
-      {/* Add-on */}
-      {offer.addon && (
-        <section className="py-20 bg-hero">
-          <div className="container mx-auto px-6 max-w-5xl">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-glow mb-4">
-                {lang === "fr" ? "Option supplémentaire" : "Optional Add-on"}
-              </p>
-              <h2 className="text-2xl md:text-3xl font-heading font-bold text-hero-foreground mb-8">
-                {offer.addon.name}
-              </h2>
-            </motion.div>
-            <div className="rounded-2xl border border-chrome/15 bg-hero-bg/60 p-10 max-w-2xl">
-              <div className="flex items-center gap-3 mb-4">
-                <Headphones className="w-6 h-6 text-cyan-glow" />
-                <span className="text-lg font-heading font-bold text-hero-foreground">{offer.addon.price[lang]}</span>
-              </div>
-              <p className="text-sm text-chrome-light mb-6 leading-relaxed">
-                {lang === "fr"
-                  ? "Un accompagnement expert pour tirer le meilleur parti de votre système KGS Entry."
-                  : "Expert assistance to get the most out of your KGS Entry system."}
-              </p>
-              <ul className="space-y-3">
-                {offer.addon.features.map((af) => (
-                  <li key={af[lang]} className="flex items-start gap-3 text-sm text-chrome-light">
-                    <Check className="w-4 h-4 text-cyan-glow mt-0.5 shrink-0" />
-                    {af[lang]}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Ideal for */}
-      <section className="py-20 bg-hero">
-        <div className="container mx-auto px-6 max-w-5xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-2xl font-heading font-bold text-hero-foreground mb-8">
-              {lang === "fr" ? "Idéal pour" : "Ideal for"}
-            </h2>
-            <div className="flex flex-wrap gap-3">
-              {offer.idealFor.map((use) => (
-                <span
-                  key={use[lang]}
-                  className="px-6 py-3 rounded-full border border-chrome/20 bg-hero-bg/60 text-sm text-chrome-light"
-                >
-                  {use[lang]}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-20 bg-hero">
-        <div className="container mx-auto px-6 max-w-5xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center border-t border-chrome/15 pt-16"
-          >
-            <p className="text-4xl font-heading font-bold text-hero-foreground mb-3">
-              {offer.price[lang]}
-            </p>
-            <p className="text-base text-chrome-light/60 italic mb-10">
-              "{offer.valueProposition[lang]}"
-            </p>
-            <Link
-              to="/configure?plan=entry"
-              className="group inline-flex items-center gap-3 text-[13px] font-medium tracking-[0.2em] uppercase bg-accent text-white px-10 py-4 hover:bg-accent/90 active:scale-[0.97] transition-all duration-500 mb-4"
-            >
-              {lang === "fr" ? "Sélectionner cette offre" : "Select this plan"}
+            <Link to="/configure?plan=entry" className="group inline-flex items-center gap-3 text-[13px] font-medium tracking-[0.2em] uppercase bg-accent text-white px-10 py-4 hover:bg-accent/90 active:scale-[0.97] transition-all duration-500">
+              {lang === "fr" ? "Commencer" : "Get started"}
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-300" />
             </Link>
-            <br />
-            <Link
-              to="/contact"
-              className="group inline-flex items-center gap-3 text-[13px] font-medium tracking-[0.2em] uppercase text-silver-accent border border-silver-accent/30 px-10 py-4 hover:border-silver-accent/60 hover:bg-white/[0.03] active:scale-[0.97] transition-all duration-500"
-            >
-              {lang === "fr" ? "Demander une consultation" : "Request a Consultation"}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* SECTION 1 — Explanation */}
+      <section className="py-24 bg-hero">
+        <div className="container mx-auto px-6 max-w-4xl">
+          <motion.div {...fadeUp}>
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-cyan-glow mb-4">
+              {lang === "fr" ? "Comprendre KGS Entry" : "Understanding KGS Entry"}
+            </p>
+            <h2 className="text-2xl md:text-4xl font-heading font-bold text-hero-foreground mb-6 leading-[1.1]">
+              {lang === "fr" ? "Une façon plus intelligente de sécuriser votre espace" : "A smarter way to secure your space"}
+            </h2>
+            <p className="text-base text-chrome-light leading-relaxed max-w-2xl mb-4">
+              {lang === "fr"
+                ? "KGS Entry remplace les clés traditionnelles par une solution d'accès moderne, simple, fiable et facile à utiliser."
+                : "KGS Entry replaces traditional keys with a modern access solution that is simple, reliable, and easy to use."}
+            </p>
+            <p className="text-base text-chrome-light/70 leading-relaxed max-w-2xl">
+              {lang === "fr"
+                ? "Pas d'applications. Pas de complexité d'installation. Juste un accès sécurisé, instantanément."
+                : "No apps. No setup complexity. Just secure access, instantly."}
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* SECTION 2 — What's included */}
+      <section className="py-24 bg-hero">
+        <div className="container mx-auto px-6 max-w-4xl">
+          <motion.div {...fadeUp} className="mb-14">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-cyan-glow mb-4">
+              {lang === "fr" ? "Ce qui est inclus" : "What's included"}
+            </p>
+            <h2 className="text-2xl md:text-3xl font-heading font-bold text-hero-foreground">
+              {lang === "fr" ? "Ce que vous recevez" : "What's included"}
+            </h2>
+          </motion.div>
+          <div className="space-y-4">
+            {included.map((item, i) => (
+              <motion.div
+                key={item.en}
+                className="flex items-center gap-4 p-6 rounded-2xl border border-chrome/15 bg-hero-bg/60"
+                initial={{ opacity: 0, x: -16, filter: "blur(4px)" }}
+                whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.5, delay: i * 0.08, ease }}
+              >
+                <Check className="w-5 h-5 text-cyan-glow shrink-0" />
+                <span className="text-base text-hero-foreground font-medium">{item[lang]}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 3 — Value */}
+      <section className="py-24 bg-hero">
+        <div className="container mx-auto px-6 max-w-4xl">
+          <motion.div {...fadeUp} className="mb-14">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-cyan-glow mb-4">
+              {lang === "fr" ? "Proposition de valeur" : "Value proposition"}
+            </p>
+            <h2 className="text-2xl md:text-3xl font-heading font-bold text-hero-foreground">
+              {lang === "fr" ? "Conçu pour la simplicité" : "Designed for simplicity"}
+            </h2>
+          </motion.div>
+          <div className="grid md:grid-cols-2 gap-5">
+            {value.map((item, i) => (
+              <motion.div
+                key={item.en}
+                className="flex items-start gap-4 p-6 rounded-2xl border border-chrome/15 bg-hero-bg/60"
+                initial={{ opacity: 0, y: 16, filter: "blur(4px)" }}
+                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.5, delay: i * 0.08, ease }}
+              >
+                <Check className="w-5 h-5 text-accent mt-0.5 shrink-0" />
+                <span className="text-base text-chrome-light leading-relaxed">{item[lang]}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 4 — Pricing */}
+      <section className="py-24 bg-hero">
+        <div className="container mx-auto px-6 max-w-4xl">
+          <motion.div {...fadeUp}>
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-cyan-glow mb-4">
+              {lang === "fr" ? "Tarification" : "Pricing"}
+            </p>
+            <h2 className="text-2xl md:text-3xl font-heading font-bold text-hero-foreground mb-10">
+              {lang === "fr" ? "Tarification" : "Pricing"}
+            </h2>
+          </motion.div>
+          <motion.div className="rounded-2xl border border-chrome/15 bg-hero-bg/60 p-10 max-w-xl" {...fadeUp}>
+            <p className="text-3xl font-heading font-bold text-hero-foreground mb-2">
+              {lang === "fr" ? "À partir de 209 €" : "From €209"}
+            </p>
+            <p className="text-sm text-chrome-light/70">
+              {lang === "fr" ? "Installation disponible selon la localisation" : "Installation available based on location"}
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* SECTION 5 — Perfect for */}
+      <section className="py-24 bg-hero">
+        <div className="container mx-auto px-6 max-w-4xl">
+          <motion.div {...fadeUp} className="mb-10">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-cyan-glow mb-4">
+              {lang === "fr" ? "Positionnement" : "Positioning"}
+            </p>
+            <h2 className="text-2xl md:text-3xl font-heading font-bold text-hero-foreground">
+              {lang === "fr" ? "Parfait pour" : "Perfect for"}
+            </h2>
+          </motion.div>
+          <div className="flex flex-wrap gap-3">
+            {perfectFor.map((use, i) => (
+              <motion.span key={use.en} className="px-6 py-3 rounded-full border border-chrome/20 bg-hero-bg/60 text-sm text-chrome-light" initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.07 }}>
+                {use[lang]}
+              </motion.span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 6 — Why KGS Entry */}
+      <section className="py-24 bg-hero">
+        <div className="container mx-auto px-6 max-w-4xl">
+          <motion.div {...fadeUp}>
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-cyan-glow mb-4">
+              {lang === "fr" ? "Différenciation" : "Differentiation"}
+            </p>
+            <h2 className="text-2xl md:text-3xl font-heading font-bold text-hero-foreground mb-8">
+              {lang === "fr" ? "Pourquoi KGS Entry ?" : "Why KGS Entry?"}
+            </h2>
+            <p className="text-lg text-chrome-light leading-relaxed max-w-xl">
+              {lang === "fr"
+                ? "La plupart des serrures vous donnent un accès. KGS Entry vous donne la simplicité."
+                : "Most locks give you access. KGS Entry gives you simplicity."}
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* CTA FINAL */}
+      <section className="py-24 bg-hero">
+        <div className="container mx-auto px-6 max-w-4xl">
+          <motion.div {...fadeUp} className="text-center border-t border-chrome/15 pt-16">
+            <h2 className="text-2xl md:text-4xl font-heading font-bold text-hero-foreground mb-10 leading-[1.1]">
+              {lang === "fr" ? "Commencez avec une serrure plus intelligente dès aujourd'hui" : "Start with a smarter lock today"}
+            </h2>
+            <Link to="/configure?plan=entry" className="group inline-flex items-center gap-3 text-[13px] font-medium tracking-[0.2em] uppercase bg-accent text-white px-10 py-4 hover:bg-accent/90 active:scale-[0.97] transition-all duration-500">
+              {lang === "fr" ? "Commencer avec KGS Entry" : "Get started with KGS Entry"}
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-300" />
             </Link>
           </motion.div>
