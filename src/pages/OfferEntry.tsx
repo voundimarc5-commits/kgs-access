@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Check, X, Fingerprint, KeyRound, CreditCard, ShieldCheck } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, X, Fingerprint, KeyRound, CreditCard, ShieldCheck, Headphones } from "lucide-react";
 import { offerEntry } from "@/data/offers";
 import { useLanguage } from "@/contexts/LanguageContext";
 import offerImg from "@/assets/offer-entry.jpg";
