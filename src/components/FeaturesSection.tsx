@@ -6,6 +6,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import offerEntryImg from "@/assets/offer-entry.jpg";
 import offerRemoteImg from "@/assets/offer-remote.jpg";
 import offerOSImg from "@/assets/offer-os.jpg";
+import sectionBg from "@/assets/offers-section-bg.jpg";
 
 const offerImages: Record<string, string> = {
   entry: offerEntryImg,
@@ -19,7 +20,7 @@ const OfferCard = ({ offer, i }: { offer: Offer; i: number }) => {
 
   return (
     <motion.div
-      className="group relative rounded-2xl border border-chrome/15 bg-hero-bg/60 backdrop-blur-sm hover:border-accent/30 transition-all duration-500 flex flex-col overflow-hidden"
+      className="group relative rounded-2xl border border-chrome/15 hover:border-accent/30 transition-all duration-500 flex flex-col overflow-hidden"
       initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
       whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       viewport={{ once: true, amount: 0.2 }}
@@ -32,7 +33,7 @@ const OfferCard = ({ offer, i }: { offer: Offer; i: number }) => {
           alt={offer.name}
           className="w-full h-full object-cover opacity-70 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-hero-bg via-hero-bg/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
       </div>
 
       <div className="relative z-10 p-8 pt-4 flex flex-col flex-1 bg-black">
@@ -65,10 +66,12 @@ const FeaturesSection = () => {
   const lang = language as "en" | "fr";
 
   return (
-    <section className="py-28 bg-hero relative overflow-hidden">
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-accent/20 blur-[160px]" />
-      </div>
+    <section className="py-28 relative overflow-hidden">
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${sectionBg})` }}
+      />
+      <div className="absolute inset-0 bg-deep/85" />
 
       <div className="relative z-10 container mx-auto px-6">
         <motion.div
