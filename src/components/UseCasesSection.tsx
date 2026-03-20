@@ -1,14 +1,17 @@
 import { motion } from "framer-motion";
 import { Home, BedDouble, Building2, Store } from "lucide-react";
-
-const useCases = [
-  { icon: Home, title: "Residential Properties", desc: "Secure, keyless entry for homeowners. Standard installation. No wiring required." },
-  { icon: BedDouble, title: "Short-Term Rentals", desc: "Remote guest access with temporary credentials. No key handover. Full audit trail." },
-  { icon: Building2, title: "Property Management", desc: "Centralised access control across multiple properties. Issue and revoke credentials instantly." },
-  { icon: Store, title: "Commercial Spaces", desc: "Employee-level permissions for offices, studios, and retail. Cost-effective, modern security." },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const UseCasesSection = () => {
+  const { t } = useLanguage();
+
+  const useCases = [
+    { icon: Home, title: t("Residential Properties", "Propriétés résidentielles"), desc: t("Secure, keyless entry for homeowners. Standard installation. No wiring required.", "Accès sécurisé sans clé pour les propriétaires. Installation standard. Aucun câblage requis.") },
+    { icon: BedDouble, title: t("Short-Term Rentals", "Locations courte durée"), desc: t("Remote guest access with temporary credentials. No key handover. Full audit trail.", "Accès invité à distance avec identifiants temporaires. Pas de remise de clés. Traçabilité complète.") },
+    { icon: Building2, title: t("Property Management", "Gestion immobilière"), desc: t("Centralised access control across multiple properties. Issue and revoke credentials instantly.", "Contrôle d'accès centralisé sur plusieurs biens. Émission et révocation instantanée des identifiants.") },
+    { icon: Store, title: t("Commercial Spaces", "Espaces commerciaux"), desc: t("Employee-level permissions for offices, studios, and retail. Cost-effective, modern security.", "Permissions par employé pour bureaux, studios et commerces. Sécurité moderne et économique.") },
+  ];
+
   return (
     <section className="py-28 bg-background">
       <div className="container mx-auto px-6">
@@ -20,10 +23,10 @@ const UseCasesSection = () => {
           transition={{ duration: 0.7 }}
         >
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent mb-4">
-            Applications
+            {t("Applications", "Applications")}
           </p>
           <h2 className="text-3xl md:text-5xl font-heading font-bold text-foreground mb-4">
-            Designed for Every Environment
+            {t("Designed for Every Environment", "Conçu pour chaque environnement")}
           </h2>
         </motion.div>
 

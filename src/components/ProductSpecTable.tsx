@@ -1,20 +1,23 @@
 import type { ProductSpec } from "@/data/products";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface Props {
   specs: ProductSpec[];
 }
 
 const ProductSpecTable = ({ specs }: Props) => {
+  const { t } = useLanguage();
+
   return (
     <div className="rounded-xl border border-border overflow-hidden">
       <table className="w-full text-sm">
         <thead>
           <tr className="bg-muted">
             <th className="text-left px-6 py-3 font-heading font-semibold text-foreground">
-              Specification
+              {t("Specification", "Spécification")}
             </th>
             <th className="text-left px-6 py-3 font-heading font-semibold text-foreground">
-              Detail
+              {t("Detail", "Détail")}
             </th>
           </tr>
         </thead>

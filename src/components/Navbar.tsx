@@ -9,7 +9,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
   const location = useLocation();
-  const { language, toggleLanguage } = useLanguage();
+  const { language, toggleLanguage, t } = useLanguage();
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 50);
@@ -23,10 +23,6 @@ const Navbar = () => {
   }, [location]);
 
   const [offersOpen, setOffersOpen] = useState(false);
-
-  const navLinks = [
-    { label: "Compliance", href: "/compliance" },
-  ];
 
   return (
     <nav
@@ -56,7 +52,7 @@ const Navbar = () => {
               to="/products"
               className="flex items-center gap-1.5 text-[13px] text-chrome-light hover:text-ivory transition-colors duration-300 font-medium tracking-[0.15em] uppercase"
             >
-              Collection
+              {t("Collection", "Collection")}
               <ChevronDown className="w-3.5 h-3.5" />
             </Link>
             {productsOpen && (
@@ -65,7 +61,7 @@ const Navbar = () => {
                   to="/products"
                   className="block px-5 py-2.5 text-sm text-chrome-light hover:text-ivory hover:bg-silver-accent/5 transition-all duration-200"
                 >
-                  All Products
+                  {t("All Products", "Tous les produits")}
                 </Link>
                 <Link
                   to="/products/f7"
@@ -89,7 +85,7 @@ const Navbar = () => {
             onMouseLeave={() => setOffersOpen(false)}
           >
             <span className="flex items-center gap-1.5 text-[13px] text-chrome-light hover:text-ivory transition-colors duration-300 font-medium tracking-[0.15em] uppercase cursor-pointer">
-              {language === "en" ? "Offers" : "Offres"}
+              {t("Offers", "Offres")}
               <ChevronDown className="w-3.5 h-3.5" />
             </span>
             {offersOpen && (
@@ -101,15 +97,12 @@ const Navbar = () => {
             )}
           </div>
 
-          {navLinks.map((l) => (
-            <Link
-              key={l.label}
-              to={l.href}
-              className="text-[13px] text-chrome-light hover:text-ivory transition-colors duration-300 font-medium tracking-[0.15em] uppercase"
-            >
-              {l.label}
-            </Link>
-          ))}
+          <Link
+            to="/compliance"
+            className="text-[13px] text-chrome-light hover:text-ivory transition-colors duration-300 font-medium tracking-[0.15em] uppercase"
+          >
+            {t("Compliance", "Conformité")}
+          </Link>
 
           <button
             onClick={toggleLanguage}
@@ -149,7 +142,7 @@ const Navbar = () => {
       {menuOpen && (
         <div className="md:hidden bg-deep/98 backdrop-blur-2xl border-t border-silver-accent/10 px-6 py-8 flex flex-col gap-5">
           <Link to="/products" className="text-chrome-light hover:text-ivory transition-colors font-medium tracking-[0.15em] uppercase text-[13px]">
-            Collection
+            {t("Collection", "Collection")}
           </Link>
           <Link to="/products/f7" className="text-chrome/70 hover:text-ivory transition-colors pl-4 text-sm">
             Sentinel One
@@ -158,16 +151,14 @@ const Navbar = () => {
             Sentinel Pro
           </Link>
           <span className="text-chrome-light font-medium tracking-[0.15em] uppercase text-[13px] mt-2">
-            {language === "en" ? "Offers" : "Offres"}
+            {t("Offers", "Offres")}
           </span>
           <Link to="/offers/entry" className="text-chrome/70 hover:text-ivory transition-colors pl-4 text-sm">KGS Entry</Link>
           <Link to="/offers/remote" className="text-chrome/70 hover:text-ivory transition-colors pl-4 text-sm">KGS Remote</Link>
           <Link to="/offers/os" className="text-chrome/70 hover:text-ivory transition-colors pl-4 text-sm">KGS OS</Link>
-          {navLinks.map((l) => (
-            <Link key={l.label} to={l.href} className="text-chrome-light hover:text-ivory transition-colors font-medium tracking-[0.15em] uppercase text-[13px]">
-              {l.label}
-            </Link>
-          ))}
+          <Link to="/compliance" className="text-chrome-light hover:text-ivory transition-colors font-medium tracking-[0.15em] uppercase text-[13px]">
+            {t("Compliance", "Conformité")}
+          </Link>
           <button
             onClick={toggleLanguage}
             className="flex items-center gap-2 text-chrome-light hover:text-ivory transition-colors font-medium tracking-[0.15em] uppercase text-[13px]"

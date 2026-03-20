@@ -1,22 +1,5 @@
 import { Check, Minus } from "lucide-react";
-
-const rows = [
-  { label: "Body Material", f7: "Aluminum alloy", f18: "Aluminum alloy" },
-  { label: "Locking System", f7: "Standard mortise", f18: "Triple lock (3 bolts)" },
-  { label: "Fingerprint", f7: true, f18: true },
-  { label: "Passcode", f7: true, f18: true },
-  { label: "RFID Card", f7: true, f18: true },
-  { label: "Mobile App", f7: true, f18: true },
-  { label: "Bluetooth", f7: "BLE", f18: "5.0 BLE" },
-  { label: "Wi-Fi (via gateway)", f7: true, f18: false },
-  { label: "USB-C Emergency Power", f7: true, f18: true },
-  { label: "Fingerprint Capacity", f7: "~120", f18: "—" },
-  { label: "IC Card Capacity", f7: "~1,000", f18: "—" },
-  { label: "Unlock Time", f7: "~1.5s", f18: "—" },
-  { label: "Door Type", f7: "Standard doors", f18: "Reinforced / thick doors" },
-  { label: "CE Certified", f7: true, f18: true },
-  { label: "RoHS Compliant", f7: true, f18: true },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Cell = ({ value }: { value: boolean | string }) => {
   if (typeof value === "boolean") {
@@ -30,13 +13,33 @@ const Cell = ({ value }: { value: boolean | string }) => {
 };
 
 const ComparisonTable = () => {
+  const { t } = useLanguage();
+
+  const rows = [
+    { label: t("Body Material", "Matériau du corps"), f7: "Aluminum alloy", f18: "Aluminum alloy" },
+    { label: t("Locking System", "Système de verrouillage"), f7: t("Standard mortise", "Mortaise standard"), f18: t("Triple lock (3 bolts)", "Triple verrou (3 pênes)") },
+    { label: t("Fingerprint", "Empreinte digitale"), f7: true, f18: true },
+    { label: t("Passcode", "Code d'accès"), f7: true, f18: true },
+    { label: t("RFID Card", "Carte RFID"), f7: true, f18: true },
+    { label: t("Mobile App", "Application mobile"), f7: true, f18: true },
+    { label: "Bluetooth", f7: "BLE", f18: "5.0 BLE" },
+    { label: t("Wi-Fi (via gateway)", "Wi-Fi (via passerelle)"), f7: true, f18: false },
+    { label: t("USB-C Emergency Power", "Alimentation USB-C d'urgence"), f7: true, f18: true },
+    { label: t("Fingerprint Capacity", "Capacité empreintes"), f7: "~120", f18: "—" },
+    { label: t("IC Card Capacity", "Capacité cartes IC"), f7: "~1,000", f18: "—" },
+    { label: t("Unlock Time", "Temps de déverrouillage"), f7: "~1.5s", f18: "—" },
+    { label: t("Door Type", "Type de porte"), f7: t("Standard doors", "Portes standard"), f18: t("Reinforced / thick doors", "Portes renforcées / épaisses") },
+    { label: t("CE Certified", "Certifié CE"), f7: true, f18: true },
+    { label: t("RoHS Compliant", "Conforme RoHS"), f7: true, f18: true },
+  ];
+
   return (
     <div className="rounded-2xl border border-border overflow-hidden shadow-card">
       <table className="w-full text-sm">
         <thead>
           <tr className="bg-hero">
             <th className="text-left px-6 py-4 font-heading font-semibold text-hero-foreground tracking-wide">
-              Feature
+              {t("Feature", "Caractéristique")}
             </th>
             <th className="text-center px-6 py-4 font-heading font-semibold text-cyan-glow tracking-wide">
               Sentinel One

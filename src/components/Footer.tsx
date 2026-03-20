@@ -47,7 +47,7 @@ const Footer = () => {
               {[
                 { label: t("Legal Notice", "Mentions légales"), to: "/legal" },
                 { label: t("Terms & Conditions", "Conditions générales"), to: "/terms" },
-                { label: "Compliance", to: "/compliance" },
+                { label: t("Compliance", "Conformité"), to: "/compliance" },
                 { label: t("Privacy & Data", "Confidentialité"), to: "/privacy" },
               ].map((link) => (
                 <Link

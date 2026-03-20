@@ -1,26 +1,29 @@
 import { motion } from "framer-motion";
 import { ShieldCheck, TrendingUp, Globe } from "lucide-react";
 import CertificationBadges from "./CertificationBadges";
-
-const reasons = [
-  {
-    icon: ShieldCheck,
-    title: "Certified Hardware Only",
-    desc: "Every unit carries CE and RoHS certification. No exceptions. No expired models.",
-  },
-  {
-    icon: Globe,
-    title: "US-Based, International Operations",
-    desc: "Kora Global Systems is registered in the United States. We operate across Europe and Africa with professional logistics.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Long-Term Infrastructure",
-    desc: "We are building a security platform, not selling a product. Every decision is made for scalability and trust.",
-  },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const WhySection = () => {
+  const { t } = useLanguage();
+
+  const reasons = [
+    {
+      icon: ShieldCheck,
+      title: t("Certified Hardware Only", "Matériel certifié uniquement"),
+      desc: t("Every unit carries CE and RoHS certification. No exceptions. No expired models.", "Chaque unité dispose des certifications CE et RoHS. Sans exception. Aucun modèle obsolète."),
+    },
+    {
+      icon: Globe,
+      title: t("US-Based, International Operations", "Basé aux USA, opérations internationales"),
+      desc: t("Kora Global Systems is registered in the United States. We operate across Europe and Africa with professional logistics.", "Kora Global Systems est enregistré aux États-Unis. Nous opérons en Europe et en Afrique avec une logistique professionnelle."),
+    },
+    {
+      icon: TrendingUp,
+      title: t("Long-Term Infrastructure", "Infrastructure à long terme"),
+      desc: t("We are building a security platform, not selling a product. Every decision is made for scalability and trust.", "Nous construisons une plateforme de sécurité, nous ne vendons pas un produit. Chaque décision est prise pour l'évolutivité et la confiance."),
+    },
+  ];
+
   return (
     <section className="py-28 bg-section-alt">
       <div className="container mx-auto px-6">
@@ -32,10 +35,10 @@ const WhySection = () => {
           transition={{ duration: 0.7 }}
         >
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent mb-4">
-            Trust
+            {t("Trust", "Confiance")}
           </p>
           <h2 className="text-3xl md:text-5xl font-heading font-bold text-foreground mb-4">
-            Why KGS Access
+            {t("Why KGS Access", "Pourquoi KGS Access")}
           </h2>
         </motion.div>
 

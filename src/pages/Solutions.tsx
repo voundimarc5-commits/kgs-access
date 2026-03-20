@@ -1,43 +1,54 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Home, BedDouble, Building2, Store, ArrowRight } from "lucide-react";
-
-const segments = [
-  {
-    icon: Home,
-    title: "Residential Properties",
-    description:
-      "Replace traditional keys with certified smart access. The Sentinel One fits standard door frames and provides four independent authentication methods — with no wiring or structural modification required.",
-    cta: "Explore the Sentinel One",
-    link: "/products/f7",
-  },
-  {
-    icon: BedDouble,
-    title: "Short-Term Rentals & Hospitality",
-    description:
-      "Generate temporary credentials for each guest. Manage access remotely. Eliminate key handover logistics. Full entry audit trail for property compliance and insurance documentation.",
-    cta: "View capabilities",
-    link: "/products/f7",
-  },
-  {
-    icon: Building2,
-    title: "Property Management",
-    description:
-      "Centralised access control across your portfolio. Issue, modify, and revoke credentials instantly. Reduce operational overhead and eliminate physical key management costs entirely.",
-    cta: "View product line",
-    link: "/products",
-  },
-  {
-    icon: Store,
-    title: "Commercial & Office Spaces",
-    description:
-      "Implement employee-level access permissions without legacy infrastructure. Smart locks provide a cost-effective, modern alternative to traditional commercial access control systems.",
-    cta: "Discuss requirements",
-    link: "/contact",
-  },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Solutions = () => {
+  const { t } = useLanguage();
+
+  const segments = [
+    {
+      icon: Home,
+      title: t("Residential Properties", "Propriétés résidentielles"),
+      description: t(
+        "Replace traditional keys with certified smart access. The Sentinel One fits standard door frames and provides four independent authentication methods — with no wiring or structural modification required.",
+        "Remplacez les clés traditionnelles par un accès intelligent certifié. Le Sentinel One s'adapte aux cadres de porte standard et offre quatre méthodes d'authentification indépendantes — sans câblage ni modification structurelle."
+      ),
+      cta: t("Explore the Sentinel One", "Découvrir le Sentinel One"),
+      link: "/products/f7",
+    },
+    {
+      icon: BedDouble,
+      title: t("Short-Term Rentals & Hospitality", "Locations courte durée & hôtellerie"),
+      description: t(
+        "Generate temporary credentials for each guest. Manage access remotely. Eliminate key handover logistics. Full entry audit trail for property compliance and insurance documentation.",
+        "Générez des identifiants temporaires pour chaque invité. Gérez l'accès à distance. Éliminez la logistique de remise des clés. Traçabilité complète des entrées pour la conformité et l'assurance."
+      ),
+      cta: t("View capabilities", "Voir les fonctionnalités"),
+      link: "/products/f7",
+    },
+    {
+      icon: Building2,
+      title: t("Property Management", "Gestion immobilière"),
+      description: t(
+        "Centralised access control across your portfolio. Issue, modify, and revoke credentials instantly. Reduce operational overhead and eliminate physical key management costs entirely.",
+        "Contrôle d'accès centralisé sur l'ensemble de votre portefeuille. Émettez, modifiez et révoquez les identifiants instantanément. Réduisez les coûts opérationnels et éliminez la gestion physique des clés."
+      ),
+      cta: t("View product line", "Voir la gamme"),
+      link: "/products",
+    },
+    {
+      icon: Store,
+      title: t("Commercial & Office Spaces", "Espaces commerciaux & bureaux"),
+      description: t(
+        "Implement employee-level access permissions without legacy infrastructure. Smart locks provide a cost-effective, modern alternative to traditional commercial access control systems.",
+        "Implémentez des permissions d'accès par employé sans infrastructure existante. Les serrures intelligentes offrent une alternative moderne et économique aux systèmes de contrôle d'accès traditionnels."
+      ),
+      cta: t("Discuss requirements", "Discuter de vos besoins"),
+      link: "/contact",
+    },
+  ];
+
   return (
     <>
       <section className="bg-hero pt-36 pb-24">
@@ -48,7 +59,7 @@ const Solutions = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            Applications
+            {t("Applications", "Applications")}
           </motion.p>
           <motion.h1
             className="text-4xl md:text-6xl font-heading font-bold text-hero-foreground mb-6"
@@ -56,7 +67,7 @@ const Solutions = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            Solutions by Sector
+            {t("Solutions by Sector", "Solutions par secteur")}
           </motion.h1>
           <motion.p
             className="text-lg text-chrome-light max-w-2xl mx-auto"
@@ -64,7 +75,10 @@ const Solutions = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Access control adapted to the requirements of each environment.
+            {t(
+              "Access control adapted to the requirements of each environment.",
+              "Contrôle d'accès adapté aux exigences de chaque environnement."
+            )}
           </motion.p>
         </div>
       </section>

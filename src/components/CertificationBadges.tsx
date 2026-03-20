@@ -1,27 +1,30 @@
 import { ShieldCheck } from "lucide-react";
-
-const badges = [
-  {
-    label: "CE Certified",
-    detail: "Radio Equipment Directive — EU compliant",
-    icon: (
-      <div className="w-12 h-12 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center">
-        <span className="text-lg font-bold text-accent tracking-tight">CE</span>
-      </div>
-    ),
-  },
-  {
-    label: "RoHS Compliant",
-    detail: "Restriction of Hazardous Substances",
-    icon: (
-      <div className="w-12 h-12 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
-        <ShieldCheck className="w-6 h-6 text-emerald-400" />
-      </div>
-    ),
-  },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const CertificationBadges = ({ className = "" }: { className?: string }) => {
+  const { t } = useLanguage();
+
+  const badges = [
+    {
+      label: t("CE Certified", "Certifié CE"),
+      detail: t("Radio Equipment Directive — EU compliant", "Directive équipements radio — conforme UE"),
+      icon: (
+        <div className="w-12 h-12 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center">
+          <span className="text-lg font-bold text-accent tracking-tight">CE</span>
+        </div>
+      ),
+    },
+    {
+      label: t("RoHS Compliant", "Conforme RoHS"),
+      detail: t("Restriction of Hazardous Substances", "Restriction des substances dangereuses"),
+      icon: (
+        <div className="w-12 h-12 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
+          <ShieldCheck className="w-6 h-6 text-emerald-400" />
+        </div>
+      ),
+    },
+  ];
+
   return (
     <div className={`flex flex-wrap gap-6 ${className}`}>
       {badges.map((b) => (
