@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Check, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, X, Fingerprint, KeyRound, CreditCard, ShieldCheck } from "lucide-react";
 import { offerEntry } from "@/data/offers";
 import { useLanguage } from "@/contexts/LanguageContext";
 import offerImg from "@/assets/offer-entry.jpg";
@@ -18,7 +18,7 @@ const OfferEntry = () => {
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${offerImg})` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/40" />
         <div className="container mx-auto px-6 relative z-10">
           <Link
             to="/"
@@ -31,117 +31,187 @@ const OfferEntry = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="max-w-xl"
+            className="max-w-2xl"
           >
             <span className="text-xs font-semibold uppercase tracking-[0.25em] text-cyan-glow mb-4 block">
               {lang === "fr" ? "Offre 01" : "Offer 01"}
             </span>
-            <h1 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">
+            <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-4 leading-[1.05]">
               {offer.name}
             </h1>
-            <p className="text-lg text-silver-accent italic mb-6">{offer.tagline[lang]}</p>
-            <p className="text-base text-chrome-light max-w-lg leading-relaxed">
+            <p className="text-xl text-silver-accent italic mb-6">{offer.tagline[lang]}</p>
+            <p className="text-base text-chrome-light max-w-xl leading-relaxed">
               {offer.description[lang]}
+            </p>
+            <p className="mt-8 text-3xl font-heading font-bold text-white">
+              {offer.price[lang]}
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Content */}
-      <section className="py-24 bg-background">
+      {/* Unlock Methods */}
+      <section className="py-20 bg-hero">
         <div className="container mx-auto px-6 max-w-5xl">
-          {/* What you get */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-14"
+          >
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-glow mb-4">
+              {lang === "fr" ? "Méthodes d'accès" : "Access Methods"}
+            </p>
+            <h2 className="text-2xl md:text-3xl font-heading font-bold text-hero-foreground">
+              {lang === "fr" ? "Trois façons d'entrer chez vous" : "Three ways to enter your home"}
+            </h2>
+          </motion.div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { icon: Fingerprint, label: { en: "Fingerprint", fr: "Empreinte digitale" }, desc: { en: "Biometric access — fast, personal, and impossible to duplicate.", fr: "Accès biométrique — rapide, personnel et impossible à dupliquer." } },
+              { icon: KeyRound, label: { en: "PIN Code", fr: "Code PIN" }, desc: { en: "Create unique codes for each user. Change or revoke them anytime.", fr: "Créez des codes uniques pour chaque utilisateur. Modifiez-les ou révoquez-les à tout moment." } },
+              { icon: CreditCard, label: { en: "RFID Card", fr: "Carte RFID" }, desc: { en: "Tap to unlock. Ideal for tenants, staff, and shared spaces.", fr: "Touchez pour déverrouiller. Idéal pour les locataires, le personnel et les espaces partagés." } },
+            ].map((method, i) => (
+              <motion.div
+                key={method.label[lang]}
+                className="p-8 rounded-2xl border border-chrome/15 bg-hero-bg/60"
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+              >
+                <method.icon className="w-8 h-8 text-cyan-glow mb-4" />
+                <h3 className="text-lg font-heading font-bold text-hero-foreground mb-2">{method.label[lang]}</h3>
+                <p className="text-sm text-chrome-light leading-relaxed">{method.desc[lang]}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Detailed features */}
+      <section className="py-20 bg-hero">
+        <div className="container mx-auto px-6 max-w-5xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent mb-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-glow mb-4">
               {lang === "fr" ? "Ce qui est inclus" : "What you get"}
             </p>
-            <h2 className="text-2xl font-heading font-bold text-foreground mb-10">
+            <h2 className="text-2xl md:text-3xl font-heading font-bold text-hero-foreground mb-12">
               {lang === "fr" ? "Détails de l'offre" : "Offer Details"}
             </h2>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-4 mb-20">
-            {offer.features.map((f, i) => (
+          <div className="space-y-8">
+            {offer.featureDetails?.map((fd, i) => (
               <motion.div
-                key={f[lang]}
-                className="flex items-start gap-4 p-5 rounded-xl border border-border bg-card"
+                key={fd.title[lang]}
+                className="p-8 rounded-2xl border border-chrome/15 bg-hero-bg/60"
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.08 }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
               >
-                <Check className="w-5 h-5 text-accent mt-0.5 shrink-0" />
-                <span className="text-sm text-foreground">{f[lang]}</span>
+                <div className="flex items-start gap-4">
+                  <Check className="w-5 h-5 text-cyan-glow mt-1 shrink-0" />
+                  <div>
+                    <h3 className="text-lg font-heading font-bold text-hero-foreground mb-2">
+                      {fd.title[lang]}
+                    </h3>
+                    <p className="text-sm text-chrome-light leading-relaxed">
+                      {fd.desc[lang]}
+                    </p>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* Not included */}
-          {offer.notIncluded && (
+      {/* Not included */}
+      {offer.notIncluded && (
+        <section className="py-20 bg-hero">
+          <div className="container mx-auto px-6 max-w-5xl">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="mb-20"
             >
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-4">
-                {lang === "fr" ? "Non inclus" : "Not included"}
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-chrome-light/50 mb-4">
+                {lang === "fr" ? "Non inclus dans cette offre" : "Not included in this offer"}
               </p>
-              <div className="grid md:grid-cols-3 gap-4">
-                {offer.notIncluded.map((item, i) => (
-                  <div
-                    key={item[lang]}
-                    className="flex items-start gap-3 p-4 rounded-xl border border-border/50 bg-muted/30"
-                  >
-                    <X className="w-4 h-4 text-muted-foreground mt-0.5 shrink-0" />
-                    <span className="text-sm text-muted-foreground">{item[lang]}</span>
-                  </div>
-                ))}
-              </div>
             </motion.div>
-          )}
+            <div className="grid md:grid-cols-3 gap-4">
+              {offer.notIncluded.map((item, i) => (
+                <motion.div
+                  key={item[lang]}
+                  className="flex items-start gap-3 p-5 rounded-xl border border-chrome/10 bg-hero-bg/40"
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.08 }}
+                >
+                  <X className="w-4 h-4 text-chrome-light/40 mt-0.5 shrink-0" />
+                  <span className="text-sm text-chrome-light/60">{item[lang]}</span>
+                </motion.div>
+              ))}
+            </div>
+            <p className="text-xs text-chrome-light/40 mt-4">
+              {lang === "fr"
+                ? "Ces fonctionnalités sont disponibles dans les offres KGS Remote et KGS OS."
+                : "These features are available in the KGS Remote and KGS OS offers."}
+            </p>
+          </div>
+        </section>
+      )}
 
-          {/* Ideal for */}
+      {/* Ideal for */}
+      <section className="py-20 bg-hero">
+        <div className="container mx-auto px-6 max-w-5xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="mb-20"
           >
-            <h2 className="text-2xl font-heading font-bold text-foreground mb-6">
+            <h2 className="text-2xl font-heading font-bold text-hero-foreground mb-8">
               {lang === "fr" ? "Idéal pour" : "Ideal for"}
             </h2>
             <div className="flex flex-wrap gap-3">
               {offer.idealFor.map((use) => (
                 <span
                   key={use[lang]}
-                  className="px-5 py-2.5 rounded-full border border-border bg-muted text-sm text-foreground"
+                  className="px-6 py-3 rounded-full border border-chrome/20 bg-hero-bg/60 text-sm text-chrome-light"
                 >
                   {use[lang]}
                 </span>
               ))}
             </div>
           </motion.div>
+        </div>
+      </section>
 
-          {/* Price + CTA */}
+      {/* CTA */}
+      <section className="py-20 bg-hero">
+        <div className="container mx-auto px-6 max-w-5xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center border-t border-border pt-16"
+            className="text-center border-t border-chrome/15 pt-16"
           >
-            <p className="text-3xl font-heading font-bold text-foreground mb-2">
+            <p className="text-4xl font-heading font-bold text-hero-foreground mb-3">
               {offer.price[lang]}
             </p>
-            <p className="text-sm text-muted-foreground italic mb-10">
+            <p className="text-base text-chrome-light/60 italic mb-10">
               "{offer.valueProposition[lang]}"
             </p>
             <Link
