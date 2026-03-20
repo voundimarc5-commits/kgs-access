@@ -34,7 +34,7 @@ const OfferEntry = () => {
             className="max-w-2xl"
           >
             <span className="text-xs font-semibold uppercase tracking-[0.25em] text-cyan-glow mb-4 block">
-              {lang === "fr" ? "Offre 01" : "Offer 01"}
+              KGS Access
             </span>
             <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-4 leading-[1.05]">
               {offer.name}
